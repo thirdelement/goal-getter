@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId #Enables rendering of ObjectID so we can find docs in MongoDB
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env #we are not pushing env.py to GitHub.  When in Heroku we need to only import
                             #env if the os can find an existing file path for the file itself.  Otherwise
@@ -22,6 +23,11 @@ mongo = PyMongo(app) #set up an instance of PyMongo and add the 'app' into that 
 def get_goals():
     goals = mongo.db.goals.find()
     return render_template("goals.html", goals=goals)
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    return render_template("register.html")
 
 
 if __name__ == "__main__":                  #Tell our app how and where to run our app
