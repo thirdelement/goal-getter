@@ -75,6 +75,8 @@
       <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
     </header>
 
+    
+
     <!-- Page Features -->
     <div class="row text-center">
 
@@ -86,7 +88,16 @@
             {% endblock %}
           </div>
           <div class="card-body">
-            <!--<h4 class="card-title">Goal - I'm part of the base template! </h4>-->
+            
+              <!--flash messages-->
+              {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  {% for message in messages %}
+                      <h4 class="text-center bg-info">{{ message }}</h4>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+    
             <p class="card-text">
               {% block content %}
               {% endblock %}
