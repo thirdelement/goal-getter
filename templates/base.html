@@ -47,7 +47,7 @@
             <a class="nav-link" href="#">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Register</a>
+            <a class="nav-link" href="{{ url_for('register') }}">Register</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Log Out</a>
@@ -80,14 +80,16 @@
 
       <div class="col mb-4">
         <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+          <!--<img class="card-img-top" src="http://placehold.it/500x325" alt="">-->
+          <div class="card-header">
+            {% block header %}
+            {% endblock %}
+          </div>
           <div class="card-body">
-            <h4 class="card-title">Goal - I'm part of the base template! </h4>
+            <!--<h4 class="card-title">Goal - I'm part of the base template! </h4>-->
             <p class="card-text">
-             
               {% block content %}
               {% endblock %}
-
             </p>
           </div>
           <div class="card-footer">

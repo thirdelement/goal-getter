@@ -1,14 +1,15 @@
 {% extends "base.html" %}
+{% block header %}
+    <h4>Goals</h4>
+{% endblock %}
+
 {% block content %}
-
-    <h2>I'm extending the base template</h2>
-
+    <!--<h2>I'm extending the base template</h2>-->
     {% for goal in goals %}
         {{ goal.goal_name }}<br>
         {{ goal.target_date }}<br>
         {{ goal.succeed_description }}<br>
         {{ goal.effort }}<br>
     {% endfor %}
-
 {% endblock %}
 <
