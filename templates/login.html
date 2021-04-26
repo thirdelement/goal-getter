@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block header %}
-<h4>Register</h4>
+<h4>Log In</h4>
 {% endblock %}
 {% block content %}
-<form method="POST" action="{{ url_for('register') }}">
+<form method="POST" action="{{ url_for('login') }}">
   <!-- username -->
   <div class="form-group row">
     <label for="username" class="col-md-2 offset-md-1 col-form-label">Username</label>
@@ -21,26 +21,12 @@
       pattern="^[a-zA-Z0-9]{5-15}$" required>
     </div>
   </div>
-  <!-- email -->
-  <div class="form-group row">
-    <label for="email" class="col-md-2 offset-md-1 col-form-label">Email</label>
-    <div class="col-md-6">
-      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-      <!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
-    </div>
-  </div>
-  <!-- register -->
-  <!--<div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>-->
-  <button type="submit" class="btn btn-primary">Register</button>
+  <button type="submit" class="btn btn-primary">Log In</button>
 </form>
-<!-- Log In message -->
 <div class="row">
   <div class="col-md-12">
       <p class="center-align">
-          Already registered? <a href="{{ url_for('login') }}" class="">Log In</a>
+          New here? <a href="{{ url_for('register') }}" class="">Register account</a>
       </p>
   </div>
 </div>

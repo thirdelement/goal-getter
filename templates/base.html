@@ -53,7 +53,7 @@
             <a class="nav-link" href="#">Log Out</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Log In</a>
+            <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
@@ -87,17 +87,15 @@
             {% block header %}
             {% endblock %}
           </div>
+          <!--flash messages-->
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+                <h4 class="text-center bg-info">{{ message }}</h4>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
           <div class="card-body">
-            
-              <!--flash messages-->
-              {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                  {% for message in messages %}
-                      <h4 class="text-center bg-info">{{ message }}</h4>
-                  {% endfor %}
-                {% endif %}
-              {% endwith %}
-    
             <p class="card-text">
               {% block content %}
               {% endblock %}
