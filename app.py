@@ -21,7 +21,7 @@ mongo = PyMongo(app) #set up an instance of PyMongo and add the 'app' into that 
 @app.route("/") #a routing is a string that when we attach to a URL will redirect to a particular function in our Flask app.
 @app.route("/get_goals")
 def get_goals():
-    goals = mongo.db.goals.find()
+    goals = list(mongo.db.goals.find())
     return render_template("goals.html", goals=goals)
 
 
