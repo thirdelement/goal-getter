@@ -98,6 +98,12 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/add_task", methods=["GET", "POST"])
+# The POST method is needed to create a new task
+def add_goal():
+    return render_template("add_goal.html")
+
+
 if __name__ == "__main__":                  #Tell our app how and where to run our app
     app.run(host=os.environ.get("IP"),      #use the hidden variables in the env.py file
             port=int(os.environ.get("PORT")), # convert port to an integer
