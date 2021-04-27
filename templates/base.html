@@ -40,24 +40,30 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('get_goals') }}">Goals</a>
           </li>
+          {% if session.user %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Manage Categories</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+            <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('register') }}">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Log Out</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
           </li>
+          {% endif %}
         </ul>
       </div>
     </div>
@@ -75,26 +81,25 @@
       <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
     </header>
 
-    
+
 
     <!-- Page Features -->
     <div class="row text-center">
-
+ 
       <div class="col mb-4">
         <div class="card h-100">
-          <!--<img class="card-img-top" src="http://placehold.it/500x325" alt="">-->
+          <!--flash messages-->
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          {% for message in messages %}
+            <h4 id="flash" class="text-center bg-info">{{ message }}</h4>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
           <div class="card-header">
             {% block header %}
             {% endblock %}
           </div>
-          <!--flash messages-->
-          {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            {% for message in messages %}
-                <h4 class="text-center bg-info">{{ message }}</h4>
-            {% endfor %}
-          {% endif %}
-        {% endwith %}
           <div class="card-body">
             <p class="card-text">
               {% block content %}

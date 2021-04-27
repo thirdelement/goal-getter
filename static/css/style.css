@@ -6,5 +6,8 @@
  body {
     padding-top: 56px;
   }
-
+/* base.html template */
+  #flash{
+    margin-bottom: 0rem;
+  }
  
