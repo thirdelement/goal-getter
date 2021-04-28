@@ -98,10 +98,11 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_task", methods=["GET", "POST"])
+@app.route("/add_goal", methods=["GET", "POST"])
 # The POST method is needed to create a new task
 def add_goal():
-    return render_template("add_goal.html")
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("add_goal.html", categories=categories)
 
 
 if __name__ == "__main__":                  #Tell our app how and where to run our app
