@@ -18,3 +18,7 @@
     text-align: left;
   }
  
+  .ui-widget button {
+    font-family: unset;
+    font-size: initial;
+}

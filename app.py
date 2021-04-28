@@ -118,6 +118,13 @@ def add_goal():
     return render_template("add_goal.html", categories=categories)
 
 
+@app.route("/edit_goal/<goal_id>", methods=["GET", "POST"])
+def edit_goal(goal_id):
+    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_goal.html", goal=goal, categories=categories)
+
+
 if __name__ == "__main__":                  #Tell our app how and where to run our app
     app.run(host=os.environ.get("IP"),      #use the hidden variables in the env.py file
             port=int(os.environ.get("PORT")), # convert port to an integer

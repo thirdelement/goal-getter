@@ -5,12 +5,13 @@
 
 {% block content %}
 <!--<h2>I'm extending the base template</h2>-->
+
 <div id="accordion">
   {% for goal in goals %}
-
+  
   <h4>
-    <button type="button" class="btn btn-success">Done</button>
-    <button type="button" class="btn btn-info">Edit</button>
+    <a href="#" role="button" class="btn btn-success">Done</a>
+    <a href="{{ url_for('edit_goal', goal_id=goal._id) }}" role="button" class="btn btn-info">Edit</a>
     <span id="accordion-text" class="text-left font-weight-bold">{{ goal.goal_name }} : </span>{{ goal.target_date }}
   </h4>
 
