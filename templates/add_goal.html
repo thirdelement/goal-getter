@@ -3,7 +3,7 @@
 <h4>Add Goal</h4>
 {% endblock %}
 {% block content %}
-<form method="POST" action="">
+<form method="POST" action="{{ url_for('add_goal') }}">
   <!-- End Goal -->
   <div class="form-group row">
     <label for="goal_name" class="col-md-3 offset-md-1 col-form-label">What is your goal?</label>

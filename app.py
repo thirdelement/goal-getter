@@ -99,8 +99,21 @@ def logout():
 
 
 @app.route("/add_goal", methods=["GET", "POST"])
-# The POST method is needed to create a new task
+# The POST method is needed to create a new goal
 def add_goal():
+    if request.method == "POST":
+        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        goal = {
+            "goal_name": request.form.get("goal_name"),
+            "target_date": request.form.get("target_date"), 
+            "category_name": request.form.get("category_name"),
+            "succeed_description": request.form.get("succeed_description"),
+            "effort": request.form.get("effort"), 
+            "created_by": session["user"]
+        }
+        mongo.db.goals.insert_one(goal)
+        flash("Goal successfully added")
+        return redirect(url_for("get_goals"))    
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_goal.html", categories=categories)
 
