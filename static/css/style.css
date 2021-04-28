@@ -10,4 +10,11 @@
   #flash{
     margin-bottom: 0rem;
   }
+
+/* goals.html template */
+/* update jQuery accordion font and alignment */
+  .ui-widget {
+    font-family: unset;
+    text-align: left;
+  }
  

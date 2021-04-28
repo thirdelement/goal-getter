@@ -5,33 +5,16 @@
 
 {% block content %}
 <!--<h2>I'm extending the base template</h2>-->
-{% for goal in goals %}
-{{ goal.goal_name }}<br>
-{{ goal.target_date }}<br>
-{{ goal.succeed_description }}<br>
-{{ goal.effort }}<br>
-{% endfor %}
-
-<div class="accordion" id="accordionExample">
+<div id="accordion">
   {% for goal in goals %}
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h2 class="mb-0">
-        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne"
-          aria-expanded="true" aria-controls="collapseOne">
-          <p><span class="font-weight-bold">{{ goal.goal_name }} : </span>{{ goal.target_date }}</p>
-        </button>
-      </h2>
-    </div>
-    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-      <div class="card-body">
-        {{ goal.succeed_description }}
-        <p>{{ goal.effort }}</p>
-        <p class="font-italic">By: {{ goal.created_by }}</p>
-      </div>
-    </div>
+  <h3><span id="accordion-text" class="text-left font-weight-bold">{{ goal.goal_name }} : </span>{{ goal.target_date }}</h3>
+  <div>
+    <p>Description: {{ goal.succeed_description }}</p>
+    <p>Effort: {{ goal.effort }}</p>
+    <p class="font-italic">By: {{ goal.created_by }}</p>
   </div>
   {% endfor %}
 </div>
 {% endblock %}
+
 <
