@@ -3,6 +3,8 @@
 <h4>Add Goal</h4>
 {% endblock %}
 {% block content %}
+
+<!--EXISTING CODE-->
 <form method="POST" action="{{ url_for('add_goal') }}">
   <!-- End Goal -->
   <div class="form-group row">
@@ -25,7 +27,7 @@
   <div class="form-group row">
     <label for="category_name" class="col-md-3 offset-md-1 col-form-label">What is the life area for this goal?</label>
     <div class="col-md-6">
-      <select class="form-control" id="category_name" name="category_name">
+      <select class="form-control" id="category_name" name="category_name" required>
         <option value="" disabled selected>Choose Category</option>
         {% for category in categories %}
           <option value="{{ category.category_name }}">{{ category.category_name }}</option>
@@ -41,7 +43,7 @@
       <!--<input type="text" class="form-control" id="succeed_description" name="succeed_description"
         minlength="5" maxlength="50" pattern="^[a-zA-Z0-9]{5-15}$" required>-->
       <textarea class="form-control" id="succeed_description" name="succeed_description" rows="3" minlength="5"
-        maxlength="200"></textarea>
+        maxlength="200" required></textarea>
     </div>
   </div>
   <!-- Effort -->
@@ -49,7 +51,8 @@
     <label for="effort" class="col-md-3 offset-md-1 col-form-label">How much effort will you put in from 1 to
       10?</label>
     <div class="col-md-6">
-      <select class="form-control" id="effort" name="effort">
+      <select class="form-control" id="effort" name="effort" required>
+        <option value="" disabled selected>Choose Category</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -65,6 +68,5 @@
   </div>
   <button type="submit" class="btn btn-primary">Next</button>
 </form>
-
 
 {% endblock %}
