@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block header %}
+<h4>Manage categories</h4>
+{% endblock %}
+{% block content %}
+
+<ul class="list-group">
+    {% for category in categories %}
+    <button type="button" class="list-group-item list-group-item-action text-left">
+        <a href="" role="button" class="btn btn-primary">Edit</a>
+        <a href="" role="button" class="btn btn-danger acc-header">Delete</a>
+        {{ category.category_name }}
+    </button>
+    {% endfor %}
+</ul>
+
+{% endblock %}

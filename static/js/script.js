@@ -10,5 +10,5 @@ $(document).ready(function () {
     active: false,
     header: "h4"
   });
-  
+
 });

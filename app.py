@@ -145,6 +145,12 @@ def delete_goal(goal_id):
     return redirect(url_for("get_goals"))
 
 
+@app.route("/get_categories")
+def get_categories():
+    categories = list(mongo.db.categories.find().sort("category_name", 1))
+    return render_template("categories.html", categories=categories)
+
+
 if __name__ == "__main__":                  #Tell our app how and where to run our app
     app.run(host=os.environ.get("IP"),      #use the hidden variables in the env.py file
             port=int(os.environ.get("PORT")), # convert port to an integer
