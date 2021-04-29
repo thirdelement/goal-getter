@@ -138,6 +138,13 @@ def edit_goal(goal_id):
     return render_template("edit_goal.html", goal=goal, categories=categories)
 
 
+@app.route("/delete_goal/<goal_id>")
+def delete_goal(goal_id):
+    mongo.db.goals.remove({"_id": ObjectId(goal_id)})
+    flash("Task successfully deleted")
+    return redirect(url_for("get_goals"))
+
+
 if __name__ == "__main__":                  #Tell our app how and where to run our app
     app.run(host=os.environ.get("IP"),      #use the hidden variables in the env.py file
             port=int(os.environ.get("PORT")), # convert port to an integer
