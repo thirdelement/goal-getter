@@ -10,7 +10,7 @@
   <div class="form-group row">
     <label for="goal_name" class="col-md-3 offset-md-1 col-form-label">What is your goal?</label>
     <div class="col-md-6">
-      <input type="text" class="form-control" id="goal_name" name="goal_name" minlength="5" maxlength="70"
+      <input value="{{ goal.goal_name }}" type="text" class="form-control" id="goal_name" name="goal_name" minlength="5" maxlength="70"
         pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="goal_nameHelp" required>
       <!--<small id="usernameHelp" class="form-text text-muted">Between 5 to 10 characters</small> -->
     </div>
@@ -20,7 +20,7 @@
     <label for="target_date" class="col-md-3 offset-md-1 col-form-label">By when do you want
       to achieve it?</label>
     <div class="col-md-6">
-      <input type="text" class="form-control" id="target_date" name="target_date" required>
+      <input value="{{ goal.target_date }}" type="text" class="form-control" id="target_date" name="target_date" required>
     </div>
   </div>
   <!-- Life area -->
@@ -28,9 +28,13 @@
     <label for="category_name" class="col-md-3 offset-md-1 col-form-label">What is the life area for this goal?</label>
     <div class="col-md-6">
       <select class="form-control" id="category_name" name="category_name" required>
-        <option value="" disabled selected>Choose Category</option>
+        <option value="" disabled>Choose Category</option>
         {% for category in categories %}
-          <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+          {% if category.category_name == goal.category_name %}
+            <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+          {% else %}
+            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+          {% endif %}
         {% endfor %}
       </select>
     </div>
@@ -43,7 +47,9 @@
       <!--<input type="text" class="form-control" id="succeed_description" name="succeed_description"
         minlength="5" maxlength="50" pattern="^[a-zA-Z0-9]{5-15}$" required>-->
       <textarea class="form-control" id="succeed_description" name="succeed_description" rows="3" minlength="5"
-        maxlength="200" required></textarea>
+        maxlength="200" required>
+        {{- goal.succeed_description -}}
+      </textarea>
     </div>
   </div>
   <!-- Effort -->
@@ -52,7 +58,7 @@
       10?</label>
     <div class="col-md-6">
       <select class="form-control" id="effort" name="effort" required>
-        <option value="" disabled selected>Choose Category</option>
+        <option value="" selected>{{ goal.effort }}</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -66,7 +72,13 @@
       </select>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Edit Goal</button>
+  
+  <div>
+    <!-- Cancel button -->
+    <a href="{{ url_for('get_goals') }}" role="button" class="btn btn-danger acc-header">Cancel</a>
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary">Edit Goal</button>
+  </div>
 </form>
 
 {% endblock %}
