@@ -10,9 +10,11 @@
   {% for goal in goals %}
   
   <h4>
+    {% if session.user|lower == goal.created_by|lower %}
     <a href="#" role="button" class="btn btn-success">Done</a>
     <!-- Add onclick event to enable link.  Source: https://stackoverflow.com/questions/332384/jquery-accordion-links-dont-work -->
     <a href="{{ url_for('edit_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button" class="btn btn-info acc-header">Edit</a>
+    {% endif %}
     <span id="accordion-text" class="text-left font-weight-bold">{{ goal.goal_name }} : </span>{{ goal.target_date }}
   </h4>
 

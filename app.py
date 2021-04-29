@@ -120,6 +120,19 @@ def add_goal():
 
 @app.route("/edit_goal/<goal_id>", methods=["GET", "POST"])
 def edit_goal(goal_id):
+    if request.method == "POST":
+        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        submit = {
+            "goal_name": request.form.get("goal_name"),
+            "target_date": request.form.get("target_date"), 
+            "category_name": request.form.get("category_name"),
+            "succeed_description": request.form.get("succeed_description"),
+            "effort": request.form.get("effort"), 
+            "created_by": session["user"]
+        }
+        mongo.db.goals.update({"_id": ObjectId(goal_id)}, submit)
+        flash("Goal successfully updated")
+
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_goal.html", goal=goal, categories=categories)
