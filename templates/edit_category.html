@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block header %}
+<h4>Edit Category</h4>
+{% endblock %}
+{% block content %}
+
+<form method="POST" action="{{ url_for('edit_category', category_id=category._id) }}">
+  <!-- Category name -->
+  <div class="form-group row">
+    <label for="category_name" class="col-md-3 offset-md-1 col-form-label">Category Name</label>
+    <div class="col-md-6">
+      <input type="text" value="{{ category.category_name }}" class="form-control" id="category_name" name="category_name" minlength="3" maxlength="20"
+        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="category_nameHelp" required>
+      <!--<small id="usernameHelp" class="form-text text-muted">Between 5 to 10 characters</small> -->
+    </div>
+  </div>
+
+{% endblock %}
+{% block footer %}
+<a href="{{ url_for('get_categories') }}" class="btn btn-danger">Cancel</a>
+<button type="submit" class="btn btn-primary">Edit category</button>
+{% endblock %}
+</form>
