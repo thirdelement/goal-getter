@@ -30,7 +30,7 @@
       <select class="form-control" id="category_name" name="category_name" required>
         <option value="" disabled selected>Choose Category</option>
         {% for category in categories %}
-          <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+        <option value="{{ category.category_name }}">{{ category.category_name }}</option>
         {% endfor %}
       </select>
     </div>
@@ -66,10 +66,8 @@
       </select>
     </div>
   </div>
- 
+  {% endblock %}
+  {% block footer %}
+  <button type="submit" class="btn btn-primary">Next</button>
+  {% endblock %}
 </form>
-{% endblock %}
-{% block footer %}
-<a href="#" class="btn btn-primary">Next</a>
-{% endblock %}
-
