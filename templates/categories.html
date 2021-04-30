@@ -8,7 +8,7 @@
     {% for category in categories %}
     <button type="button" class="list-group-item list-group-item-action text-left">
         <a href="{{ url_for('edit_category', category_id=category._id) }}" role="button" class="btn btn-primary">Edit</a>
-        <a href="" role="button" class="btn btn-danger acc-header">Delete</a>
+        <a href="{{ url_for('delete_category', category_id=category._id) }}" role="button" class="btn btn-danger acc-header">Delete</a>
         {{ category.category_name }}
     </button>
     {% endfor %}
