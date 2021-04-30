@@ -15,8 +15,11 @@
     </div>
   </div>
 
-{% endblock %}
-{% block footer %}
-<button type="submit" class="btn btn-primary">Add category</button>
-{% endblock %}
+  {% endblock %}
+  {% block footer %}
+  <!-- Cancel button -->
+  <a href="{{ url_for('get_goals') }}" role="button" class="btn btn-danger acc-header">Cancel</a>
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary">Add category</button>
+  {% endblock %}
 </form>
