@@ -102,18 +102,23 @@ def logout():
 # The POST method is needed to create a new goal
 def add_goal():
     if request.method == "POST":
-        is_urgent = "on" if request.form.get("is_urgent") else "off"
         goal = {
             "goal_name": request.form.get("goal_name"),
             "target_date": request.form.get("target_date"), 
             "category_name": request.form.get("category_name"),
             "succeed_description": request.form.get("succeed_description"),
             "effort": request.form.get("effort"), 
+            "previous_action": request.form.get("previous_action"),
+            "confidence_level": request.form.get("confidence_level"),
+            "holding_back_description": request.form.get(
+                "holding_back_description"),
+            "believe_description": request.form.get("believe_description"),
             "created_by": session["user"]
         }
         mongo.db.goals.insert_one(goal)
         flash("Goal successfully added")
-        return redirect(url_for("get_goals"))    
+        return redirect(url_for("add_reality", goal_id=goal["_id"]))  
+
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_goal.html", categories=categories)
 
@@ -121,7 +126,6 @@ def add_goal():
 @app.route("/edit_goal/<goal_id>", methods=["GET", "POST"])
 def edit_goal(goal_id):
     if request.method == "POST":
-        is_urgent = "on" if request.form.get("is_urgent") else "off"
         submit = {
             "goal_name": request.form.get("goal_name"),
             "target_date": request.form.get("target_date"), 
@@ -132,11 +136,11 @@ def edit_goal(goal_id):
         }
         mongo.db.goals.update({"_id": ObjectId(goal_id)}, submit)
         flash("Goal successfully updated")
-
+        
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_goal.html", goal=goal, categories=categories)
-
+    return render_template("edit_goal.html", goal=goal, categories=categories) 
+    
 
 @app.route("/delete_goal/<goal_id>")
 def delete_goal(goal_id):
@@ -145,6 +149,26 @@ def delete_goal(goal_id):
     return redirect(url_for("get_goals"))
 
 
+@app.route("/add_reality/<goal_id>", methods=["GET", "POST"])
+def add_reality(goal_id):
+    if request.method == "POST":
+        submit = {
+            "previous_action": request.form.get("previous_action"),
+            "confidence_level": request.form.get("confidence_level"),
+            "holding_back_description": request.form.get(
+                "holding_back_description"),
+            "believe_description": request.form.get("believe_description"),
+            "created_by": session["user"]
+        }
+        mongo.db.goals.update({"_id": ObjectId(goal_id)}, submit)
+        flash("Reality successfully added")
+
+    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template(
+        "add_reality.html", goal=goal, categories=categories)
+
+    
 @app.route("/get_categories")
 def get_categories():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
@@ -163,7 +187,6 @@ def add_category():
 
     return render_template("add_category.html")
 
-
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
     if request.method == "POST":
@@ -176,6 +199,7 @@ def edit_category(category_id):
 
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
+
 
 
 @app.route("/delete_category/<category_id>")
