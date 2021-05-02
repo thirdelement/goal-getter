@@ -117,7 +117,9 @@ def add_goal():
         }
         mongo.db.goals.insert_one(goal)
         flash("Goal successfully added")
-        return redirect(url_for("add_reality", goal_id=goal["_id"]))  
+        return redirect(url_for(
+            "add_reality", goal_id=goal["_id"], 
+            _external=True, _scheme="https"))  
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_goal.html", categories=categories)
@@ -152,16 +154,18 @@ def delete_goal(goal_id):
 @app.route("/add_reality/<goal_id>", methods=["GET", "POST"])
 def add_reality(goal_id):
     if request.method == "POST":
-        submit = {
+        submit = { "$set" : {
             "previous_action": request.form.get("previous_action"),
             "confidence_level": request.form.get("confidence_level"),
             "holding_back_description": request.form.get(
                 "holding_back_description"),
             "believe_description": request.form.get("believe_description"),
             "created_by": session["user"]
-        }
-        mongo.db.goals.update({"_id": ObjectId(goal_id)}, submit)
+        }}
+        print(submit)
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
         flash("Reality successfully added")
+        return redirect(url_for("get_goals", _external=True, _scheme="https"))
 
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
