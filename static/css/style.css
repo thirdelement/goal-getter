@@ -22,3 +22,21 @@
     font-family: unset;
     font-size: initial;
 }
+
+/* add_wayforward.html template */
+/* Move Bootstrap switch label to the left from https://stackoverflow.com/questions/54254251/move-checkbox-label-to-left-on-bootstrap-custom-checkbox */
+div.custom-control-right {
+  padding-right: 24px;
+  padding-left: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+div.custom-control-right .custom-control-label::after{
+  right: -1.5rem;
+  left: auto;
+}
+div.custom-control-right .custom-control-label::before {
+  right: -2.35rem;
+  left: auto;
+}
+

@@ -25,11 +25,18 @@
       <input type="text" class="form-control datepicker" id="target_date2" name="target_date2" required>
     </div>
   </div>
-  <!-- Will it meet your goal -->
-  <div class="form-group row custom-control custom-switch">
-    <label class="custom-control-label" for="meet_goal">Will this action meet your goal?</label>
-    <input type="checkbox" class="custom-control-input" id="meet_goal" name="meet_goal">
+  <div class="form-group row">
+    <label for="meet_goal" class="col-md-3 offset-md-1 col-form-label">Toggle this switch element:</label>
+  <div class="col-md-6 custom-control custom-switch custom-control-right">
+    <input type="checkbox" class="custom-control-input col-md-3" id="meet_goal">
+    <label class="custom-control-label" for="meet_goal"></label>
   </div>
+
+  <!--<div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" id="customSwitch2">
+    <label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
+  </div>-->
+</div>
   <!-- Obstacles -->
   <div class="form-group row">
     <label for="obstacles" class="col-md-3 offset-md-1 col-form-label">What obstacles might you meet?</label>
