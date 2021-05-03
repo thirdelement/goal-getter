@@ -107,12 +107,6 @@ def add_goal():
             "category_name": request.form.get("category_name"),
             "succeed_description": request.form.get("succeed_description"),
             "effort": request.form.get("effort"), 
-            "previous_action": request.form.get("previous_action"),
-            "confidence_level": request.form.get("confidence_level"),
-            "holding_back_description": request.form.get(
-                "holding_back_description"),
-            "believe_description": request.form.get("believe_description"),
-            "course_of_action": request.form.getlist("course_of_action"),
             "created_by": session["user"]
         }
         mongo.db.goals.insert_one(goal)
@@ -203,21 +197,21 @@ def add_options(goal_id):
 def add_wayforward(goal_id):
     if request.method == "POST":
         meet_goal = "on" if request.form.get("meet_goal") else "off"
-        submit = {'$push':{"chosen_coa": request.form.get("course_of_action")}}
-        { "$set" : {
-            "course_of_action": request.form.get("course_of_action"),
-            "goal_date": request.form.get("goal_date"),
+        push = {'$push':{"chosen_coa": request.form.get("course_of_action")}}
+        submit = { "$set" : {
+            "target_date2": request.form.get("target_date2"),
             "meet_goal": meet_goal, 
             "obstacles": request.form.get("obstacles"),
             "what_support": request.form.get("what_support"),
             "how_support": request.form.get("how_support"),
-            "likelihood": request.form.get("how_support"),
+            "likelihood": request.form.get("likelihood"),
             "created_by": session["user"]
         }}
         print(submit)
-        mongo.db.goals.update({"_id": ObjectId(goal_id)}, submit)
+        print(push)
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, push)
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
         flash("Way Forward successfully added")
-        print(submit)
         return redirect(url_for("get_goals", _external=True, _scheme="https"))
 
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
