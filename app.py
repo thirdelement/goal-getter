@@ -176,8 +176,11 @@ def add_reality(goal_id):
     return render_template(
         "add_reality.html", goal=goal, categories=categories)
 
+
 @app.route("/add_options/<goal_id>", methods=["GET", "POST"])
 def add_options(goal_id):
+    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+
     if request.method == "POST":
         submit = { "$set" : {
             "course_of_action": request.form.getlist("course_of_action"),
@@ -187,14 +190,41 @@ def add_options(goal_id):
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
         flash("Options successfully added")
         print(submit)
-        return redirect(url_for("get_goals", _external=True, _scheme="https"))
+        return redirect(url_for(
+            "add_wayforward", goal_id=goal["_id"], 
+            _external=True, _scheme="https"))
 
-    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
         "add_options.html", goal=goal, categories=categories)
 
-    
+
+@app.route("/add_wayforward/<goal_id>", methods=["GET", "POST"])
+def add_wayforward(goal_id):
+    if request.method == "POST":
+        meet_goal = "on" if request.form.get("meet_goal") else "off"
+        submit = {'$push':{"chosen_coa": request.form.get("course_of_action")}}
+        { "$set" : {
+            "course_of_action": request.form.get("course_of_action"),
+            "goal_date": request.form.get("goal_date"),
+            "meet_goal": meet_goal, 
+            "obstacles": request.form.get("obstacles"),
+            "what_support": request.form.get("what_support"),
+            "how_support": request.form.get("how_support"),
+            "likelihood": request.form.get("how_support"),
+            "created_by": session["user"]
+        }}
+        print(submit)
+        mongo.db.goals.update({"_id": ObjectId(goal_id)}, submit)
+        flash("Way Forward successfully added")
+        print(submit)
+        return redirect(url_for("get_goals", _external=True, _scheme="https"))
+
+    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+    return render_template(
+        "add_wayforward.html", goal=goal)
+
+
 @app.route("/get_categories")
 def get_categories():
     categories = list(mongo.db.categories.find().sort("category_name", 1))

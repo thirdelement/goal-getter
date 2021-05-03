@@ -27,7 +27,7 @@
     <p>What will make me believe: {{ goal.believe_description }}</p>
     <p>Possible courses of action:</p> 
     <ol>
-      {%for course_of_action in goal.course_of_action %} 
+      {% for course_of_action in goal.course_of_action %} 
       <li>{{ course_of_action }}</li>
       {% endfor %}
     </ol>
