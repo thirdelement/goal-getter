@@ -7,42 +7,42 @@
 <form method="POST" action="{{ url_for('add_options', goal_id=goal._id) }}">
   <!-- Courses of actions -->
   <div class="form-group row">
-    <label for="course_of_action1" class="col-md-3 offset-md-1 col-form-label">What courses of action can you take to achieve this?</label>
+    <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label">What courses of action can you take to achieve this?</label>
     <div class="col-md-6">
-      <input type="text" class="form-control" id="course_of_action1" name="course_of_action1" minlength="5" maxlength="100"
-        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="course_of_action1Help" required>
+      <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="5" maxlength="100"
+        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="course_of_actionHelp" required>
     </div>
   </div>
   <!-- No limits -->
   <div class="form-group row">
-    <label for="course_of_action2" class="col-md-3 offset-md-1 col-form-label">If there were no limits what would you do?</label>
+    <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label">If there were no limits what would you do?</label>
     <div class="col-md-6">
-      <input type="text" class="form-control" id="course_of_action2" name="course_of_action2" minlength="5" maxlength="100"
-        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="course_of_action2Help" required>
+      <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="5" maxlength="100"
+        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="course_of_actionHelp" required>
     </div>
   </div>
   <!-- Wisest person -->
   <div class="form-group row">
-    <label for="course_of_action3" class="col-md-3 offset-md-1 col-form-label">What would the wisest person you know advise you to do?</label>
+    <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label">What would the wisest person you know advise you to do?</label>
     <div class="col-md-6">
-      <input type="text" class="form-control" id="course_of_action3" name="course_of_action3" minlength="5" maxlength="70"
-        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="course_of_action3Help" required>
+      <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="5" maxlength="70"
+        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="course_of_actionHelp" required>
     </div>
   </div>
   <!-- If you were the coach -->
   <div class="form-group row">
-    <label for="course_of_action4" class="col-md-3 offset-md-1 col-form-label">If you were the coach what action would you suggest?</label>
+    <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label">If you were the coach what action would you suggest?</label>
     <div class="col-md-6">
-      <input type="text" class="form-control" id="course_of_action4" name="course_of_action4" minlength="5" maxlength="70"
-        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="course_of_action4Help" required>
+      <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="5" maxlength="70"
+        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="course_of_actionHelp" required>
     </div>
   </div>
   <!-- Add one more action -->
   <div class="form-group row">
-    <label for="course_of_action5" class="col-md-3 offset-md-1 col-form-label">Add one more action:</label>
+    <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label">Add one more action:</label>
     <div class="col-md-6">
-      <input type="text" class="form-control" id="course_of_action5" name="course_of_action5" minlength="5" maxlength="70"
-        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="course_of_action5Help" required>
+      <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="5" maxlength="70"
+        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="course_of_actionHelp" required>
     </div>
   </div>
   {% endblock %}

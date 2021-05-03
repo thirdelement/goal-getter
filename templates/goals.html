@@ -21,6 +21,16 @@
   <div>
     <p>Description: {{ goal.succeed_description }}</p>
     <p>Effort: {{ goal.effort }}</p>
+    <p>Actions completed already: {{ goal.previous_action }}</p>
+    <p>Confidence Level: {{ goal.confidence_level }}</p>
+    <p>What's holding me back: {{ goal.holding_back_description }}</p>
+    <p>What will make me believe: {{ goal.believe_description }}</p>
+    <p>Possible courses of action:</p> 
+    <ol>
+      {%for course_of_action in goal.course_of_action %} 
+      <li>{{ course_of_action }}</li>
+      {% endfor %}
+    </ol>
     <p class="font-italic">By: {{ goal.created_by }}</p>
   </div>
   {% endfor %}

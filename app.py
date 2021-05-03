@@ -186,6 +186,7 @@ def add_options(goal_id):
         print(submit)
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
         flash("Options successfully added")
+        print(submit)
         return redirect(url_for("get_goals", _external=True, _scheme="https"))
 
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
