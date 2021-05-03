@@ -31,6 +31,18 @@
       <li>{{ course_of_action }}</li>
       {% endfor %}
     </ol>
+    <p>Chosen course of action:</p>
+    <ul>
+      {% for chosen_coa in goal.chosen_coa %} 
+      <li>{{ chosen_coa }}</li>
+      {% endfor %}
+    </ul>
+    <p>By when are you going to do it: {{ goal.target_date2 }}</p>
+    <p>Will the action meet your goal: {{ goal.meet_goal }}</p>
+    <p>Obstacles: {{ goal.obstacles }}</p>
+    <p>Support required: {{ goal.what_support }}</p>
+    <p>How you will get support: {{ goal.how_support }}</p>
+    <p>Liklihood of completing: {{ goal.likelihood }}</p>
     <p class="font-italic">By: {{ goal.created_by }}</p>
   </div>
   {% endfor %}

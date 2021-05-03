@@ -1,6 +1,6 @@
 $(document).ready(function () {
   //Datepicker from https://jqueryui.com/datepicker/
-  $("#target_date").datepicker({
+  $(".datepicker").datepicker({
     dateFormat: "dd MM, yy"
   });
   
