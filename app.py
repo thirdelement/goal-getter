@@ -196,7 +196,8 @@ def add_options(goal_id):
 @app.route("/add_wayforward/<goal_id>", methods=["GET", "POST"])
 def add_wayforward(goal_id):
     if request.method == "POST":
-        meet_goal = "on" if request.form.get("meet_goal") else "off"
+        meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
+        share = "checked" if request.form.get("share") else "unchecked"
         push = {'$push':{"chosen_coa": request.form.get("course_of_action")}}
         submit = { "$set" : {
             "target_date2": request.form.get("target_date2"),
@@ -205,6 +206,7 @@ def add_wayforward(goal_id):
             "what_support": request.form.get("what_support"),
             "how_support": request.form.get("how_support"),
             "likelihood": request.form.get("likelihood"),
+            "share": share, 
             "created_by": session["user"]
         }}
         print(submit)
