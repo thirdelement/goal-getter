@@ -10,10 +10,54 @@
       <!--<div class="">
          <span>test
           </span>-->
-          <h3 class="text-center">
-             
-          </h3>
+          <h4 class="text-center">
+             My Goals
+          </h4>
       <!--</div>-->
   </div>
 </div>
+
+<div id="accordion">
+  {% for goal in goals %}
+  {% if session.user|lower == goal.created_by|lower %}
+  <h4>
+    
+    <a href="{{ url_for('delete_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button" class="btn btn-success">Done</a>
+    <!-- Add onclick event to enable link.  Source: https://stackoverflow.com/questions/332384/jquery-accordion-links-dont-work -->
+    <a href="{{ url_for('edit_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button" class="btn btn-info acc-header">Edit</a>
+    
+    <span id="accordion-text" class="text-left font-weight-bold">{{ goal.goal_name }} : </span>{{ goal.target_date }}
+  </h4>
+  <div>
+    <p>Description: {{ goal.succeed_description }}</p>
+    <p>Effort: {{ goal.effort }}</p>
+    <p>Actions completed already: {{ goal.previous_action }}</p>
+    <p>Confidence Level: {{ goal.confidence_level }}</p>
+    <p>What's holding me back: {{ goal.holding_back_description }}</p>
+    <p>What will make me believe: {{ goal.believe_description }}</p>
+    <p>Possible courses of action:</p> 
+    <ol>
+      {% for course_of_action in goal.course_of_action %} 
+      <li>{{ course_of_action }}</li>
+      {% endfor %}
+    </ol>
+    <p>Chosen course of action:</p>
+    <ul>
+      {% for chosen_coa in goal.chosen_coa %} 
+      <li>{{ chosen_coa }}</li>
+      {% endfor %}
+    </ul>
+    <p>By when are you going to do it: {{ goal.target_date2 }}</p>
+    <p>Will the action meet your goal: {{ goal.meet_goal }}</p>
+    <p>Obstacles: {{ goal.obstacles }}</p>
+    <p>Support required: {{ goal.what_support }}</p>
+    <p>How you will get support: {{ goal.how_support }}</p>
+    <p>Liklihood of completing: {{ goal.likelihood }}</p>
+    <p>Sharing: {{ goal.share }}</p>
+    <p class="font-italic">By: {{ goal.created_by }}</p>
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+
 {% endblock %}

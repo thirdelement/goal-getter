@@ -82,10 +82,11 @@ def profile(username):
     #grab the session users's username from the db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    goals = list(mongo.db.goals.find())
 
     if session["user"]:
     #if session cookie is truthy then render the page
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, goals=goals)
     #if session cookie is not truthy (e.g. has been deleted)
     return redirect(url_for("login"))
 
