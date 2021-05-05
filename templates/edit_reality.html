@@ -4,12 +4,12 @@
 {% endblock %}
 {% block content %}
 
-<form method="POST" action="{{ url_for('add_reality', goal_id=goal._id) }}">
+<form method="POST" action="{{ url_for('edit_reality', goal_id=goal._id) }}">
   <!-- Actions so far -->
   <div class="form-group row">
     <label for="previous_action" class="col-md-3 offset-md-1 col-form-label">What actions have you taken so far?</label>
     <div class="col-md-6">
-      <input type="text" class="form-control" id="previous_action" name="previous_action" minlength="5" maxlength="70"
+      <input value="{{ goal.previous_action }}"type="text" class="form-control" id="previous_action" name="previous_action" minlength="5" maxlength="70"
         pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="previous_actionHelp" required>
     </div>
   </div>
@@ -19,7 +19,7 @@
       task from 1 to 10?</label>
     <div class="col-md-6">
       <select class="form-control" id="confidence_level" name="confidence_level" required>
-        <option value="" selected>Choose Category</option>
+        <option value="{{ goal.confidence_level }}">{{ goal.confidence_level }}</option>
         <option>1</option>
         <option>2</option>
         <option>3</option>
@@ -37,7 +37,7 @@
   <div class="form-group row">
     <label for="holding_back_description" class="col-md-3 offset-md-1 col-form-label">What is holding you back?</label>
     <div class="col-md-6">
-      <input type="text" class="form-control" id="holding_back_description" name="holding_back_description" minlength="5" maxlength="70"
+      <input value="{{ goal.holding_back_description }}" type="text" class="form-control" id="holding_back_description" name="holding_back_description" minlength="5" maxlength="70"
         pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="holding_back_descriptionHelp" required>
     </div>
   </div>
@@ -45,8 +45,8 @@
   <div class="form-group row">
     <label for="believe_description" class="col-md-3 offset-md-1 col-form-label">What can you do to believe you can do it?</label>
     <div class="col-md-6">
-      <textarea class="form-control" id="believe_description" name="believe_description" rows="2" minlength="5"
-        maxlength="100" required></textarea>
+      <textarea value="{{ goal.believe_description }}" class="form-control" id="believe_description" name="believe_description" rows="2" minlength="5"
+        maxlength="100" required>{{ goal.believe_description }}</textarea>
     </div>
   </div>
   {% endblock %}

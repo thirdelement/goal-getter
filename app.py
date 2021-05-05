@@ -122,19 +122,23 @@ def add_goal():
 
 @app.route("/edit_goal/<goal_id>", methods=["GET", "POST"])
 def edit_goal(goal_id):
+    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+
     if request.method == "POST":
-        submit = {
+        submit = { "$set":{
             "course_of_action": request.form.getlist("course_of_action"),
             "target_date": request.form.get("target_date"), 
             "category_name": request.form.get("category_name"),
             "succeed_description": request.form.get("succeed_description"),
             "effort": request.form.get("effort"), 
             "created_by": session["user"]
-        }
-        mongo.db.goals.update({"_id": ObjectId(goal_id)}, submit)
+        }}
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
         flash("Goal successfully updated")
+        return redirect(url_for(
+            "edit_reality", goal_id=goal["_id"], 
+            _external=True, _scheme="https"))  
         
-    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_goal.html", goal=goal, categories=categories) 
     
@@ -170,6 +174,31 @@ def add_reality(goal_id):
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
         "add_reality.html", goal=goal, categories=categories)
+
+
+@app.route("/edit_reality/<goal_id>", methods=["GET", "POST"])
+def edit_reality(goal_id):
+    # Find goal
+    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+
+    if request.method == "POST":
+        submit = { "$set" : {
+            "previous_action": request.form.get("previous_action"),
+            "confidence_level": request.form.get("confidence_level"),
+            "holding_back_description": request.form.get(
+                "holding_back_description"),
+            "believe_description": request.form.get("believe_description"),
+            "created_by": session["user"]
+        }}
+        print(submit)
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
+        flash("Reality successfully edited")
+        return redirect(url_for(
+            "get_goals", goal_id=goal["_id"], 
+            _external=True, _scheme="https"))  
+
+    return render_template(
+        "edit_reality.html", goal=goal)
 
 
 @app.route("/add_options/<goal_id>", methods=["GET", "POST"])
