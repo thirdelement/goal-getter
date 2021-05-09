@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block header %}
+<h4>Options</h4>
+{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="{{ url_for('edit_options', goal_id=goal._id) }}">
+    <!-- Courses of actions -->
+    <div class="form-group row">
+        <label for="goal.course_of_action.0" class="col-md-3 offset-md-1 col-form-label">What courses of action can you
+            take to achieve this?</label>
+        <div class="col-md-6">
+            <input value="{{goal.course_of_action[0]}}" type="text" class="form-control" id="goal.course_of_action"
+                name="goal.course_of_action[0]" minlength="5" maxlength="100" pattern="^[a-zA-Z0-9]{5-15}$"
+                aria-describedby="course_of_actionHelp" required>
+        </div>
+    </div>
+    <!-- No limits -->
+    <div class="form-group row">
+        <label for="goal.course_of_action.1" class="col-md-3 offset-md-1 col-form-label">If there were no limits what
+            would you do?</label>
+        <div class="col-md-6">
+            <input value="{{goal.course_of_action[1]}}" type="text" class="form-control" id="goal.course_of_action.1"
+                name="goal.course_of_action[1]" minlength="5" maxlength="100" pattern="^[a-zA-Z0-9]{5-15}$"
+                aria-describedby="course_of_actionHelp" required>
+        </div>
+    </div>
+    <!-- Wisest person -->
+    <div class="form-group row">
+        <label for="goal.course_of_action.2" class="col-md-3 offset-md-1 col-form-label">What would the wisest person
+            you know advise you to do?</label>
+        <div class="col-md-6">
+            <input value="{{goal.course_of_action[2]}}" type="text" class="form-control" id="goal.course_of_action.2"
+                name="goal.course_of_action[2]" minlength="5" maxlength="70" pattern="^[a-zA-Z0-9]{5-15}$"
+                aria-describedby="course_of_actionHelp" required>
+        </div>
+    </div>
+    <!-- If you were the coach -->
+    <div class="form-group row">
+        <label for="goal.course_of_action.3" class="col-md-3 offset-md-1 col-form-label">If you were the coach what
+            action would you suggest?</label>
+        <div class="col-md-6">
+
+            <input value="{{goal.course_of_action[3]}}" type="text" class="form-control" id="goal.course_of_action.3"
+                name="goal.course_of_action[3]" minlength="5" maxlength="70" pattern="^[a-zA-Z0-9]{5-15}$"
+                aria-describedby="course_of_actionHelp" required>
+        </div>
+    </div>
+    <!-- Add one more action -->
+    <div class="form-group row">
+        <label for="goal.course_of_action.4" class="col-md-3 offset-md-1 col-form-label">Add one more action:</label>
+        <div class="col-md-6">
+            <input value="{{goal.course_of_action[4]}}" type="text" class="form-control" id="goal.course_of_action.4"
+                name="goal.course_of_action[4]" minlength="5" maxlength="70" pattern="^[a-zA-Z0-9]{5-15}$"
+                aria-describedby="course_of_actionHelp" required>
+        </div>
+    </div>
+    {% endblock %}
+  {% block footer %}
+  <!-- Cancel button -->
+  <a href="{{ url_for('get_goals') }}" role="button" class="btn btn-danger acc-header">Cancel</a>
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary">Next</button>
+  {% endblock %}
+</form>

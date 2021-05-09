@@ -29,6 +29,17 @@
       <li>{{ course_of_action }}</li>
       {% endfor %}
     </ol>
+    <p>Possible courses of action1:</p> 
+    <ol>
+      {% for course_of_action1 in goal.course_of_action1 %} 
+      <li>{{ course_of_action1 }}</li>
+      {% endfor %}
+    </ol>
+
+    {{ goal.course_of_action.0 }}
+    {{ goal.course_of_action.1 }}
+    {{ goal.course_of_action.2 }}
+
     <p>Chosen course of action:</p>
     <ul>
       {% for chosen_coa in goal.chosen_coa %} 

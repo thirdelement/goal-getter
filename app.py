@@ -125,8 +125,7 @@ def edit_goal(goal_id):
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
 
     if request.method == "POST":
-        submit = { "$set":{
-            "course_of_action": request.form.getlist("course_of_action"),
+        submit = {"$set":{
             "target_date": request.form.get("target_date"), 
             "category_name": request.form.get("category_name"),
             "succeed_description": request.form.get("succeed_description"),
@@ -156,7 +155,7 @@ def add_reality(goal_id):
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
 
     if request.method == "POST":
-        submit = { "$set" : {
+        submit = {"$set": {
             "previous_action": request.form.get("previous_action"),
             "confidence_level": request.form.get("confidence_level"),
             "holding_back_description": request.form.get(
@@ -164,16 +163,14 @@ def add_reality(goal_id):
             "believe_description": request.form.get("believe_description"),
             "created_by": session["user"]
         }}
-        print(submit)
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
         flash("Reality successfully added")
         return redirect(url_for(
             "add_options", goal_id=goal["_id"], 
             _external=True, _scheme="https"))  
 
-    categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
-        "add_reality.html", goal=goal, categories=categories)
+        "add_reality.html", goal=goal)
 
 
 @app.route("/edit_reality/<goal_id>", methods=["GET", "POST"])
@@ -182,7 +179,7 @@ def edit_reality(goal_id):
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
 
     if request.method == "POST":
-        submit = { "$set" : {
+        submit = {"$set": {
             "previous_action": request.form.get("previous_action"),
             "confidence_level": request.form.get("confidence_level"),
             "holding_back_description": request.form.get(
@@ -190,12 +187,10 @@ def edit_reality(goal_id):
             "believe_description": request.form.get("believe_description"),
             "created_by": session["user"]
         }}
-        print(submit)
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-        flash("Reality successfully edited")
+        flash("Reality successfully updated")
         return redirect(url_for(
-            "get_goals", goal_id=goal["_id"], 
-            _external=True, _scheme="https"))  
+            "edit_options", goal_id=goal["_id"], _external=True, _scheme="https"))  
 
     return render_template(
         "edit_reality.html", goal=goal)
@@ -206,21 +201,34 @@ def add_options(goal_id):
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
 
     if request.method == "POST":
-        submit = { "$set" : {
+        submit = {"$set": {
             "course_of_action": request.form.getlist("course_of_action"),
-            "created_by": session["user"]
         }}
-        print(submit)
+        
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
         flash("Options successfully added")
-        print(submit)
         return redirect(url_for(
-            "add_wayforward", goal_id=goal["_id"], 
-            _external=True, _scheme="https"))
+            "add_wayforward", goal_id=goal["_id"]))
 
-    categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template(
-        "add_options.html", goal=goal, categories=categories)
+        "add_options.html", goal=goal)
+
+
+@app.route("//edit_options/<goal_id>", methods=["GET", "POST"])
+def edit_options(goal_id):
+    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+    print(goal)
+    if request.method == "POST":
+        submit = {'$set': {"course_of_action.0": request.form.get(
+            "goal.course_of_action[0]")}}
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
+        print(submit)
+        flash("Options successfully added")
+        return redirect(url_for(
+            "add_wayforward", goal_id=goal["_id"]
+            , _external=True, _scheme="https"))
+
+    return render_template("edit_options.html", goal=goal)
 
 
 @app.route("/add_wayforward/<goal_id>", methods=["GET", "POST"])
@@ -228,8 +236,8 @@ def add_wayforward(goal_id):
     if request.method == "POST":
         meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
         share = "checked" if request.form.get("share") else "unchecked"
-        push = {'$push':{"chosen_coa": request.form.get("course_of_action")}}
-        submit = { "$set" : {
+        push = {'$push': {"chosen_coa": request.form.get("course_of_action")}}
+        submit = {"$set": {
             "target_date2": request.form.get("target_date2"),
             "meet_goal": meet_goal, 
             "obstacles": request.form.get("obstacles"),
