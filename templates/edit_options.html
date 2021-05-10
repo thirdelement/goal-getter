@@ -8,10 +8,10 @@
 <form method="POST" action="{{ url_for('edit_options', goal_id=goal._id) }}">
     <!-- Courses of actions -->
     <div class="form-group row">
-        <label for="goal.course_of_action.0" class="col-md-3 offset-md-1 col-form-label">What courses of action can you
+        <label for="goal.course_of_action.0" class="col-md-3 offset-md-1 col-form-label">What course of action can you
             take to achieve this?</label>
         <div class="col-md-6">
-            <input value="{{goal.course_of_action[0]}}" type="text" class="form-control" id="goal.course_of_action0"
+            <input value="{% if goal.course_of_action[0] is defined %} {{goal.course_of_action[0]}} {% endif %}" type="text" class="form-control" id="goal.course_of_action0"
                 name="goal.course_of_action" minlength="5" maxlength="100" pattern="^[a-zA-Z0-9]{5-15}$"
                 aria-describedby="course_of_actionHelp" required>
         </div>
@@ -60,6 +60,8 @@
   {% block footer %}
   <!-- Cancel button -->
   <a href="{{ url_for('get_goals') }}" role="button" class="btn btn-danger acc-header">Cancel</a>
+  <!-- Back button -->
+  <a href="{{ url_for('edit_reality', goal_id=goal._id) }}" role="button" class="btn btn-secondary acc-header">Back</a>
   <!-- Submit button -->
   <button type="submit" class="btn btn-primary">Next</button>
   {% endblock %}
