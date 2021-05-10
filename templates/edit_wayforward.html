@@ -21,7 +21,7 @@
   </div>
   <!-- target date -->
   <div class="form-group row">
-    <label for="target_date2" class="col-md-3 offset-md-1 col-form-label">By when are you going to do it?</label>
+    <label for="target_date2" class="col-md-3 offset-md-1 col-form-label">When are you going to start?</label>
     <div class="col-md-6">
       <input value="{{ goal.target_date2 }}" type="text" class="form-control datepicker" id="target_date2" name="target_date2" required>
     </div>
@@ -61,8 +61,7 @@
   <!-- Likelihood -->
   <div class="form-group row">
     <label for="likelihood" class="col-md-3 offset-md-1 col-form-label">What is the likelihood on a scale of 1 to 10
-      that
-      you will carry out this action?</label>
+      that you will carry out this action?</label>
     <div class="col-md-6">
       <select class="form-control" id="likelihood" name="likelihood" required>
         <option value="{{ goal.likelihood }}" selected>{{ goal.likelihood }}</option>
@@ -74,7 +73,7 @@
   </div>
   <!-- Share goal -->
   <div class="form-group row">
-    <label for="share" class="col-md-3 offset-md-1 col-form-label">Do you want to share this goal other
+    <label for="share" class="col-md-3 offset-md-1 col-form-label">Do you want to share this goal with other
       Goal-Getters?</label>
     <div class="col-md-6 custom-control custom-switch custom-control-right">
       <input type="checkbox" name="share" class="custom-control-input col-md-3" id="share" {{ goal.share }}>
