@@ -125,7 +125,7 @@ def edit_goal(goal_id):
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
 
     if request.method == "POST":
-        submit = {"$set":{
+        submit = {"$set": {
             "target_date": request.form.get("target_date"), 
             "category_name": request.form.get("category_name"),
             "succeed_description": request.form.get("succeed_description"),
@@ -219,25 +219,14 @@ def edit_options(goal_id):
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
     print(goal)
     if request.method == "POST":
-        submit0 = {'$set': {"course_of_action.0": request.form.get(
-            "goal.course_of_action[0]")}}
-        submit1 = {'$set': {"course_of_action.1": request.form.get(
-            "goal.course_of_action[1]")}}
-        submit2 = {'$set': {"course_of_action.2": request.form.get(
-            "goal.course_of_action[2]")}}
-        submit3 = {'$set': {"course_of_action.3": request.form.get(
-            "goal.course_of_action[3]")}}
-        submit4 = {'$set': {"course_of_action.4": request.form.get(
-            "goal.course_of_action[4]")}}
-        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit0)
-        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit1)
-        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit2)
-        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit3)
-        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit4)
-        print(submit0)
+        submit = {"$set": {
+            "course_of_action": request.form.getlist("goal.course_of_action"),
+        }}
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
+        print(submit)
         flash("Options successfully added")
         return redirect(url_for(
-            "add_wayforward", goal_id=goal["_id"]
+            "edit_wayforward", goal_id=goal["_id"]
             , _external=True, _scheme="https"))
 
     return render_template("edit_options.html", goal=goal)
@@ -269,6 +258,34 @@ def add_wayforward(goal_id):
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
     return render_template(
         "add_wayforward.html", goal=goal)
+
+
+@app.route("/edit_wayforward/<goal_id>", methods=["GET", "POST"])
+def edit_wayforward(goal_id):
+    if request.method == "POST":
+        meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
+        share = "checked" if request.form.get("share") else "unchecked"
+        push = {'$push': {"chosen_coa": request.form.get("course_of_action")}}
+        submit = {"$set": {
+            "target_date2": request.form.get("target_date2"),
+            "meet_goal": meet_goal, 
+            "obstacles": request.form.get("obstacles"),
+            "what_support": request.form.get("what_support"),
+            "how_support": request.form.get("how_support"),
+            "likelihood": request.form.get("likelihood"),
+            "share": share, 
+            "created_by": session["user"]
+        }}
+        print(submit)
+        print(push)
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, push)
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
+        flash("Way Forward successfully updated")
+        return redirect(url_for("get_goals", _external=True, _scheme="https"))
+
+    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+    return render_template(
+        "edit_wayforward.html", goal=goal)
 
 
 @app.route("/get_categories")
