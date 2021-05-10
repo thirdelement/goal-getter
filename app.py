@@ -126,6 +126,7 @@ def edit_goal(goal_id):
 
     if request.method == "POST":
         submit = {"$set": {
+            "goal_name": request.form.get("goal_name"),
             "target_date": request.form.get("target_date"), 
             "category_name": request.form.get("category_name"),
             "succeed_description": request.form.get("succeed_description"),
