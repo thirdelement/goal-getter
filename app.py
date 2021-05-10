@@ -237,8 +237,8 @@ def add_wayforward(goal_id):
     if request.method == "POST":
         meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
         share = "checked" if request.form.get("share") else "unchecked"
-        push = {'$push': {"chosen_coa": request.form.get("course_of_action")}}
         submit = {"$set": {
+            "chosen_coa": request.form.get("course_of_action"),
             "target_date2": request.form.get("target_date2"),
             "meet_goal": meet_goal, 
             "obstacles": request.form.get("obstacles"),
@@ -249,8 +249,6 @@ def add_wayforward(goal_id):
             "created_by": session["user"]
         }}
         print(submit)
-        print(push)
-        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, push)
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
         flash("Way Forward successfully added")
         return redirect(url_for("get_goals", _external=True, _scheme="https"))
@@ -265,8 +263,8 @@ def edit_wayforward(goal_id):
     if request.method == "POST":
         meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
         share = "checked" if request.form.get("share") else "unchecked"
-        push = {'$push': {"chosen_coa": request.form.get("course_of_action")}}
         submit = {"$set": {
+            "chosen_coa": request.form.get("course_of_action"),
             "target_date2": request.form.get("target_date2"),
             "meet_goal": meet_goal, 
             "obstacles": request.form.get("obstacles"),
@@ -277,8 +275,6 @@ def edit_wayforward(goal_id):
             "created_by": session["user"]
         }}
         print(submit)
-        print(push)
-        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, push)
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
         flash("Way Forward successfully updated")
         return redirect(url_for("get_goals", _external=True, _scheme="https"))

@@ -40,12 +40,18 @@
     {{ goal.course_of_action.1 }}
     {{ goal.course_of_action.2 }}
 
-    <p>Chosen course of action:</p>
+    <p>Chosen course of action - push:</p>
     <ul>
       {% for chosen_coa in goal.chosen_coa %} 
       <li>{{ chosen_coa }}</li>
       {% endfor %}
     </ul>
+
+    <p>Chosen course of action - update:</p>
+    <ul>
+      <li>{{ goal.chosen_coa }}</li>
+    </ul>
+
     <p>By when are you going to do it: {{ goal.target_date2 }}</p>
     <p>Will the action meet your goal: {{ goal.meet_goal }}</p>
     <p>Obstacles: {{ goal.obstacles }}</p>
