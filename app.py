@@ -204,7 +204,7 @@ def add_options(goal_id):
         submit = {"$set": {
             "course_of_action": request.form.getlist("course_of_action"),
         }}
-        
+        print(submit)
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
         flash("Options successfully added")
         return redirect(url_for(
@@ -219,10 +219,22 @@ def edit_options(goal_id):
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
     print(goal)
     if request.method == "POST":
-        submit = {'$set': {"course_of_action.0": request.form.get(
+        submit0 = {'$set': {"course_of_action.0": request.form.get(
             "goal.course_of_action[0]")}}
-        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-        print(submit)
+        submit1 = {'$set': {"course_of_action.1": request.form.get(
+            "goal.course_of_action[1]")}}
+        submit2 = {'$set': {"course_of_action.2": request.form.get(
+            "goal.course_of_action[2]")}}
+        submit3 = {'$set': {"course_of_action.3": request.form.get(
+            "goal.course_of_action[3]")}}
+        submit4 = {'$set': {"course_of_action.4": request.form.get(
+            "goal.course_of_action[4]")}}
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit0)
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit1)
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit2)
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit3)
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit4)
+        print(submit0)
         flash("Options successfully added")
         return redirect(url_for(
             "add_wayforward", goal_id=goal["_id"]
