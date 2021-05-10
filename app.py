@@ -224,7 +224,7 @@ def edit_options(goal_id):
         }}
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
         print(submit)
-        flash("Options successfully added")
+        flash("Options successfully updated")
         return redirect(url_for(
             "edit_wayforward", goal_id=goal["_id"]
             , _external=True, _scheme="https"))
