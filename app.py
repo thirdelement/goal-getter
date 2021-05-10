@@ -102,12 +102,28 @@ def logout():
 @app.route("/add_goal", methods=["GET", "POST"])
 def add_goal():
     if request.method == "POST":
+        meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
+        share = "checked" if request.form.get("share") else "unchecked"
         goal = {
             "goal_name": request.form.get("goal_name"),
             "target_date": request.form.get("target_date"), 
             "category_name": request.form.get("category_name"),
             "succeed_description": request.form.get("succeed_description"),
             "effort": request.form.get("effort"), 
+            "previous_action": request.form.get("previous_action"),
+            "confidence_level": request.form.get("confidence_level"),
+            "holding_back_description": request.form.get(
+                "holding_back_description"),
+            "believe_description": request.form.get("believe_description"),
+            "course_of_action": request.form.getlist("course_of_action"),
+            "chosen_coa": request.form.get("course_of_action"),
+            "target_date2": request.form.get("target_date2"),
+            "meet_goal": meet_goal, 
+            "obstacles": request.form.get("obstacles"),
+            "what_support": request.form.get("what_support"),
+            "how_support": request.form.get("how_support"),
+            "likelihood": request.form.get("likelihood"),
+            "share": share, 
             "created_by": session["user"]
         }
         mongo.db.goals.insert_one(goal)
