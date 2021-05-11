@@ -13,9 +13,14 @@
     margin-bottom: 0rem;
   }
 
-/* Flash warning message */
+/* Flash error message */
   .error{
     background-color: #dc3545!important;
+  }
+
+/* Flash warning message */
+  .warning{
+    background-color: #ffc107!important;
   }
 
 /* goals.html template */

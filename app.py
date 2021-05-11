@@ -33,7 +33,7 @@ def register():
             {"username": request.form.get("username").lower()})
 
         if existing_user:
-            flash("Username already exists")
+            flash(u"Username already exists", 'warning')
             return redirect(url_for("register"))
         
         register = {
@@ -66,12 +66,12 @@ def login():
                     return redirect(url_for("profile", username=session["user"]))
             else:
                 #invalid password match
-                flash("Incorrect Username and/or Password")
+                flash(u"Incorrect Username and/or Password", 'warning')
                 return redirect(url_for("login"))
 
         else:
             #username doesn't exist
-            flash("Incorrect username and/or Password")
+            flash(u"Incorrect Username and/or Password", 'warning')
             return redirect(url_for("login"))
 
     return render_template("login.html")
