@@ -103,7 +103,7 @@ def logout():
 def add_goal():
     if request.method == "POST":
         meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
-        share = "checked" if request.form.get("share") else "unchecked"
+        share = "unchecked" if request.form.get("share") else "checked"
         goal = {
             "goal_name": request.form.get("goal_name"),
             "target_date": request.form.get("target_date"), 
@@ -251,6 +251,8 @@ def edit_options(goal_id):
 
 @app.route("/add_wayforward/<goal_id>", methods=["GET", "POST"])
 def add_wayforward(goal_id):
+    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+    
     if request.method == "POST":
         meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
         share = "checked" if request.form.get("share") else "unchecked"
@@ -267,16 +269,22 @@ def add_wayforward(goal_id):
         }}
         print(submit)
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-        flash("Way Forward successfully added")
-        return redirect(url_for("get_goals", _external=True, _scheme="https"))
 
-    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+        if meet_goal == "unchecked":
+            flash(u"You need to select Meets goal", 'error')
+            return redirect(url_for("edit_wayforward", goal_id=goal["_id"], _external=True, _scheme="https"))
+        else:
+            flash("Way Forward successfully updated")
+            return redirect(url_for("get_goals", _external=True, _scheme="https"))
+
     return render_template(
         "add_wayforward.html", goal=goal)
 
 
 @app.route("/edit_wayforward/<goal_id>", methods=["GET", "POST"])
 def edit_wayforward(goal_id):
+    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+
     if request.method == "POST":
         meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
         share = "checked" if request.form.get("share") else "unchecked"
@@ -293,10 +301,14 @@ def edit_wayforward(goal_id):
         }}
         print(submit)
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-        flash("Way Forward successfully updated")
-        return redirect(url_for("get_goals", _external=True, _scheme="https"))
+        
+        if meet_goal == "unchecked":
+            flash(u"You need to select Meets goal", 'error')
+            return redirect(url_for("edit_wayforward", goal_id=goal["_id"], _external=True, _scheme="https"))
+        else:
+            flash("Way Forward successfully updated")
+            return redirect(url_for("get_goals", _external=True, _scheme="https"))
 
-    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
     return render_template(
         "edit_wayforward.html", goal=goal)
 

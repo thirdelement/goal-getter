@@ -7,8 +7,15 @@
     padding-top: 56px;
   }
 /* base.html template */
-  #flash{
+/* flash message */
+  .flash{
+    background-color: #17a2b8;
     margin-bottom: 0rem;
+  }
+
+/* Flash warning message */
+  .error{
+    background-color: #dc3545!important;
   }
 
 /* goals.html template */

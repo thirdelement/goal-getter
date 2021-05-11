@@ -23,14 +23,16 @@
   <div class="form-group row">
     <label for="target_date2" class="col-md-3 offset-md-1 col-form-label">When are you going to start?</label>
     <div class="col-md-6">
-      <input value="{{ goal.target_date2 }}" type="text" class="form-control datepicker" id="target_date2" name="target_date2" required>
+      <input value="{{ goal.target_date2 }}" type="text" class="form-control datepicker" id="target_date2"
+        name="target_date2" required>
     </div>
   </div>
   <!-- Will action meet your goal -->
   <div class="form-group row">
     <label for="meet_goal" class="col-md-3 offset-md-1 col-form-label">Will this action meet your goal?</label>
     <div class="col-md-6 custom-control custom-switch custom-control-right">
-      <input type="checkbox" name="meet_goal" class="custom-control-input col-md-3 get-value" id="meet_goal" {{ goal.meet_goal }}>
+      <input type="checkbox" name="meet_goal" class="custom-control-input col-md-3 get-value" id="meet_goal"
+        {{ goal.meet_goal }}>
       <label class="custom-control-label" for="meet_goal">Meets goal</label>
     </div>
   </div>
@@ -38,24 +40,24 @@
   <div class="form-group row">
     <label for="obstacles" class="col-md-3 offset-md-1 col-form-label">What obstacles might you meet?</label>
     <div class="col-md-6">
-      <input value="{{ goal.obstacles }}" type="text" class="form-control" id="obstacles" name="obstacles" minlength="5" maxlength="70"
-        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="obstaclesHelp" required>
+      <input value="{{ goal.obstacles }}" type="text" class="form-control" id="obstacles" name="obstacles" minlength="5"
+        maxlength="70" pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="obstaclesHelp" required>
     </div>
   </div>
   <!-- Support -->
   <div class="form-group row">
     <label for="what_support" class="col-md-3 offset-md-1 col-form-label">What support do you need?</label>
     <div class="col-md-6">
-      <input value="{{ goal.what_support }}" type="text" class="form-control" id="what_support" name="what_support" minlength="5" maxlength="70"
-        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="what_supportHelp" required>
+      <input value="{{ goal.what_support }}" type="text" class="form-control" id="what_support" name="what_support"
+        minlength="5" maxlength="70" pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="what_supportHelp" required>
     </div>
   </div>
   <!-- How to get support -->
   <div class="form-group row">
     <label for="how_support" class="col-md-3 offset-md-1 col-form-label">How are you going to get that support?</label>
     <div class="col-md-6">
-      <input value="{{ goal.how_support }}" type="text" class="form-control" id="how_support" name="how_support" minlength="5" maxlength="70"
-        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="how_supportHelp" required>
+      <input value="{{ goal.how_support }}" type="text" class="form-control" id="how_support" name="how_support"
+        minlength="5" maxlength="70" pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="how_supportHelp" required>
     </div>
   </div>
   <!-- Likelihood -->
