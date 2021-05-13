@@ -4,15 +4,35 @@
 {% endblock %}
 
 {% block content %}
+<div>
+  <form method="POST" action="{{ url_for('search') }}">
+    <!-- Search box -->
+    <div class="form-group row">
+      <i class="d-none d-md-inline offset-md-1 col-md-1 fas fa-search fa-lg"></i>
+      <label for="query" class="col-form-label"></label>
+      <div class="col-md-6">
+        <input type="text" class="form-control" id="query" name="query" minlength="5" maxlength="70" placeholder="Search Goals" required>
+      </div>
+      <div class="col-md-4">
+        <!-- Reset button -->
+        <a href="{{ url_for('get_goals') }}" role="button" class="ml-1 ml-md-0 mt-1 mt-md-0 float-right float-md-left btn btn-danger acc-header">Reset</a>
+        <!-- Submit button -->
+        <button type="submit" class="float-right float-md-left ml-md-1 mt-1 mt-md-0 btn btn-primary">Search</button>
+      </div>
+    </div>
+  </form>
+</div>
 
 <div id="accordion">
   {% for goal in goals %}
   {% if goal.share == "checked" %}
   <h4>
     {% if session.user|lower == goal.created_by|lower %}
-    <a href="{{ url_for('delete_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button" class="btn btn-success">Done</a>
+    <a href="{{ url_for('delete_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button"
+      class="btn btn-success">Done</a>
     <!-- Add onclick event to enable link.  Source: https://stackoverflow.com/questions/332384/jquery-accordion-links-dont-work -->
-    <a href="{{ url_for('edit_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button" class="btn btn-info acc-header">Edit</a>
+    <a href="{{ url_for('edit_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button"
+      class="btn btn-info acc-header">Edit</a>
     {% endif %}
     <span id="accordion-text" class="text-left font-weight-bold">{{ goal.goal_name }} : </span>{{ goal.target_date }}
   </h4>
@@ -23,15 +43,15 @@
     <p>Confidence Level: {{ goal.confidence_level }}</p>
     <p>What's holding me back: {{ goal.holding_back_description }}</p>
     <p>What will make me believe: {{ goal.believe_description }}</p>
-    <p>Possible courses of action:</p> 
+    <p>Possible courses of action:</p>
     <ol>
-      {% for course_of_action in goal.course_of_action %} 
+      {% for course_of_action in goal.course_of_action %}
       <li>{{ course_of_action }}</li>
       {% endfor %}
     </ol>
-    <p>Possible courses of action1:</p> 
+    <p>Possible courses of action1:</p>
     <ol>
-      {% for course_of_action1 in goal.course_of_action1 %} 
+      {% for course_of_action1 in goal.course_of_action1 %}
       <li>{{ course_of_action1 }}</li>
       {% endfor %}
     </ol>

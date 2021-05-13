@@ -24,6 +24,14 @@
   }
 
 /* goals.html template */
+/* Search icon */
+.fas {
+  line-height: 0; 
+  text-align: end;
+  padding-right: 0px!important;
+  margin-top: 20px;
+}
+
 /* update jQuery accordion font and alignment */
   .ui-widget {
     font-family: unset;
@@ -47,5 +55,13 @@
   /* Align Bootstrap switch to start of column */  
   div.custom-control-right {
       text-align: start;
+  }
+  }
+
+  /* goal.html template */
+  /* Accordion font size */ 
+  @media (max-width: 768px){
+  .ui-widget {
+    font-size: initial;
   }
   }
