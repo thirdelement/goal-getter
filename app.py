@@ -177,24 +177,54 @@ def delete_goal(goal_id):
 
 @app.route("/complete_goal/<goal_id>")
 def complete_goal(goal_id):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
     is_complete = "unchecked" if request.form.get(
             "is_complete") else "checked"
     submit = {"$set": {
             "is_complete": is_complete}}
+    #Credit: https://stackoverflow.com/questions/21498694/flask-get-current-route
     mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
+    print(request.endpoint)
     flash(u"Congratulations! Goal successfully completed.", "success")
-    return redirect(url_for("get_goals")) 
+    return redirect(url_for('profile', username=username))
+
+
+@app.route("/complete_sharedgoal/<goal_id>")
+def complete_sharedgoal(goal_id):
+    is_complete = "unchecked" if request.form.get(
+            "is_complete") else "checked"
+    submit = {"$set": {
+            "is_complete": is_complete}}
+    #Credit: https://stackoverflow.com/questions/21498694/flask-get-current-route
+    mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
+    print(request.endpoint)
+    flash(u"Congratulations! Goal successfully completed.", "success")
+    return redirect(url_for("get_goals"))
 
 
 @app.route("/moveto_inprogress/<goal_id>")
 def moveto_inprogress(goal_id):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
     is_complete = "checked" if request.form.get(
             "is_complete") else "unchecked"
     submit = {"$set": {
             "is_complete": is_complete}}
     mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
     flash("Goal moved to In Progress.")
-    return redirect(url_for("get_goals")) 
+    return redirect(url_for('profile', username=username)) 
+
+
+@app.route("/moveto_sharedinprogress/<goal_id>")
+def moveto_sharedinprogress(goal_id):
+    is_complete = "checked" if request.form.get(
+            "is_complete") else "unchecked"
+    submit = {"$set": {
+            "is_complete": is_complete}}
+    mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
+    flash("Goal moved to In Progress.")
+    return redirect(url_for("get_goals"))
 
 
 @app.route("/add_reality/<goal_id>", methods=["GET", "POST"])

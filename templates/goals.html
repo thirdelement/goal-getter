@@ -33,7 +33,7 @@
     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#deleteModal_{{ goal._id }}" onclick=>
       Delete
     </button>
-    <a href="{{ url_for('complete_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button"
+    <a href="{{ url_for('complete_sharedgoal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button"
       class="btn btn-success">Done</a>
     <!-- Add onclick event to enable link.  Source: https://stackoverflow.com/questions/332384/jquery-accordion-links-dont-work -->
     <a href="{{ url_for('edit_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button"
