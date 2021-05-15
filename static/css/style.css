@@ -23,6 +23,11 @@
     background-color: #ffc107!important;
   }
 
+  /* Flash success message */
+  .success{
+    background-color: #28a745!important;
+  }
+
 /* goals.html template */
 /* Search icon */
 .fas {

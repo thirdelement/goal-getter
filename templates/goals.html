@@ -33,11 +33,11 @@
     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal_{{ goal._id }}" onclick=>
       Delete
     </button>
-    <a href="{{ url_for('delete_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button"
-      class="btn btn-success">Done</a>
+    <a href="{{ url_for('complete_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button"
+      class="btn btn-primary">Done</a>
     <!-- Add onclick event to enable link.  Source: https://stackoverflow.com/questions/332384/jquery-accordion-links-dont-work -->
     <a href="{{ url_for('edit_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button"
-      class="btn btn-info acc-header">Edit</a>
+      class="btn btn-secondary acc-header">Edit</a>
     {% endif %}
     <span id="accordion-text" class="text-left font-weight-bold">{{ goal.goal_name }} : </span>{{ goal.target_date }}
   </h4>
@@ -82,13 +82,13 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Confirm Deletion</h5>
+          <h5 class="modal-title" id="">Confirm Deletion</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          Are you sure you want to delete <span class="font-weight-bold"> {{ goal.goal_name }}</span>
+          Are you sure you want to delete <span class="font-weight-bold"> {{ goal.goal_name }}</span> ?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

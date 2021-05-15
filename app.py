@@ -111,6 +111,7 @@ def add_goal():
     if request.method == "POST":
         meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
         share = "unchecked" if request.form.get("share") else "checked"
+        is_completed = "checked" if request.form.get("is_completed") else "unchecked"
         goal = {
             "goal_name": request.form.get("goal_name"),
             "target_date": request.form.get("target_date"), 
@@ -131,6 +132,7 @@ def add_goal():
             "how_support": request.form.get("how_support"),
             "likelihood": request.form.get("likelihood"),
             "share": share, 
+            "is_completed": is_completed,
             "created_by": session["user"]
         }
         mongo.db.goals.insert_one(goal)
@@ -171,6 +173,17 @@ def delete_goal(goal_id):
     mongo.db.goals.remove({"_id": ObjectId(goal_id)})
     flash("Task successfully deleted")
     return redirect(url_for("get_goals"))
+
+
+@app.route("/complete_goal/<goal_id>")
+def complete_goal(goal_id):
+    is_completed = "unchecked" if request.form.get(
+            "is_completed") else "checked"
+    submit = {"$set": {
+            "is_completed": is_completed}}
+    mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
+    flash(u"Congratulations! Goal successfully completed.", "success")
+    return redirect(url_for("get_goals")) 
 
 
 @app.route("/add_reality/<goal_id>", methods=["GET", "POST"])
