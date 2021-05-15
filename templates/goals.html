@@ -15,7 +15,7 @@
       </div>
       <div class="col-md-4">
         <!-- Reset button -->
-        <a href="{{ url_for('get_goals') }}" role="button" class="ml-1 ml-md-0 mt-1 mt-md-0 float-right float-md-left btn btn-danger acc-header">Reset</a>
+        <a href="{{ url_for('get_goals') }}" role="button" class="ml-1 ml-md-0 mt-1 mt-md-0 float-right float-md-left btn btn-secondary acc-header">Reset</a>
         <!-- Submit button -->
         <button type="submit" class="float-right float-md-left ml-md-1 mt-1 mt-md-0 btn btn-primary">Search</button>
       </div>
@@ -26,8 +26,13 @@
 <div id="accordion">
   {% for goal in goals %}
   {% if goal.share == "checked" %}
+  <!-- Accordion header with buttons -->
   <h4>
     {% if session.user|lower == goal.created_by|lower %}
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal_{{ goal._id }}" onclick=>
+      Delete
+    </button>
     <a href="{{ url_for('delete_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button"
       class="btn btn-success">Done</a>
     <!-- Add onclick event to enable link.  Source: https://stackoverflow.com/questions/332384/jquery-accordion-links-dont-work -->
@@ -36,6 +41,7 @@
     {% endif %}
     <span id="accordion-text" class="text-left font-weight-bold">{{ goal.goal_name }} : </span>{{ goal.target_date }}
   </h4>
+  <!-- Accordion content-->
   <div>
     <p>Description: {{ goal.succeed_description }}</p>
     <p>Effort: {{ goal.effort }}</p>
@@ -69,6 +75,27 @@
     <p>Liklihood of completing: {{ goal.likelihood }}</p>
     <p>Sharing: {{ goal.share }}</p>
     <p class="font-italic">By: {{ goal.created_by }}</p>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal_{{ goal._id }}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirm Deletion</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete <span class="font-weight-bold"> {{ goal.goal_name }}</span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <a href="{{ url_for('delete_goal', goal_id=goal._id) }}" role="button" class="btn btn-danger">Delete</a>
+        </div>
+      </div>
+    </div>
   </div>
   {% endif %}
   {% endfor %}
