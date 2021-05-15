@@ -5,7 +5,7 @@ $(document).ready(function () {
   });
 
   //Accordion from https://jqueryui.com/accordion/
-  $("#accordion").accordion({
+  $(".accordion").accordion({
     collapsible: true,
     active: false,
     header: "h4"

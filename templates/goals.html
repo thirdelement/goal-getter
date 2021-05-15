@@ -23,21 +23,21 @@
   </form>
 </div>
 
-<div id="accordion">
+<div class="accordion">
   {% for goal in goals %}
-  {% if goal.share == "checked" %}
+  {% if goal.share == "checked" and goal.is_complete == "unchecked" %}
   <!-- Accordion header with buttons -->
   <h4>
     {% if session.user|lower == goal.created_by|lower %}
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal_{{ goal._id }}" onclick=>
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#deleteModal_{{ goal._id }}" onclick=>
       Delete
     </button>
     <a href="{{ url_for('complete_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button"
-      class="btn btn-primary">Done</a>
+      class="btn btn-success">Done</a>
     <!-- Add onclick event to enable link.  Source: https://stackoverflow.com/questions/332384/jquery-accordion-links-dont-work -->
     <a href="{{ url_for('edit_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button"
-      class="btn btn-secondary acc-header">Edit</a>
+      class="btn btn-info acc-header">Edit</a>
     {% endif %}
     <span id="accordion-text" class="text-left font-weight-bold">{{ goal.goal_name }} : </span>{{ goal.target_date }}
   </h4>
