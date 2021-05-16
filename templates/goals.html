@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block header %}
-<h4>Goals</h4>
+<h4>Shared Goals</h4>
 {% endblock %}
 
 {% block content %}
@@ -78,6 +78,7 @@
   </div>
 
   <!-- Modal -->
+  <!-- Credit for id value syntax: https://github.com/LoftusN13/ms3-pickyourpoison/blob/master/templates/cocktails.html-->
   <div class="modal fade" id="deleteModal_{{ goal._id }}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">

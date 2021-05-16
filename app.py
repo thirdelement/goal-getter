@@ -108,11 +108,13 @@ def logout():
 
 @app.route("/add_goal", methods=["GET", "POST"])
 def add_goal():
-    if request.method == "POST":
-        meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
-        share = "unchecked" if request.form.get("share") else "checked"
-        is_complete = "checked" if request.form.get("is_complete") else "unchecked"
-        goal = {
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    is_complete = "checked" if request.form.get(
+            "is_complete") else "unchecked"
+    share = "unchecked" if request.form.get("share") else "checked"
+    meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
+    goal = {
             "goal_name": request.form.get("goal_name"),
             "target_date": request.form.get("target_date"), 
             "category_name": request.form.get("category_name"),
@@ -135,14 +137,14 @@ def add_goal():
             "is_complete": is_complete,
             "created_by": session["user"]
         }
+
+    if request.method == "POST":
         mongo.db.goals.insert_one(goal)
         flash("Goal successfully added")
-        return redirect(url_for(
-            "add_reality", goal_id=goal["_id"], 
-            _external=True, _scheme="https"))  
+        return redirect(url_for('profile', username=username))  
 
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("add_goal.html", categories=categories)
+    return render_template("add_goal.html", goal=goal, categories=categories)
 
 
 @app.route("/edit_goal/<goal_id>", methods=["GET", "POST"])
@@ -171,7 +173,7 @@ def edit_goal(goal_id):
 @app.route("/delete_goal/<goal_id>")
 def delete_goal(goal_id):
     mongo.db.goals.remove({"_id": ObjectId(goal_id)})
-    flash("Task successfully deleted")
+    flash("Goal successfully deleted")
     return redirect(url_for("get_goals"))
 
 
@@ -183,7 +185,6 @@ def complete_goal(goal_id):
             "is_complete") else "checked"
     submit = {"$set": {
             "is_complete": is_complete}}
-    #Credit: https://stackoverflow.com/questions/21498694/flask-get-current-route
     mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
     print(request.endpoint)
     flash(u"Congratulations! Goal successfully completed.", "success")
@@ -196,7 +197,6 @@ def complete_sharedgoal(goal_id):
             "is_complete") else "checked"
     submit = {"$set": {
             "is_complete": is_complete}}
-    #Credit: https://stackoverflow.com/questions/21498694/flask-get-current-route
     mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
     print(request.endpoint)
     flash(u"Congratulations! Goal successfully completed.", "success")
@@ -216,15 +216,49 @@ def moveto_inprogress(goal_id):
     return redirect(url_for('profile', username=username)) 
 
 
-@app.route("/moveto_sharedinprogress/<goal_id>")
-def moveto_sharedinprogress(goal_id):
-    is_complete = "checked" if request.form.get(
+@app.route("/copy_goal/<goal_id>", methods=["GET", "POST"])
+def copy_goal(goal_id):
+    username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+    
+    if request.method == "POST":
+        meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
+        share = "unchecked" if request.form.get("share") else "checked"
+        is_complete = "checked" if request.form.get(
             "is_complete") else "unchecked"
-    submit = {"$set": {
-            "is_complete": is_complete}}
-    mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-    flash("Goal moved to In Progress.")
-    return redirect(url_for("get_goals"))
+        submit = {
+            "goal_name": request.form.get("goal_name"),
+            "target_date": request.form.get("target_date"), 
+            "category_name": request.form.get("category_name"),
+            "succeed_description": request.form.get("succeed_description"),
+            "effort": request.form.get("effort"), 
+            "previous_action": request.form.get("previous_action"),
+            "confidence_level": request.form.get("confidence_level"),
+            "holding_back_description": request.form.get(
+                "holding_back_description"),
+            "believe_description": request.form.get("believe_description"),
+            "course_of_action": request.form.getlist("course_of_action"),
+            "chosen_coa": request.form.get("course_of_action"),
+            "target_date2": request.form.get("target_date2"),
+            "meet_goal": meet_goal, 
+            "obstacles": request.form.get("obstacles"),
+            "what_support": request.form.get("what_support"),
+            "how_support": request.form.get("how_support"),
+            "likelihood": request.form.get("likelihood"),
+            "share": share, 
+            "is_complete": is_complete,
+            "created_by": session["user"]
+            }
+        print(submit)
+
+        mongo.db.goals.insert_one(submit)
+        flash("Goal successfully copied")
+        return redirect(url_for('edit_goal.html', goal=goal, username=username))
+    
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template(
+        "profile.html", categories=categories, goal=goal, username=username)
 
 
 @app.route("/add_reality/<goal_id>", methods=["GET", "POST"])
@@ -292,7 +326,7 @@ def add_options(goal_id):
         "add_options.html", goal=goal)
 
 
-@app.route("//edit_options/<goal_id>", methods=["GET", "POST"])
+@app.route("/edit_options/<goal_id>", methods=["GET", "POST"])
 def edit_options(goal_id):
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
     print(goal)

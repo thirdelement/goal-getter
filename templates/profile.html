@@ -17,9 +17,9 @@
   {% if goal.is_complete == "unchecked" and session.user|lower == goal.created_by|lower%}
   <!-- Accordion header with buttons -->
   <h4>
-    {% if session.user|lower == goal.created_by|lower %}
     <!-- Delete button and trigger modal -->
-    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#deleteModal_{{ goal._id }}" onclick=>
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#deleteModal_{{ goal._id }}"
+      onclick=>
       Delete
     </button>
     <!-- Done button -->
@@ -29,7 +29,9 @@
     <!-- Edit button -->
     <a href="{{ url_for('edit_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button"
       class="btn btn-info acc-header">Edit</a>
-    {% endif %}
+    <!-- Copy button -->
+    <a href="{{ url_for('copy_goal', goal_id=goal._id) }}" onclick="event.stopPropagation()" role="button"
+      class="btn btn-secondary acc-header">Copy</a>
     <span id="accordion-text" class="text-left font-weight-bold">{{ goal.goal_name }} : </span>{{ goal.target_date }}
   </h4>
   <!-- Accordion content-->
@@ -107,7 +109,8 @@
   <!-- Accordion header with buttons -->
   <h4>
     <!-- Delete button and trigger modal -->
-    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#deleteModal_{{ goal._id }}" onclick=>
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#deleteModal_{{ goal._id }}"
+      onclick=>
       Delete
     </button>
     <!-- Move to In Progress button -->

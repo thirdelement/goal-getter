@@ -11,4 +11,10 @@ $(document).ready(function () {
     header: "h4"
   });
 
+  //Tabs from https://jqueryui.com/tabs/
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+
+
 });
