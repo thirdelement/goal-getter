@@ -3,25 +3,27 @@
 <h4>Add Goal</h4>
 {% endblock %}
 {% block content %}
-
 <form method="POST" action="{{ url_for('add_goal') }}">
-  <!-- Tabs -->
-  <div id="tabs">
-    <ul>
-      <li><a href="#tabs-1">Goal</a></li>
-      <li><a href="#tabs-2">Reality</a></li>
-      <li><a href="#tabs-3">Options</a></li>
-      <li><a href="#tabs-4">Way Forward</a></li>
-    </ul>
-
-    <div id="tabs-1">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-link active" id="nav-goal-tab" data-toggle="tab" href="#nav-goal" role="tab"
+        aria-controls="nav-goal" aria-selected="true">Goal</a>
+      <a class="nav-link" id="nav-reality-tab" data-toggle="tab" href="#nav-reality" role="tab"
+        aria-controls="nav-reality" aria-selected="false">Reality</a>
+      <a class="nav-link" id="nav-options-tab" data-toggle="tab" href="#nav-options" role="tab"
+        aria-controls="nav-options" aria-selected="false">Options</a>
+      <a class="nav-link disabled" id="nav-wayforward-tab" data-toggle="tab" href="#nav-wayforward" role="tab"
+        aria-controls="nav-wayforward" aria-selected="false">Way Forward</a>
+    </div>
+  </nav>
+  <div class="tab-content mt-5" id="nav-tabContent">
+    <div class="tab-pane fade show active " id="nav-goal" role="tabpanel" aria-labelledby="nav-goal-tab">
       <!-- End Goal -->
       <div class="form-group row">
         <label for="goal_name" class="col-md-3 offset-md-1 col-form-label">What is your goal?</label>
         <div class="col-md-6">
           <input type="text" class="form-control" id="goal_name" name="goal_name" minlength="5" maxlength="70"
             pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="goal_nameHelp" required>
-          <!--<small id="usernameHelp" class="form-text text-muted">Between 5 to 10 characters</small> -->
         </div>
       </div>
       <!-- target date -->
@@ -50,8 +52,6 @@
         <label for="succeed_description" class="col-md-3 offset-md-1 col-form-label">How will you know when you have
           suceeded?</label>
         <div class="col-md-6">
-          <!--<input type="text" class="form-control" id="succeed_description" name="succeed_description"
-            minlength="5" maxlength="50" pattern="^[a-zA-Z0-9]{5-15}$" required>-->
           <textarea class="form-control" id="succeed_description" name="succeed_description" rows="3" minlength="5"
             maxlength="200" required></textarea>
         </div>
@@ -70,10 +70,13 @@
           </select>
         </div>
       </div>
-      
+
+      <!-- Next button -->
+      <button type="button" class="button-reality btn btn-primary">Next</button>
 
     </div>
-    <div id="tabs-2">
+    <div class="tab-pane fade" id="nav-reality" role="tabpanel" aria-labelledby="nav-reality-tab">
+
       <!-- Actions so far -->
       <div class="form-group row">
         <label for="previous_action" class="col-md-3 offset-md-1 col-form-label">What actions have you taken so
@@ -118,8 +121,12 @@
         </div>
       </div>
 
+      <!-- Back button -->
+      <button type="button" class="button-goal btn btn-secondary">Back</button>
+      <!-- Next button -->
+      <button type="button" class="button-options btn btn-primary">Next</button>
     </div>
-    <div id="tabs-3">
+    <div class="tab-pane fade" id="nav-options" role="tabpanel" aria-labelledby="nav-options-tab">
       <!-- Courses of actions -->
       <div class="form-group row">
         <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label">What course of action can you take to
@@ -156,97 +163,24 @@
             maxlength="70" pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="course_of_actionHelp" required>
         </div>
       </div>
-      <!-- Add one more action -->
+      <!-- If you couldn't fail -->
       <div class="form-group row">
-        <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label">Add one more action:</label>
+        <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label">What would you do if you couldn't
+          fail?</label>
         <div class="col-md-6">
           <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="5"
             maxlength="70" pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="course_of_actionHelp" required>
         </div>
       </div>
+
+      <!-- Back button -->
+      <button type="button" class="button-reality btn btn-secondary">Back</button>
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-    <div id="tabs-4">
-      <!-- Choose option -->
-      <div class="form-group row">
-        <label for="category_name" class="col-md-3 offset-md-1 col-form-label">Select the option you're going to
-          take:</label>
-        <div class="col-md-6">
-          <select class="form-control" id="course_of_action" name="course_of_action">
-            <option value="" disabled selected>Options:</option>
-            {% for course_of_action in goal.course_of_action %}
-            <option value="{{ course_of_action }}">{{ course_of_action }}</option>
-            {% endfor %}
-          </select>
-        </div>
-      </div>
-      <!-- target date -->
-      <div class="form-group row">
-        <label for="target_date2" class="col-md-3 offset-md-1 col-form-label">When are you going to start?</label>
-        <div class="col-md-6">
-          <input type="text" class="form-control datepicker" id="target_date2" name="target_date2" required>
-        </div>
-      </div>
-      <!-- Will action meet your goal -->
-      <div class="form-group row">
-        <label for="meet_goal" class="col-md-3 offset-md-1 col-form-label">Will this action meet your goal?</label>
-        <div class="col-md-6 custom-control custom-switch custom-control-right">
-          <input type="checkbox" name="meet_goal" class="custom-control-input col-md-3 get-value" id="meet_goal">
-          <label class="custom-control-label" for="meet_goal">Meets goal</label>
-        </div>
-      </div>
-      <!-- Obstacles -->
-      <div class="form-group row">
-        <label for="obstacles" class="col-md-3 offset-md-1 col-form-label">What obstacles might you meet?</label>
-        <div class="col-md-6">
-          <input type="text" class="form-control" id="obstacles" name="obstacles" minlength="5" maxlength="70"
-            pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="obstaclesHelp" required>
-        </div>
-      </div>
-      <!-- Support -->
-      <div class="form-group row">
-        <label for="what_support" class="col-md-3 offset-md-1 col-form-label">What support do you need?</label>
-        <div class="col-md-6">
-          <input type="text" class="form-control" id="what_support" name="what_support" minlength="5" maxlength="70"
-            pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="what_supportHelp" required>
-        </div>
-      </div>
-      <!-- How to get support -->
-      <div class="form-group row">
-        <label for="how_support" class="col-md-3 offset-md-1 col-form-label">How are you going to get that
-          support?</label>
-        <div class="col-md-6">
-          <input type="text" class="form-control" id="how_support" name="how_support" minlength="5" maxlength="70"
-            pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="how_supportHelp" required>
-        </div>
-      </div>
-      <!-- Likelihood -->
-      <div class="form-group row">
-        <label for="likelihood" class="col-md-3 offset-md-1 col-form-label">What is the likelihood on a scale of 1 to 10
-          that
-          you will carry out this action?</label>
-        <div class="col-md-6">
-          <select class="form-control" id="likelihood" name="likelihood" required>
-            <option value="" disabled selected>Choose a number</option>
-            {% for i in range(1, 11) %}
-            <option>{{ i }}</option>
-            {% endfor %}
-          </select>
-        </div>
-      </div>
-      <!-- Share goal -->
-      <div class="form-group row">
-        <label for="share" class="col-md-3 offset-md-1 col-form-label">Do you want to share this goal with other
-          Goal-Getters?</label>
-        <div class="col-md-6 custom-control custom-switch custom-control-right">
-          <input type="checkbox" name="share" class="custom-control-input col-md-3" id="share" checked>
-          <label class="custom-control-label" for="share">Share goal</label>
-        </div>
-      </div>
+    <div class="tab-pane fade" id="nav-wayforward" role="tabpanel" aria-labelledby="nav-wayforward-tab">
     </div>
   </div>
-  <!-- Cancel button -->
-  <a href="{{ url_for('get_goals') }}" role="button" class="btn btn-danger acc-header">Cancel</a>
-  <!-- Submit button -->
-  <button type="submit" class="btn btn-primary">Next</button>
 </form>
+
 {% endblock %}

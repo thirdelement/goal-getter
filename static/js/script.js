@@ -11,10 +11,18 @@ $(document).ready(function () {
     header: "h4"
   });
 
-  //Tabs from https://jqueryui.com/tabs/
-  $( function() {
-    $( "#tabs" ).tabs();
-  } );
-
-
+  //Bootstrap tab buttons from https://getbootstrap.com/docs/4.6/components/navs/#javascript-behavior
+  $(".button-goal").click(function(){
+    $('#nav-goal-tab').tab('show')
+  });
+  $(".button-reality").click(function(){
+    $('#nav-reality-tab').tab('show')
+  });
+  $(".button-options").click(function(){
+    $('#nav-options-tab').tab('show')
+  });
+  $(".button-wayforward").click(function(){
+    $('#nav-wayforward-tab').tab('show')
+  });
+  
 });
