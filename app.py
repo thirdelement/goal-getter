@@ -86,15 +86,15 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    #grab the session users's username from the db
+        #grab the session users's username from the db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     goals = list(mongo.db.goals.find())
 
     if session["user"]:
-    #if session cookie is truthy then render the page
+        #if session cookie is truthy then render the page
         return render_template("profile.html", username=username, goals=goals)
-    #if session cookie is not truthy (e.g. has been deleted)
+        #if session cookie is not truthy (e.g. has been deleted)
     return redirect(url_for("login"))
 
 
@@ -108,8 +108,6 @@ def logout():
 
 @app.route("/add_goal", methods=["GET", "POST"])
 def add_goal():
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
     is_complete = "checked" if request.form.get(
             "is_complete") else "unchecked"
     share = "unchecked" if request.form.get("share") else "checked"
@@ -141,7 +139,8 @@ def add_goal():
     if request.method == "POST":
         mongo.db.goals.insert_one(goal)
         flash("Goal successfully added")
-        return redirect(url_for('profile', username=username))  
+        return redirect(url_for('edit_goal', goal_id=goal[
+                    "_id"]))  
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_goal.html", goal=goal, categories=categories)
@@ -149,6 +148,12 @@ def add_goal():
 
 @app.route("/edit_goal/<goal_id>", methods=["GET", "POST"])
 def edit_goal(goal_id):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+    is_complete = "checked" if request.form.get(
+            "is_complete") else "unchecked"
+    share = "unchecked" if request.form.get("share") else "checked"
+    meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
 
     if request.method == "POST":
@@ -158,13 +163,34 @@ def edit_goal(goal_id):
             "category_name": request.form.get("category_name"),
             "succeed_description": request.form.get("succeed_description"),
             "effort": request.form.get("effort"), 
+             "previous_action": request.form.get("previous_action"),
+            "confidence_level": request.form.get("confidence_level"),
+            "holding_back_description": request.form.get(
+                "holding_back_description"),
+            "believe_description": request.form.get("believe_description"),
+            "course_of_action": request.form.getlist("goal.course_of_action"),
+            "chosen_coa": request.form.get("course_of_action"),
+            "target_date2": request.form.get("target_date2"),
+            "meet_goal": meet_goal, 
+            "obstacles": request.form.get("obstacles"),
+            "what_support": request.form.get("what_support"),
+            "how_support": request.form.get("how_support"),
+            "likelihood": request.form.get("likelihood"),
+            "share": share, 
+            "is_complete": is_complete,
             "created_by": session["user"]
         }}
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-        flash("Goal successfully updated")
-        return redirect(url_for(
-            "edit_reality", goal_id=goal["_id"], 
-            _external=True, _scheme="https"))  
+
+        if meet_goal == "unchecked":
+            flash(u"You need to select Meets goal", 'error')
+            return redirect(url_for(
+                "edit_goal", goal_id=goal[
+                    "_id"], _external=True, _scheme="https"))
+        else:
+            flash("Goal successfully updated")
+            return redirect(url_for(
+                "profile", username=username, _external=True, _scheme="https"))
         
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_goal.html", goal=goal, categories=categories) 
