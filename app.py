@@ -138,7 +138,7 @@ def add_goal():
 
     if request.method == "POST":
         mongo.db.goals.insert_one(goal)
-        flash("Goal successfully added")
+        flash("Goal, Reality and Options added")
         return redirect(url_for('edit_goal', goal_id=goal[
                     "_id"]))  
 
@@ -198,9 +198,12 @@ def edit_goal(goal_id):
 
 @app.route("/delete_goal/<goal_id>")
 def delete_goal(goal_id):
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
     mongo.db.goals.remove({"_id": ObjectId(goal_id)})
     flash("Goal successfully deleted")
-    return redirect(url_for("get_goals"))
+    return redirect(url_for(
+                "profile", username=username))
 
 
 @app.route("/complete_goal/<goal_id>")

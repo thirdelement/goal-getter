@@ -3,49 +3,50 @@
  * Copyright 2013-2020 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-heroic-features/blob/master/LICENSE)
  */
- body {
-    padding-top: 56px;
-  }
+body {
+  padding-top: 56px;
+}
+
 /* base.html template */
 /* flash message */
-  .flash{
-    background-color: #17a2b8;
-    margin-bottom: 0rem;
-  }
+.flash {
+  background-color: #17a2b8;
+  margin-bottom: 0rem;
+}
 
 /* Flash error message */
-  .error{
-    background-color: #dc3545!important;
-  }
+.error {
+  background-color: #dc3545 !important;
+}
 
 /* Flash warning message */
-  .warning{
-    background-color: #ffc107!important;
-  }
+.warning {
+  background-color: #ffc107 !important;
+}
 
-  /* Flash success message */
-  .success{
-    background-color: #28a745!important;
-  }
+/* Flash success message */
+.success {
+  background-color: #28a745 !important;
+}
 
 /* goals.html template */
 /* Search icon */
 .fas {
-  line-height: 0; 
+  line-height: 0;
   text-align: end;
-  padding-right: 0px!important;
+  padding-right: 0px !important;
   margin-top: 20px;
 }
 
 /* update jQuery accordion font and alignment */
-  .ui-widget {
-    font-family: unset;
-    text-align: left;
-  }
- 
-  .ui-widget button {
-    font-family: unset;
-    font-size: initial;
+.ui-widget {
+  font-family: unset;
+  text-align: left;
+}
+
+.ui-widget button {
+  font-family: unset;
+  font-size: initial;
 }
 
 /* add_wayforward.html template */
@@ -55,18 +56,27 @@
 }
 
 /* Media queries */
-@media (min-width: 768px){
-  /* add_wayforward.html template */
-  /* Align Bootstrap switch to start of column */  
-  div.custom-control-right {
-      text-align: start;
-  }
-  }
+@media (min-width: 768px) {
 
-  /* goal.html template */
-  /* Accordion font size */ 
-  @media (max-width: 768px){
+  /* add_wayforward.html template */
+  /* Align Bootstrap switch to start of column */
+  div.custom-control-right {
+    text-align: start;
+  }
+}
+
+/* profile.html template */
+/* Show modal center page */
+@media (min-width: 992px) {
+  .row-cols-lg-2>* {
+    max-width: 100%;
+  }
+}
+
+/* goal.html template */
+/* Accordion font size */
+@media (max-width: 768px) {
   .ui-widget {
     font-size: initial;
   }
-  }
+}
