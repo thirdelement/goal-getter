@@ -4,13 +4,6 @@ $(document).ready(function () {
     dateFormat: "dd MM, yy"
   });
 
-  //Accordion from https://jqueryui.com/accordion/
-  $(".accordion").accordion({
-    collapsible: true,
-    active: false,
-    header: "h4"
-  });
-
   //Bootstrap tab buttons from https://getbootstrap.com/docs/4.6/components/navs/#javascript-behavior
   $(".button-goal").click(function(){
     $('#nav-goal-tab').tab('show')
