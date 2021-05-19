@@ -3,6 +3,7 @@
 <h4>{{ username.capitalize() }}'s profile</h4>
 {% endblock %}
 {% block content %}
+<!-- Heading for goals in progress-->
 <div class="row mb-3">
   <div class="col-md-6 offset-md-3">
     <h4 class="text-center">
@@ -12,9 +13,10 @@
 </div>
 
 <!-- Card for goals in progress-->
+{% if goals|length > 0 %}
 <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2">
   {% for goal in goals %}
-  {% if goal.is_complete == "unchecked" and session.user|lower == goal.created_by|lower%}
+  {% if goal.is_complete == "unchecked" %}
   <div class="col mb-3">
     <div class="card">
       <div class="card-body">
@@ -90,6 +92,7 @@
       </div>
     </div>
   </div>
+
   <!-- Modal -->
   <div class="modal fade" id="deleteModal_{{ goal._id }}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -110,10 +113,22 @@
       </div>
     </div>
   </div>
+  
   {% endif %}
   {% endfor %}
 </div>
 
+<!-- If no goals -->
+{% else %}
+<div class="row mb-3 mt-4 text-center">
+  <div class="col-md-6 offset-md-3">
+    <p class="font-italic">Nothing added so far.</p>
+    <p>Click <a href="{{ url_for('add_goal') }}">here</a> to add a goal.</p>
+  </div>
+</div>
+{% endif %}
+
+<!-- Heading for goals completed -->
 <div class="row mb-3 mt-4">
   <div class="col-md-6 offset-md-3">
     <h4 class="text-center">
@@ -123,9 +138,10 @@
 </div>
 
 <!-- Card for goals complete-->
+{% if goals|length > 0 %}
 <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2">
   {% for goal in goals %}
-  {% if goal.is_complete == "checked" and session.user|lower == goal.created_by|lower%}
+  {% if goal.is_complete == "checked" %}
   <div class="col mb-3">
     <div class="card">
       <div class="card-body">
@@ -220,9 +236,20 @@
       </div>
     </div>
   </div>
+  
   {% endif %}
   {% endfor %}
+
+  
 </div>
+<!-- If no goals -->
+{% else %}
+<div class="row mb-3 mt-4 text-center">
+  <div class="col-md-6 offset-md-3">
+    <p class="font-italic">Nothing added so far.</p>
+  </div>
+</div>
+{% endif %}
 
 
 {% endblock %}

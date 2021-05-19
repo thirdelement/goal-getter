@@ -89,7 +89,8 @@ def profile(username):
         #grab the session users's username from the db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    goals = list(mongo.db.goals.find())
+    goals = list(mongo.db.goals.find(
+        {"created_by": session["user"]}).sort("_id", -1))
 
     if session["user"]:
         #if session cookie is truthy then render the page
