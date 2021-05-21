@@ -254,51 +254,6 @@ def moveto_inprogress(goal_id):
     return redirect(url_for('profile', username=username)) 
 
 
-@app.route("/copy_goal/<goal_id>", methods=["GET", "POST"])
-def copy_goal(goal_id):
-    username = mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
-    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
-    
-    if request.method == "POST":
-        meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
-        share = "unchecked" if request.form.get("share") else "checked"
-        is_complete = "checked" if request.form.get(
-            "is_complete") else "unchecked"
-        submit = {
-            "goal_name": request.form.get("goal_name"),
-            "target_date": request.form.get("target_date"), 
-            "category_name": request.form.get("category_name"),
-            "succeed_description": request.form.get("succeed_description"),
-            "effort": request.form.get("effort"), 
-            "previous_action": request.form.get("previous_action"),
-            "confidence_level": request.form.get("confidence_level"),
-            "holding_back_description": request.form.get(
-                "holding_back_description"),
-            "believe_description": request.form.get("believe_description"),
-            "course_of_action": request.form.getlist("course_of_action"),
-            "chosen_coa": request.form.get("course_of_action"),
-            "target_date2": request.form.get("target_date2"),
-            "meet_goal": meet_goal, 
-            "obstacles": request.form.get("obstacles"),
-            "what_support": request.form.get("what_support"),
-            "how_support": request.form.get("how_support"),
-            "likelihood": request.form.get("likelihood"),
-            "share": share, 
-            "is_complete": is_complete,
-            "created_by": session["user"]
-            }
-        print(submit)
-
-        mongo.db.goals.insert_one(submit)
-        flash("Goal successfully copied")
-        return redirect(url_for('edit_goal.html', goal=goal, username=username))
-    
-    categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template(
-        "profile.html", categories=categories, goal=goal, username=username)
-
-
 @app.route("/add_reality/<goal_id>", methods=["GET", "POST"])
 def add_reality(goal_id):
     # Find goal
