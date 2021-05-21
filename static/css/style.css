@@ -71,6 +71,17 @@ body {
   width: 100%;
 }
 
+/* add_goal.html */
+/* Add background image to jumbotron*/
+.jumbotron-add_goal {
+  background-image: url("../images/man-woman-trophy1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #00B2E6;
+  height: 250px;
+  width: 100%;
+}
+
 /* base.html template */
 /* flash message */
 .flash {
