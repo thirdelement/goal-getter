@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Goal Getter</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"
+    type="text/css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url_for('index') }}">Goal Getter</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('about') }}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('get_goals') }}">Shared Goals</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron jumbotron-home my-4">
+      <h1 class="display-4 font-weight-bold">Welcome to Goal Getter</h1>
+      <!--<img src="static/images/index.png" id="startImage" alt="Progessively bigger mountains with a flag in the biggest" />-->
+      <p class="lead font-weight-bold two-line">Create goals and options to achieve your dreams</p>
+      <p class="lead font-weight-bold two-line">with the GROW formula.</p>
+      <p class="lead font-weight-bold one-line">Create goals and options to achieve your dreams with the GROW formula.
+      </p>
+      <a href="{{ url_for('register') }}" class="btn btn-danger btn-lg">Start now!</a>
+    </header>
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-header">
+            <h4 class="card-title">Goal</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Set your targets for:</p>
+            <ol class="text-left">
+              <li>End Goal</li>
+              <li>Performance levels</li>
+              <li>Process</li>
+            </ol>
+          </div>
+          <div class="card-footer">
+            <a href="{{ url_for('about') }}" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-header">
+            <h4 class="card-title">Reality</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Bring awareness to your:</p>
+            <ol class="text-left">
+              <li>Current situation</li>
+              <li>Attitudes/beliefs</li>
+              <li>Feelings</li>
+            </ol>
+          </div>
+          <div class="card-footer">
+            <a href="{{ url_for('about') }}" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-header">
+            <h4 class="card-title">Options</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Generate courses of action:</p>
+            <ol class="text-left">
+              <li>Encourage creativity</li>
+              <li>Avoid assumptions</li>
+              <li>Draw out solutions</li>
+            </ol>
+          </div>
+          <div class="card-footer">
+            <a href="{{ url_for('about') }}" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <div class="card-header">
+            <h4 class="card-title">Way Forward</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Make a decision:</p>
+            <ol class="text-left">
+              <li>Select an option</li>
+              <li>Agree a timescale</li>
+              <li>Check for obstacles</li>
+            </ol>
+          </div>
+          <div class="card-footer">
+            <a href="{{ url_for('about') }}" class="btn btn-primary">Find Out More!</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Goal Getter 2021</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+  </script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
+</html>
