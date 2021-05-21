@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% block jumbotron %}
+<!-- Jumbotron Header -->
+<header class="jumbotron jumbotron-login my-4">
+</header>
+{% endblock %}
 {% block header %}
 <h4>Log In</h4>
 {% endblock %}
@@ -25,7 +30,7 @@
 </form>
 <div class="row">
   <div class="col-md-12">
-      <p class="center-align">
+      <p class="center-align mt-3">
           New here? <a href="{{ url_for('register') }}" class="">Register account</a>
       </p>
   </div>

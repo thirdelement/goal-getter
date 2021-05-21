@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% block jumbotron %}
+<!-- Jumbotron Header -->
+<header class="jumbotron jumbotron-register my-4">
+</header>
+{% endblock %}
 {% block header %}
 <h4>Register</h4>
 {% endblock %}
@@ -26,7 +31,7 @@
 <!-- Log In message -->
 <div class="row">
   <div class="col-md-12">
-    <p class="center-align">
+    <p class="center-align mt-3">
       Already registered? <a href="{{ url_for('login') }}" class="">Log In</a>
     </p>
   </div>
