@@ -14,7 +14,8 @@
     <label for="username" class="col-md-2 offset-md-1 col-form-label">Username</label>
     <div class="col-md-6">
       <input type="text" class="form-control" id="username" name="username" minlength="5" maxlength="15"
-        pattern="^[a-zA-Z0-9]{5-15}$" aria-describedby="usernameHelp" required>
+        pattern="[a-zA-Z0-9]{5,15}" aria-describedby="usernameHelp" 
+        title="Passwords to include letters and numbers between 5 and 15 characters" required>
     </div>
   </div>
   <!-- password -->
@@ -22,7 +23,8 @@
     <label for="password" class="col-md-2 offset-md-1 col-form-label">Password</label>
     <div class="col-md-6">
       <input type="password" class="form-control" id="password" name="password" minlength="5" maxlength="15"
-        pattern="^[a-zA-Z0-9]{5-15}$" required>
+        pattern="[a-zA-Z0-9]{5,15}" 
+        title="Passwords to include letters and numbers between 5 and 15 characters" required>
     </div>
   </div>
   <!-- Register button -->
