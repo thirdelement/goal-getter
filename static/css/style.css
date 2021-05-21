@@ -63,10 +63,10 @@ body {
 /* profile.html */
 /* Add background image to jumbotron*/
 .jumbotron-profile {
-  background-image: url("../images/space-rocket1.png");
+  background-image: url("../images/rocket.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-color: #007AFF;
+  background-color: #239E46;
   height: 250px;
   width: 100%;
 }
@@ -78,6 +78,17 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-color: #00B2E6;
+  height: 250px;
+  width: 100%;
+}
+
+/* categories.html */
+/* Add background image to jumbotron*/
+.jumbotron-categories {
+  background-image: url("../images/cogs.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #0B1728;
   height: 250px;
   width: 100%;
 }
