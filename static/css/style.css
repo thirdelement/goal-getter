@@ -7,6 +7,38 @@ body {
   padding-top: 56px;
 }
 
+/* index.html */
+/* Add background image to jumbotron*/
+.jumbotron-home {
+  background-image: url("../images/mountains-success.png");
+  background-size: cover;
+  /*object-fit: cover;*/
+}
+
+/* about.html */
+/* Add background image to jumbotron*/
+.jumbotron-about {
+  background-image: url("../images/dartboard2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #66B945;
+  height: 250px;
+  width: 100%;
+}
+
+/* goals.html */
+/* Add background image to jumbotron*/
+/*Credit: https://stackoverflow.com/questions/903659/why-cant-i-use-background-image-and-color-together*/
+.jumbotron-goals {
+  background-image: url("../images/world-growth6.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  /*background-size: cover;*/
+  background-color: #FCB826;
+  height: 250px;
+  width: 100%;
+}
+
 /* base.html template */
 /* flash message */
 .flash {
@@ -58,11 +90,17 @@ body {
 /* Media queries */
 @media (min-width: 768px) {
 
-  /* add_wayforward.html template */
-  /* Align Bootstrap switch to start of column */
-  div.custom-control-right {
-    text-align: start;
-  }
+/* add_wayforward.html template */
+/* Align Bootstrap switch to start of column */
+div.custom-control-right {
+  text-align: start;
+}
+
+/* index.html template */
+/* hide one-line Goal Getter strapline */
+.one-line {
+  display: none;
+}
 }
 
 /* profile.html template */
@@ -79,4 +117,10 @@ body {
   .ui-widget {
     font-size: initial;
   }
+
+/* index.html template */
+/* hide two-line Goal Getter strapline */
+.two-line {
+  display: none;
+}
 }
