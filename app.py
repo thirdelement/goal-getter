@@ -19,6 +19,15 @@ mongo = PyMongo(app) #set up an instance of PyMongo and add the 'app' into that 
                      #This is the Flask 'app' object defined above.  It's final step to ensure our Flask app is c
                      #communicating with MongoDB.
 @app.route("/") #a routing is a string that when we attach to a URL will redirect to a particular function in our Flask app.
+
+@app.route("/index")
+def index():
+    return render_template("index.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
 @app.route("/get_goals")
 def get_goals():
     goals = list(mongo.db.goals.find())

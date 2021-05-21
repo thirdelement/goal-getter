@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block jumbotron %}
+<!-- Jumbotron Header -->
+<header class="jumbotron jumbotron-about my-4">
+</header>
+{% endblock %}
+{% block header %}
+<h4>About</h4>
+{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    <ul class="text-left mt-3">
+      <li>
+        Goal Getter delivers the power of the GROW coaching model in a convenient web app.
+      </li>
+      <br>
+      <li>
+        Through the use of structured questioning, Goal Getter helps clarify what you want and how you can get it.
+      </li>
+      <br>
+      <li>
+        The GROW model was developed in the UK in the 1980s and first published by Sir John Whitmore in 1992.
+      </li>
+      <br>
+      <li>
+        It evolved out of the four key stages used during coaching.
+      </li>
+      <br>
+      <li>
+        It is generally accepted as the most popular coaching model globally.
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <img src="static/images/grow-diagram.png" class="img-fluid" id="grow-diagram" alt="GROW diagram" />
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <p class="text-left mt-4 ml-4">
+      <a href="{{ url_for('register') }}" class="btn btn-danger btn-lg">Start now!</a>
+    </p>
+  </div>
+</div>
+{% endblock %}
