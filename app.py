@@ -162,7 +162,7 @@ def edit_goal(goal_id):
         {"username": session["user"]})["username"]
     is_complete = "checked" if request.form.get(
             "is_complete") else "unchecked"
-    share = "unchecked" if request.form.get("share") else "checked"
+    share = "checked" if request.form.get("share") else "unchecked"
     meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
     goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
 
