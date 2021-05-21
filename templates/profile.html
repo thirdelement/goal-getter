@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% block jumbotron %}
+<!-- Jumbotron Header -->
+<header class="jumbotron jumbotron-profile my-4">
+</header>
+{% endblock %}
 {% block header %}
 <h4>{{ username.capitalize() }}'s profile</h4>
 {% endblock %}
@@ -113,7 +118,6 @@
       </div>
     </div>
   </div>
-  
   {% endif %}
   {% endfor %}
 </div>
@@ -236,12 +240,10 @@
       </div>
     </div>
   </div>
-  
   {% endif %}
   {% endfor %}
-
-  
 </div>
+
 <!-- If no goals -->
 <!-- Credit: https://github.com/Edb83/self-isolution/blob/master/templates/profile.html-->
 {% else %}
