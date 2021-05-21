@@ -178,3 +178,19 @@ div.custom-control-right {
   display: none;
 }
 }
+
+/* get_goals.html template */
+/* Add margin-top to Edit button */
+@media (max-width: 427px) {
+  #btn-edit {
+    margin-top: 5px;
+  }
+}
+
+/* get_goals.html template */
+/* Add margin-top to Edit button */
+@media (max-width: 370px) {
+  #btn-done {
+    margin-top: 5px;
+  }
+}
