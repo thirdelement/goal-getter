@@ -8,13 +8,19 @@ body {
 }
 
 /* index.html */
-/* Add background image to jumbotron*/
-.jumbotron-home {
-  background-image: url("../images/mountains-success.png");
-  background-size: cover;
-  /*object-fit: cover;*/
+/* Align jumbotron*/
+.jumbotron {
+    padding: 2rem 2rem;
 }
 
+.jumbotron-home {
+  background-image: url("../images/mountains-success2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #00CCFF;
+  height: 250px;
+  width: 100%;
+}
 /* about.html */
 /* Add background image to jumbotron*/
 .jumbotron-about {
@@ -124,17 +130,6 @@ body {
   margin-top: 20px;
 }
 
-/* update jQuery accordion font and alignment */
-.ui-widget {
-  font-family: unset;
-  text-align: left;
-}
-
-.ui-widget button {
-  font-family: unset;
-  font-size: initial;
-}
-
 /* add_wayforward.html template */
 .custom-switch {
   padding-top: 0.5rem;
@@ -149,12 +144,6 @@ body {
 div.custom-control-right {
   text-align: start;
 }
-
-/* index.html template */
-/* hide one-line Goal Getter strapline */
-.one-line {
-  display: none;
-}
 }
 
 /* profile.html template */
@@ -163,17 +152,53 @@ div.custom-control-right {
   .row-cols-lg-2>* {
     max-width: 100%;
   }
-}
 
-/* goal.html template */
-/* Accordion font size */
-@media (max-width: 768px) {
-  .ui-widget {
-    font-size: initial;
+/* index.html template */
+/* Align Goal Getter strapline */
+  .two-line {
+    display: none;
   }
 
 /* index.html template */
-/* hide two-line Goal Getter strapline */
+/* Align jumbotron image */
+.jumbotron-home {
+  background-image: url("../images/mountains-success.png");
+  background-size: cover;
+  background-position: unset; 
+  height: 350px;
+}
+/* Align jumbotron */
+.jumbotron {
+  padding: 4rem 2rem;
+}
+}
+/* index.html template */
+/* Align jumbotron */
+@media (max-width: 992px) {
+  .display-4 {
+    font-size: 2.5rem;
+}
+
+.btn-group-lg>.btn, .btn-lg {
+  padding: 0.5rem 0.5rem; 
+  font-size: 1rem;
+}
+
+/* Align Goal Getter strapline */
+.one-line {
+  display: none;
+}
+}
+
+/* Align jumbotron */
+@media (max-width: 768px) {
+.jumbotron {
+  padding: 1rem 1rem;
+}
+}
+
+/* Align jumbotron */
+@media (max-width: 576px) {
 .two-line {
   display: none;
 }
