@@ -88,6 +88,11 @@ body {
   width: 100%;
 }
 
+/* Do not display alert message by default */
+.alert {
+  display: none;
+}
+
 /* categories.html */
 /* Add background image to jumbotron*/
 .jumbotron-categories {
