@@ -70,7 +70,8 @@ def register():
 def login():
     if request.method == "POST":
         #check if username exists in db
-        existing_user = mongo.db.users.find_one({"username": request.form.get("username").lower()})
+        existing_user = mongo.db.users.find_one({
+            "username": request.form.get("username").lower()})
 
         if existing_user:
             #ensure hashed password matches user input
@@ -255,85 +256,6 @@ def moveto_inprogress(goal_id):
     return redirect(url_for('profile', username=username)) 
 
 
-@app.route("/add_reality/<goal_id>", methods=["GET", "POST"])
-def add_reality(goal_id):
-    # Find goal
-    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
-
-    if request.method == "POST":
-        submit = {"$set": {
-            "previous_action": request.form.get("previous_action"),
-            "confidence_level": request.form.get("confidence_level"),
-            "holding_back_description": request.form.get(
-                "holding_back_description"),
-            "believe_description": request.form.get("believe_description"),
-            "created_by": session["user"]
-        }}
-        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-        flash("Reality successfully added")
-        return redirect(url_for(
-            "add_options", goal_id=goal["_id"], 
-            _external=True, _scheme="https"))  
-
-    return render_template(
-        "add_reality.html", goal=goal)
-
-
-@app.route("/edit_reality/<goal_id>", methods=["GET", "POST"])
-def edit_reality(goal_id):
-    # Find goal
-    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
-
-    if request.method == "POST":
-        submit = {"$set": {
-            "previous_action": request.form.get("previous_action"),
-            "confidence_level": request.form.get("confidence_level"),
-            "holding_back_description": request.form.get(
-                "holding_back_description"),
-            "believe_description": request.form.get("believe_description"),
-            "created_by": session["user"]
-        }}
-        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-        flash("Reality successfully updated")
-        return redirect(url_for(
-            "edit_options", goal_id=goal["_id"], _external=True, _scheme="https"))  
-
-    return render_template(
-        "edit_reality.html", goal=goal)
-
-
-@app.route("/edit_wayforward/<goal_id>", methods=["GET", "POST"])
-def edit_wayforward(goal_id):
-    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
-
-    if request.method == "POST":
-        meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
-        share = "checked" if request.form.get("share") else "unchecked"
-        submit = {"$set": {
-            "chosen_coa": request.form.get("course_of_action"),
-            "target_date2": request.form.get("target_date2"),
-            "meet_goal": meet_goal, 
-            "obstacles": request.form.get("obstacles"),
-            "what_support": request.form.get("what_support"),
-            "how_support": request.form.get("how_support"),
-            "likelihood": request.form.get("likelihood"),
-            "share": share, 
-            "created_by": session["user"]
-        }}
-        print(submit)
-        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-        
-        if meet_goal == "unchecked":
-            flash(u"You need to select Meets goal", 'error')
-            return redirect(url_for("edit_wayforward", goal_id=goal["_id"], _external=True, _scheme="https"))
-        else:
-            flash("Way Forward successfully updated")
-            return redirect(url_for("get_goals", _external=True, _scheme="https"))
-
-    return render_template(
-        "edit_wayforward.html", goal=goal)
-
-
 @app.route("/get_categories")
 def get_categories():
     categories = list(mongo.db.categories.find().sort("category_name", 1))
@@ -364,7 +286,6 @@ def edit_category(category_id):
 
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
-
 
 
 @app.route("/delete_category/<category_id>")
