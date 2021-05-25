@@ -39,7 +39,11 @@
 <div class="row">
   <div class="col-md-12">
     <p class="text-left mt-4 ml-4">
+      {% if session.user %}
+      <a href="{{ url_for('add_goal') }}" class="btn btn-danger btn-lg">Start now!</a>
+      {% else %}
       <a href="{{ url_for('register') }}" class="btn btn-danger btn-lg">Start now!</a>
+      {% endif %}
     </p>
   </div>
 </div>
