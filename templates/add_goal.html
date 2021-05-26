@@ -8,7 +8,7 @@
 <h4>Add Goal </h4>
 {% endblock %}
 {% block content %}
-<form method="POST" id="form-add_goal" action="{{ url_for('add_goal') }}">
+<form method="POST" id="form-add_goal" class="report-validity" action="{{ url_for('add_goal') }}">
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-link active" id="nav-goal-tab" data-toggle="tab" href="#nav-goal" role="tab"
@@ -27,7 +27,7 @@
       <div class="form-group row">
         <label for="goal_name" class="col-md-3 offset-md-1 col-form-label text-left">What is your goal?</label>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="goal_name" name="goal_name" minlength="5" maxlength="70" required>
+          <input type="text" class="form-control" id="goal_name" name="goal_name" minlength="2" maxlength="70" required>
         </div>
       </div>
       <!-- target date -->
@@ -57,7 +57,7 @@
           you have
           suceeded?</label>
         <div class="col-md-6">
-          <textarea class="form-control" id="succeed_description" name="succeed_description" rows="3" minlength="5"
+          <textarea class="form-control" id="succeed_description" name="succeed_description" rows="2" minlength="2"
             maxlength="200" required></textarea>
         </div>
       </div>
@@ -89,16 +89,14 @@
           so
           far?</label>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="previous_action" name="previous_action" minlength="5"
+          <input type="text" class="form-control" id="previous_action" name="previous_action" minlength="2"
             maxlength="70" required>
         </div>
       </div>
       <!-- Confidence Level -->
       <div class="form-group row">
         <label for="confidence_level" class="col-md-3 offset-md-1 col-form-label text-left">What is your confidence
-          level in
-          completing this
-          task from 1 to 10?</label>
+          level in completing this task from 1 to 10?</label>
         <div class="col-md-6">
           <select class="form-control" id="confidence_level" name="confidence_level" required>
             <option value="" selected>Choose number</option>
@@ -115,14 +113,13 @@
           back?</label>
         <div class="col-md-6">
           <input type="text" class="form-control" id="holding_back_description" name="holding_back_description"
-            minlength="5" maxlength="70" required>
+            minlength="2" maxlength="70" required>
         </div>
       </div>
       <!-- Believe question -->
       <div class="form-group row">
         <label for="believe_description" class="col-md-3 offset-md-1 col-form-label text-left">What can you do to show
-          yourself
-          you can do it?</label>
+          yourself you can do it?</label>
         <div class="col-md-6">
           <textarea class="form-control" id="believe_description" name="believe_description" rows="2" minlength="5"
             maxlength="100" required></textarea>
@@ -141,47 +138,43 @@
           you take to
           achieve this?</label>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="5"
+          <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="2"
             maxlength="100" aria-describedby="course_of_actionHelp" required>
         </div>
       </div>
       <!-- No limits -->
       <div class="form-group row">
         <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label text-left">If there were no limits what
-          would you
-          do?</label>
+          option would you take?</label>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="5"
+          <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="2"
             maxlength="100" required>
         </div>
       </div>
       <!-- Wisest person -->
       <div class="form-group row">
-        <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label text-left">What would the wisest person
-          you know
-          advise you to do?</label>
+        <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label text-left">What action would the wisest person
+          you know advise you to do?</label>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="5"
+          <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="2"
             maxlength="70" required>
         </div>
       </div>
       <!-- If you were the coach -->
       <div class="form-group row">
         <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label text-left">If you were the coach what
-          action
-          would you suggest?</label>
+          action would you suggest?</label>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="5"
+          <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="2"
             maxlength="70" required>
         </div>
       </div>
       <!-- If you couldn't fail -->
       <div class="form-group row">
-        <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label text-left">What would you do if you
-          couldn't
-          fail?</label>
+        <label for="course_of_action" class="col-md-3 offset-md-1 col-form-label text-left">What action would you take if you
+          couldn't fail?</label>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="5"
+          <input type="text" class="form-control" id="course_of_action" name="course_of_action" minlength="2"
             maxlength="70" required>
         </div>
       </div>
@@ -189,14 +182,14 @@
       <div class="form-group row">
         <div class="offset-md-3 col-md-6 text-center">
           <div id="alert-options" class="alert alert-danger" role="alert">
-            Check you have completed all fields in all tabs!
+            Check you have completed the fields in all tabs!
           </div>
         </div>
       </div>
       <!-- Back button -->
       <button type="button" class="button-reality btn btn-secondary">Back</button>
       <!-- Submit button -->
-          <button type="submit" id="submit-add_goal" class="btn btn-primary">Submit</button>
+      <button type="submit" id="submit-add_goal" class="btn btn-primary">Submit</button>
     </div>
     <div class="tab-pane fade" id="nav-wayforward" role="tabpanel" aria-labelledby="nav-wayforward-tab">
     </div>

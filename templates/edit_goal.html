@@ -23,8 +23,7 @@
         <label for="goal_name" class="col-md-3 offset-md-1 col-form-label text-left">What is your goal?</label>
         <div class="col-md-6">
           <input value="{{ goal.goal_name }}" type="text" class="form-control" id="goal_name" name="goal_name"
-            minlength="5" maxlength="70" required>
-          <!--<small id="usernameHelp" class="form-text text-muted">Between 5 to 10 characters</small> -->
+            minlength="2" maxlength="70" required>
         </div>
       </div>
       <!-- target date -->
@@ -58,7 +57,7 @@
         <label for="succeed_description" class="col-md-3 offset-md-1 col-form-label text-left">How will you know when you have
           suceeded?</label>
         <div class="col-md-6">
-          <textarea class="form-control" id="succeed_description" name="succeed_description" rows="3" minlength="5"
+          <textarea class="form-control" id="succeed_description" name="succeed_description" rows="2" minlength="2"
             maxlength="200" required>
         {{- goal.succeed_description -}}
       </textarea>
@@ -89,7 +88,7 @@
           far?</label>
         <div class="col-md-6">
           <input value="{{ goal.previous_action }}" type="text" class="form-control" id="previous_action"
-            name="previous_action" minlength="5" maxlength="70" required>
+            name="previous_action" minlength="2" maxlength="70" required>
         </div>
       </div>
       <!-- Confidence Level -->
@@ -113,7 +112,7 @@
           back?</label>
         <div class="col-md-6">
           <input value="{{ goal.holding_back_description }}" type="text" class="form-control"
-            id="holding_back_description" name="holding_back_description" minlength="5" maxlength="70" required>
+            id="holding_back_description" name="holding_back_description" minlength="2" maxlength="70" required>
         </div>
       </div>
       <!-- Believe question -->
@@ -122,7 +121,7 @@
           you can do it?</label>
         <div class="col-md-6">
           <textarea value="{{ goal.believe_description }}" class="form-control" id="believe_description"
-            name="believe_description" rows="2" minlength="5" maxlength="100"
+            name="believe_description" rows="2" minlength="2" maxlength="100"
             required>{{ goal.believe_description }}</textarea>
         </div>
       </div>
@@ -139,26 +138,26 @@
           take to achieve this?</label>
         <div class="col-md-6">
           <input value="{% if goal.course_of_action[0] is defined %} {{goal.course_of_action[0]}} {% endif %}"
-            type="text" class="form-control" id="goal.course_of_action0" name="goal.course_of_action" minlength="5"
+            type="text" class="form-control" id="goal.course_of_action0" name="goal.course_of_action" minlength="2"
             maxlength="100" required>
         </div>
       </div>
       <!-- No limits -->
       <div class="form-group row">
         <label for="goal.course_of_action.1" class="col-md-3 offset-md-1 col-form-label text-left">If there were no limits what
-          would you do?</label>
+          option would you take?</label>
         <div class="col-md-6">
           <input value="{{goal.course_of_action[1]}}" type="text" class="form-control" id="goal.course_of_action1"
-            name="goal.course_of_action" minlength="5" maxlength="100" required>
+            name="goal.course_of_action" minlength="2" maxlength="100" required>
         </div>
       </div>
       <!-- Wisest person -->
       <div class="form-group row">
-        <label for="goal.course_of_action.2" class="col-md-3 offset-md-1 col-form-label text-left">What would the wisest person
+        <label for="goal.course_of_action.2" class="col-md-3 offset-md-1 col-form-label text-left">What action would the wisest person
           you know advise you to do?</label>
         <div class="col-md-6">
           <input value="{{goal.course_of_action[2]}}" type="text" class="form-control" id="goal.course_of_action2"
-            name="goal.course_of_action" minlength="5" maxlength="70" required>
+            name="goal.course_of_action" minlength="2" maxlength="70" required>
         </div>
       </div>
       <!-- If you were the coach -->
@@ -168,17 +167,16 @@
         <div class="col-md-6">
 
           <input value="{{goal.course_of_action[3]}}" type="text" class="form-control" id="goal.course_of_action3"
-            name="goal.course_of_action" minlength="5" maxlength="70" required>
+            name="goal.course_of_action" minlength="2" maxlength="70" required>
         </div>
       </div>
       <!-- If you couldn't fail -->
       <div class="form-group row">
-        <label for="goal.course_of_action.4" class="col-md-3 offset-md-1 col-form-label text-left">What would you do if you
-          couldn't
-          fail?</label>
+        <label for="goal.course_of_action.4" class="col-md-3 offset-md-1 col-form-label text-left">What action would you do if you
+          couldn't fail?</label>
         <div class="col-md-6">
           <input value="{{goal.course_of_action[4]}}" type="text" class="form-control" id="goal.course_of_action4"
-            name="goal.course_of_action" minlength="5" maxlength="70" required>
+            name="goal.course_of_action" minlength="2" maxlength="70" required>
         </div>
       </div>
 
@@ -223,7 +221,7 @@
         <label for="obstacles" class="col-md-3 offset-md-1 col-form-label text-left">What obstacles might you meet?</label>
         <div class="col-md-6">
           <input value="{{ goal.obstacles }}" type="text" class="form-control" id="obstacles" name="obstacles"
-            minlength="5" maxlength="70" required>
+            minlength="2" maxlength="70" required>
         </div>
       </div>
       <!-- Support -->
@@ -231,7 +229,7 @@
         <label for="what_support" class="col-md-3 offset-md-1 col-form-label text-left">What support do you need?</label>
         <div class="col-md-6">
           <input value="{{ goal.what_support }}" type="text" class="form-control" id="what_support" name="what_support"
-            minlength="5" maxlength="70" required>
+            minlength="2" maxlength="70" required>
         </div>
       </div>
       <!-- How to get support -->
@@ -240,7 +238,7 @@
           support?</label>
         <div class="col-md-6">
           <input value="{{ goal.how_support }}" type="text" class="form-control" id="how_support" name="how_support"
-            minlength="5" maxlength="70" required>
+            minlength="2" maxlength="70" required>
         </div>
       </div>
       <!-- Likelihood -->
@@ -269,7 +267,7 @@
       <div class="form-group row">
         <div class="offset-md-3 col-md-6 text-center">
           <div id="alert-wayforward" class="alert alert-danger" role="alert">
-            Check you have completed all fields in all tabs!
+            Check you have completed the fields in all tabs!
           </div>
         </div>
       </div>
