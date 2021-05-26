@@ -20,12 +20,7 @@ $(document).ready(function () {
 
   //Add validity message from https://stackoverflow.com/questions/32829776/setting-custom-html5-validity-message-property-ignores-pattern-regex
   $('textarea, input').on('input', function () {
-    this.setCustomValidity("");
-    var valid = $(this).get(0).reportValidity();
-    if (!valid)
-      this.setCustomValidity('Enter between 5 to 15 characters (letters or numbers)');
-    else
-      return 1;
+    $(this).get(0).reportValidity();
   });
 
   //Check add_goal form for validity and display message.  Credit: https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752
