@@ -79,7 +79,11 @@
       <p class="lead font-weight-bold two-line">Achieve your dreams with</p>
       <p class="lead font-weight-bold two-line">the GROW formula.</p>
       <p class="lead font-weight-bold one-line">Achieve your dreams with the GROW formula.</p>
+      {% if session.user %}
+      <a href="{{ url_for('add_goal') }}" class="btn btn-danger btn-lg">Start now!</a>
+      {% else %}
       <a href="{{ url_for('register') }}" class="btn btn-danger btn-lg">Start now!</a>
+      {% endif %}
     </header>
 
     <!-- Page Features -->
