@@ -88,9 +88,15 @@ body {
   width: 100%;
 }
 
-/* Do not display alert message by default */
+/* Do not display alert by default */
 .alert {
   display: none;
+}
+
+/* Do not display notification by default */
+#notification {
+  display: none;
+  background-color: #dc3545;
 }
 
 /* categories.html */
