@@ -23,27 +23,21 @@ $(document).ready(function () {
     $(this).get(0).reportValidity();
   });
 
-  //Check add_goal form for validity and display message.  Credit: https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752
+  //Check add_goal form for validity and display message when click submit.  Credit: https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752
   $("#submit-add_goal").click(function (action) {
     var forms = document.getElementById('form-add_goal')
     if (!forms.checkValidity()) {
-      document.getElementById('alert-options').style.display = 'block';
+      document.getElementById('notification').style.display = 'block';
+      document.getElementById('alert').style.display = 'block';
     }
   });
 
-  //Check edit_goal form for validity and display message when click on Submit in WayForward tab.
-  $("#submit-edit_goal").click(function (action) {
+  //Check edit_goal form for validity and display message when click on submit buttons.
+  $(".submit").click(function (action) {
     var forms = document.getElementById('form-edit_goal')
     if (!forms.checkValidity()) {
-      document.getElementById('alert-wayforward').style.display = 'block';
-    }
-  });
-
-  //Check edit_goal form for validity and display message when click on Next(submit) in Options tab.
-  $("#submit-options").click(function (action) {
-    var forms = document.getElementById('form-edit_goal')
-    if (!forms.checkValidity()) {
-      document.getElementById('alert-wayforward').style.display = 'block';
+      document.getElementById('notification').style.display = 'block';
+      document.getElementById('alert').style.display = 'block';
     }
   });
 });
