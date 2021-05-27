@@ -142,7 +142,7 @@
         <label for="goal.course_of_action.0" class="col-md-3 offset-md-1 col-form-label text-left">What course of action can you
           take to achieve this?</label>
         <div class="col-md-6">
-          <input value="{% if goal.course_of_action[0] is defined %} {{goal.course_of_action[0]}} {% endif %}"
+            <input value="{{goal.course_of_action[0]}}"
             type="text" class="form-control" id="goal.course_of_action0" name="goal.course_of_action" minlength="2"
             maxlength="100" required>
         </div>
@@ -184,11 +184,11 @@
             name="goal.course_of_action" minlength="2" maxlength="70" required>
         </div>
       </div>
-
+      <input type="hidden" name="btn_identifier" value="btn_identifier" /> 
       <!-- Back button -->
       <button type="button" class="button-reality btn btn-secondary">Back</button>
       <!-- Next button -->
-      <button type="button" class="button-wayforward btn btn-primary">Next</button>
+      <button type="submit" id="submit-options" name="submit-options" value="submit-options" class="button-wayforward btn btn-primary">Next</button>
     </div>
     <div class="tab-pane fade show active" id="nav-wayforward" role="tabpanel" aria-labelledby="nav-wayforward-tab">
       <!-- Choose option -->
@@ -281,7 +281,7 @@
       <!-- Back button -->
       <button type="button" class="button-options btn btn-secondary">Back</button>
       <!-- Submit button -->
-      <button type="submit" id="submit-edit_goal" class="btn btn-primary">Submit</button>
+      <button type="submit" id="submit-edit_goal" name="submit" class="btn btn-primary">Submit</button>
     </div>
 </form>
 
