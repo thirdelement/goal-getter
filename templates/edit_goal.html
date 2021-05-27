@@ -4,22 +4,28 @@
 <header class="jumbotron jumbotron-add_goal my-4">
 </header>
 {% endblock %}
+{% block message %}
+<!--Other notification messages-->
+<div id="notification">
+  <h4>Check you have completed the fields in all tabs!</h4>
+</div>
+{% endblock %}
 {% block header %}
 <h4>Add Goal</h4>
 {% endblock %}
 {% block content %}
+
 <form method="POST" id="form-edit_goal" action="{{ url_for('edit_goal', goal_id=goal._id) }}">
-  <nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-link" id="nav-goal-tab" data-toggle="tab" href="#nav-goal" role="tab" aria-controls="nav-goal"
-        aria-selected="false">Goal</a>
-      <a class="nav-link" id="nav-reality-tab" data-toggle="tab" href="#nav-reality" role="tab"
-        aria-controls="nav-reality" aria-selected="false">Reality</a>
-      <a class="nav-link" id="nav-options-tab" data-toggle="tab" href="#nav-options" role="tab"
-        aria-controls="nav-options" aria-selected="false">Options</a>
-      <a class="nav-link active" id="nav-wayforward-tab" data-toggle="tab" href="#nav-wayforward" role="tab"
-        aria-controls="nav-wayforward" aria-selected="true">Way Forward</a>
-    </div>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-link" id="nav-goal-tab" data-toggle="tab" href="#nav-goal" role="tab" aria-controls="nav-goal"
+      aria-selected="false">Goal</a>
+    <a class="nav-link" id="nav-reality-tab" data-toggle="tab" href="#nav-reality" role="tab"
+      aria-controls="nav-reality" aria-selected="false">Reality</a>
+    <a class="nav-link" id="nav-options-tab" data-toggle="tab" href="#nav-options" role="tab"
+      aria-controls="nav-options" aria-selected="false">Options</a>
+    <a class="nav-link active" id="nav-wayforward-tab" data-toggle="tab" href="#nav-wayforward" role="tab"
+      aria-controls="nav-wayforward" aria-selected="true">Way Forward</a>
+  </div>
   </nav>
   <div class="tab-content mt-5" id="nav-tabContent">
     <div class="tab-pane fade" id="nav-goal" role="tabpanel" aria-labelledby="nav-goal-tab">
@@ -59,7 +65,8 @@
       </div>
       <!-- Succeed question -->
       <div class="form-group row">
-        <label for="succeed_description" class="col-md-3 offset-md-1 col-form-label text-left">How will you know when you have
+        <label for="succeed_description" class="col-md-3 offset-md-1 col-form-label text-left">How will you know when
+          you have
           suceeded?</label>
         <div class="col-md-6">
           <textarea class="form-control" id="succeed_description" name="succeed_description" rows="2" minlength="2"
@@ -70,7 +77,8 @@
       </div>
       <!-- Effort -->
       <div class="form-group row">
-        <label for="effort" class="col-md-3 offset-md-1 col-form-label text-left">How much effort will you put in from 1 to
+        <label for="effort" class="col-md-3 offset-md-1 col-form-label text-left">How much effort will you put in from 1
+          to
           10?</label>
         <div class="col-md-6">
           <select class="form-control" id="effort" name="effort" required>
@@ -89,7 +97,8 @@
 
       <!-- Actions so far -->
       <div class="form-group row">
-        <label for="previous_action" class="col-md-3 offset-md-1 col-form-label text-left">What actions have you taken so
+        <label for="previous_action" class="col-md-3 offset-md-1 col-form-label text-left">What actions have you taken
+          so
           far?</label>
         <div class="col-md-6">
           <input value="{{ goal.previous_action }}" type="text" class="form-control" id="previous_action"
@@ -98,7 +107,8 @@
       </div>
       <!-- Confidence Level -->
       <div class="form-group row">
-        <label for="confidence_level" class="col-md-3 offset-md-1 col-form-label text-left">What is your confidence level in
+        <label for="confidence_level" class="col-md-3 offset-md-1 col-form-label text-left">What is your confidence
+          level in
           completing this
           goal from 1 to 10?</label>
         <div class="col-md-6">
@@ -122,7 +132,7 @@
       </div>
       <!-- Believe question -->
       <div class="form-group row">
-        <label for="believe_description" class="col-md-3 offset-md-1 col-form-label text-left">What can you do to 
+        <label for="believe_description" class="col-md-3 offset-md-1 col-form-label text-left">What can you do to
           believe you can do it?</label>
         <div class="col-md-6">
           <textarea value="{{ goal.believe_description }}" class="form-control" id="believe_description"
@@ -139,17 +149,18 @@
     <div class="tab-pane fade" id="nav-options" role="tabpanel" aria-labelledby="nav-options-tab">
       <!-- Courses of actions -->
       <div class="form-group row">
-        <label for="goal.course_of_action.0" class="col-md-3 offset-md-1 col-form-label text-left">What course of action can you
+        <label for="goal.course_of_action.0" class="col-md-3 offset-md-1 col-form-label text-left">What course of action
+          can you
           take to achieve this?</label>
         <div class="col-md-6">
-            <input value="{{goal.course_of_action[0]}}"
-            type="text" class="form-control" id="goal.course_of_action0" name="goal.course_of_action" minlength="2"
-            maxlength="100" required>
+          <input value="{{goal.course_of_action[0]}}" type="text" class="form-control" id="goal.course_of_action0"
+            name="goal.course_of_action" minlength="2" maxlength="100" required>
         </div>
       </div>
       <!-- No limits -->
       <div class="form-group row">
-        <label for="goal.course_of_action.1" class="col-md-3 offset-md-1 col-form-label text-left">If there were no limits what
+        <label for="goal.course_of_action.1" class="col-md-3 offset-md-1 col-form-label text-left">If there were no
+          limits what
           option would you take?</label>
         <div class="col-md-6">
           <input value="{{goal.course_of_action[1]}}" type="text" class="form-control" id="goal.course_of_action1"
@@ -158,7 +169,8 @@
       </div>
       <!-- Wisest person -->
       <div class="form-group row">
-        <label for="goal.course_of_action.2" class="col-md-3 offset-md-1 col-form-label text-left">What action would the wisest person
+        <label for="goal.course_of_action.2" class="col-md-3 offset-md-1 col-form-label text-left">What action would the
+          wisest person
           you know advise you to do?</label>
         <div class="col-md-6">
           <input value="{{goal.course_of_action[2]}}" type="text" class="form-control" id="goal.course_of_action2"
@@ -167,7 +179,8 @@
       </div>
       <!-- If you were the coach -->
       <div class="form-group row">
-        <label for="goal.course_of_action.3" class="col-md-3 offset-md-1 col-form-label text-left">If you were the coach what
+        <label for="goal.course_of_action.3" class="col-md-3 offset-md-1 col-form-label text-left">If you were the coach
+          what
           action would you suggest?</label>
         <div class="col-md-6">
 
@@ -177,23 +190,25 @@
       </div>
       <!-- If you couldn't fail -->
       <div class="form-group row">
-        <label for="goal.course_of_action.4" class="col-md-3 offset-md-1 col-form-label text-left">What action would you take if you
+        <label for="goal.course_of_action.4" class="col-md-3 offset-md-1 col-form-label text-left">What action would you
+          take if you
           couldn't fail?</label>
         <div class="col-md-6">
           <input value="{{goal.course_of_action[4]}}" type="text" class="form-control" id="goal.course_of_action4"
             name="goal.course_of_action" minlength="2" maxlength="70" required>
         </div>
       </div>
-      <input type="hidden" name="btn_identifier" value="btn_identifier" /> 
       <!-- Back button -->
       <button type="button" class="button-reality btn btn-secondary">Back</button>
       <!-- Next button -->
-      <button type="submit" id="submit-options" name="submit-options" value="submit-options" class="button-wayforward btn btn-primary">Next</button>
+      <button type="submit" id="submit-options" name="submit-options" value="submit-options"
+        class="button-wayforward btn btn-primary submit">Next</button>
     </div>
     <div class="tab-pane fade show active" id="nav-wayforward" role="tabpanel" aria-labelledby="nav-wayforward-tab">
       <!-- Choose option -->
       <div class="form-group row">
-        <label for="category_name" class="col-md-3 offset-md-1 col-form-label text-left">Select the option you're going to
+        <label for="category_name" class="col-md-3 offset-md-1 col-form-label text-left">Select the option you're going
+          to
           take:</label>
         <div class="col-md-6">
           <select class="form-control" id="course_of_action" name="course_of_action" required>
@@ -206,7 +221,8 @@
       </div>
       <!-- target date -->
       <div class="form-group row">
-        <label for="target_date2" class="col-md-3 offset-md-1 col-form-label text-left">When are you going to start?</label>
+        <label for="target_date2" class="col-md-3 offset-md-1 col-form-label text-left">When are you going to
+          start?</label>
         <div class="col-md-6">
           <input value="{{ goal.target_date2 }}" type="text" class="form-control datepicker" id="target_date2"
             name="target_date2" required>
@@ -214,7 +230,8 @@
       </div>
       <!-- Will action meet your goal -->
       <div class="form-group row">
-        <label for="meet_goal" class="col-md-3 offset-md-1 col-form-label text-left">Will this action meet your goal?</label>
+        <label for="meet_goal" class="col-md-3 offset-md-1 col-form-label text-left">Will this action meet your
+          goal?</label>
         <div class="col-md-6 custom-control custom-switch custom-control-right">
           <input type="checkbox" name="meet_goal" class="custom-control-input col-md-3 get-value" id="meet_goal"
             {{ goal.meet_goal }}>
@@ -223,7 +240,8 @@
       </div>
       <!-- Obstacles -->
       <div class="form-group row">
-        <label for="obstacles" class="col-md-3 offset-md-1 col-form-label text-left">What obstacles might you meet?</label>
+        <label for="obstacles" class="col-md-3 offset-md-1 col-form-label text-left">What obstacles might you
+          meet?</label>
         <div class="col-md-6">
           <input value="{{ goal.obstacles }}" type="text" class="form-control" id="obstacles" name="obstacles"
             minlength="2" maxlength="70" required>
@@ -231,7 +249,8 @@
       </div>
       <!-- Support -->
       <div class="form-group row">
-        <label for="what_support" class="col-md-3 offset-md-1 col-form-label text-left">What support do you need?</label>
+        <label for="what_support" class="col-md-3 offset-md-1 col-form-label text-left">What support do you
+          need?</label>
         <div class="col-md-6">
           <input value="{{ goal.what_support }}" type="text" class="form-control" id="what_support" name="what_support"
             minlength="2" maxlength="70" required>
@@ -248,7 +267,8 @@
       </div>
       <!-- Likelihood -->
       <div class="form-group row">
-        <label for="likelihood" class="col-md-3 offset-md-1 col-form-label text-left">What is the likelihood on a scale of 1 to 10
+        <label for="likelihood" class="col-md-3 offset-md-1 col-form-label text-left">What is the likelihood on a scale
+          of 1 to 10
           that you will carry out this action?</label>
         <div class="col-md-6">
           <select class="form-control" id="likelihood" name="likelihood" required>
@@ -261,7 +281,8 @@
       </div>
       <!-- Share goal -->
       <div class="form-group row">
-        <label for="share" class="col-md-3 offset-md-1 col-form-label text-left">Do you want to share this goal with other
+        <label for="share" class="col-md-3 offset-md-1 col-form-label text-left">Do you want to share this goal with
+          other
           Goal-Getters?</label>
         <div class="col-md-6 custom-control custom-switch custom-control-right">
           <input type="checkbox" name="share" class="custom-control-input col-md-3" id="share" {{ goal.share }}>
@@ -271,17 +292,18 @@
       <!-- Field validation alert -->
       <div class="form-group row">
         <div class="offset-md-3 col-md-6 text-center">
-          <div id="alert-wayforward" class="alert alert-danger" role="alert">
+          <div id="alert" class="alert alert-danger" role="alert">
             Check you have completed the fields in all tabs!
           </div>
         </div>
       </div>
-      <!-- Cancel button -->
-      <a href="{{ url_for('get_goals') }}" role="button" class="btn btn-danger acc-header">Cancel</a>
-      <!-- Back button -->
-      <button type="button" class="button-options btn btn-secondary">Back</button>
-      <!-- Submit button -->
-      <button type="submit" id="submit-edit_goal" name="submit" class="btn btn-primary">Submit</button>
+      <nav>
+        <!-- Cancel button -->
+        <a href="{{ url_for('get_goals') }}" role="button" class="btn btn-danger acc-header">Cancel</a>
+        <!-- Back button -->
+        <button type="button" class="button-options btn btn-secondary">Back</button>
+        <!-- Submit button -->
+        <button type="submit" id="submit-wayforward" name="submit" class="submit btn btn-primary">Submit</button>
     </div>
 </form>
 

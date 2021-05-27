@@ -4,11 +4,17 @@
 <header class="jumbotron jumbotron-add_goal my-4">
 </header>
 {% endblock %}
+{% block message %}
+<!--Other notification messages-->
+<div id="notification">
+  <h4>Check you have completed the fields in all tabs!</h4>
+</div>
+{% endblock %}
 {% block header %}
 <h4>Add Goal </h4>
 {% endblock %}
 {% block content %}
-<form method="POST" id="form-add_goal" class="report-validity" action="{{ url_for('add_goal') }}">
+<form method="POST" id="form-add_goal" action="{{ url_for('add_goal') }}">
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-link active" id="nav-goal-tab" data-toggle="tab" href="#nav-goal" role="tab"
@@ -181,7 +187,7 @@
       <!-- Field validation alert -->
       <div class="form-group row">
         <div class="offset-md-3 col-md-6 text-center">
-          <div id="alert-options" class="alert alert-danger" role="alert">
+          <div id="alert" class="alert alert-danger" role="alert">
             Check you have completed the fields in all tabs!
           </div>
         </div>
@@ -189,7 +195,7 @@
       <!-- Back button -->
       <button type="button" class="button-reality btn btn-secondary">Back</button>
       <!-- Submit button -->
-      <button type="submit" id="submit-add_goal" class="btn btn-primary">Submit</button>
+      <button type="submit" id="submit-add_goal" class="submit btn btn-primary">Submit</button>
     </div>
     <div class="tab-pane fade" id="nav-wayforward" role="tabpanel" aria-labelledby="nav-wayforward-tab">
     </div>
