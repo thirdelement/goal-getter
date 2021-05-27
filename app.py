@@ -3,22 +3,19 @@ from flask import (
     Flask, flash, render_template, 
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
-from bson.objectid import ObjectId #Enables rendering of ObjectID so we can find docs in MongoDB
+from bson.objectid import ObjectId # Enables rendering of ObjectID so we can find docs in MongoDB
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
-    import env #we are not pushing env.py to GitHub.  When in Heroku we need to only import
-                            #env if the os can find an existing file path for the file itself.  Otherwise
-                            #Heroku will throw an error.
-app = Flask(__name__) #create a new instance of Flask stored in a variable call 'app'
+    import env 
+    
+app = Flask(__name__) # create a new instance of Flask stored in a variable call 'app'
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME") #grab db name
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI") # configure the connection string aka MONGO_URI
 app.secret_key = os.environ.get("SECRET_KEY") # secret_key required for some functions in Flask
 
-mongo = PyMongo(app) #set up an instance of PyMongo and add the 'app' into that using a constructor method.
-                     #This is the Flask 'app' object defined above.  It's final step to ensure our Flask app is c
-                     #communicating with MongoDB.
-@app.route("/") #a routing is a string that when we attach to a URL will redirect to a particular function in our Flask app.
+mongo = PyMongo(app) 
+@app.route("/") 
 
 @app.route("/index")
 def index():
@@ -44,7 +41,7 @@ def search():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        #check if username already exists in dbe
+        # check if username already exists in dbe
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
 
@@ -58,7 +55,7 @@ def register():
         }
         mongo.db.users.insert_one(register)
 
-        #put the new user into 'session' cookie
+        # put the new user into 'session' cookie
         session["user"] = request.form.get("username").lower()
         flash("Registration Successful!") 
         return redirect(url_for("profile", username=session["user"]))
@@ -69,12 +66,12 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        #check if username exists in db
+        # check if username exists in db
         existing_user = mongo.db.users.find_one({
             "username": request.form.get("username").lower()})
 
         if existing_user:
-            #ensure hashed password matches user input
+            # ensure hashed password matches user input
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
@@ -82,12 +79,12 @@ def login():
                     request.form.get("username").capitalize()))
                 return redirect(url_for("profile", username=session["user"]))
             else:
-                #invalid password match
+                # invalid password match
                 flash(u"Incorrect Username and/or Password", 'warning')
                 return redirect(url_for("login"))
 
         else:
-            #username doesn't exist
+            # username doesn't exist
             flash(u"Incorrect Username and/or Password", 'warning')
             return redirect(url_for("login"))
 
@@ -96,16 +93,16 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-        #grab the session user's username from the db
+        # grab the session user's username from the db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     goals = list(mongo.db.goals.find(
         {"created_by": session["user"]}).sort("_id", -1))
 
     if session["user"]:
-        #if session cookie is truthy then render the page
+        # if session cookie is truthy then render the page
         return render_template("profile.html", username=username, goals=goals)
-        #if session cookie is not truthy (e.g. has been deleted)
+        # if session cookie is not truthy (e.g. has been deleted)
     return redirect(url_for("login"))
 
 
@@ -192,9 +189,16 @@ def edit_goal(goal_id):
             "created_by": session["user"]
         }}
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-
+        # If the meet_goal switch is unchecked 
         if meet_goal == "unchecked":
             flash(u"You need to select Meets goal", 'error')
+            return redirect(url_for(
+                "edit_goal", goal_id=goal[
+                    "_id"], _external=True, _scheme="https"))
+        # If the submit button on the Options tab is clicked
+        # Credit: https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form
+        elif 'submit-options' in request.form:
+            flash("Goal successfully updated")
             return redirect(url_for(
                 "edit_goal", goal_id=goal[
                     "_id"], _external=True, _scheme="https"))
@@ -291,13 +295,13 @@ def edit_category(category_id):
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    #In production mode include some defensive programming such as prompting the user to confirm deletion, 
-    #instead of immediately deleting.
+    # In production mode include some defensive programming such as prompting the user to confirm deletion, 
+    # instead of immediately deleting.
     flash("Category successfully deleted")
     return redirect(url_for("get_categories"))
 
 
-if __name__ == "__main__":                  #Tell our app how and where to run our app
-    app.run(host=os.environ.get("IP"),      #use the hidden variables in the env.py file
+if __name__ == "__main__":                  # Tell our app how and where to run our app
+    app.run(host=os.environ.get("IP"),      # use the hidden variables in the env.py file
             port=int(os.environ.get("PORT")), # convert port to an integer
-            debug=True)                     #set debug to True so we can see errors.  Set to false at go live
+            debug=True)                     # set debug to True so we can see errors.  Set to false at go live

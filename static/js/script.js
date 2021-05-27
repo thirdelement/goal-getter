@@ -31,8 +31,16 @@ $(document).ready(function () {
     }
   });
 
-  //Check edit_goal form for validity and display message.
+  //Check edit_goal form for validity and display message when click on Submit in WayForward tab.
   $("#submit-edit_goal").click(function (action) {
+    var forms = document.getElementById('form-edit_goal')
+    if (!forms.checkValidity()) {
+      document.getElementById('alert-wayforward').style.display = 'block';
+    }
+  });
+
+  //Check edit_goal form for validity and display message when click on Next(submit) in Options tab.
+  $("#submit-options").click(function (action) {
     var forms = document.getElementById('form-edit_goal')
     if (!forms.checkValidity()) {
       document.getElementById('alert-wayforward').style.display = 'block';
