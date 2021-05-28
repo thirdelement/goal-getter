@@ -198,7 +198,6 @@ def edit_goal(goal_id):
         # If the submit button on the Options tab is clicked
         # Credit: https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form
         elif 'submit-options' in request.form:
-            flash("Goal successfully updated")
             return redirect(url_for(
                 "edit_goal", goal_id=goal[
                     "_id"], _external=True, _scheme="https"))
