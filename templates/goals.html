@@ -43,8 +43,8 @@
           aria-expanded="false" aria-controls="collapseExample">
           More info
         </button>
-        <!-- Delete, Done and Edit buttons only available if session user is creator -->
-        {% if session.user|lower == goal.created_by|lower %}
+        <!-- Delete, Done and Edit buttons only available if session user is creator or admin -->
+        {% if (session.user|lower == goal.created_by|lower) or (session.user|lower == "admin"|lower)  %}
         <!-- Delete button and trigger modal -->
         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#deleteModal_{{ goal._id }}"
           onclick=>
