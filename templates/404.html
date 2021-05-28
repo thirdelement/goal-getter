@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block jumbotron %}
+<!-- Jumbotron Header -->
+<header class="jumbotron jumbotron-404 my-4">
+</header>
+{% endblock %}
+{% block header %}
+<h4>Page Not Found</h4>
+{% endblock %}
+{% block content %}
+ <!-- Error link -->
+ <div class="form-group row">
+  <div class="col-md-6">
+    <h4>Get back on track to getting your<a href="{{ url_for('index') }}">goals</a></h4>
+  </div>
+</div>
+{% endblock %}
