@@ -301,7 +301,7 @@ def delete_category(category_id):
 
 @app.errorhandler(404)
 def not_found(error):
-    return render_template('404.html', error=error), 404
+    return render_template('404.html')
 
 
 if __name__ == "__main__":                  # Tell our app how and where to run our app
