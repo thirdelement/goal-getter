@@ -7,7 +7,7 @@ from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env 
-    
+
 # Create Flask instance
 app = Flask(__name__) 
 
@@ -17,16 +17,20 @@ app.secret_key = os.environ.get("SECRET_KEY")
 
 mongo = PyMongo(app) 
 
-# Routes
-@app.route("/") 
 
+# Routes
+
+
+@app.route("/") 
 @app.route("/index")
 def index():
     return render_template("index.html")
 
+
 @app.route("/about")
 def about():
     return render_template("about.html")
+
 
 @app.route("/get_goals")
 def get_goals():
@@ -75,8 +79,8 @@ def login():
 
         if existing_user:
             # Ensure hashed password matches user input
-            if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+            if check_password_hash(existing_user[
+                    "password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome, {}".format(
                     request.form.get("username").capitalize()))
@@ -174,7 +178,7 @@ def edit_goal(goal_id):
             "category_name": request.form.get("category_name"),
             "succeed_description": request.form.get("succeed_description"),
             "effort": request.form.get("effort"), 
-             "previous_action": request.form.get("previous_action"),
+            "previous_action": request.form.get("previous_action"),
             "confidence_level": request.form.get("confidence_level"),
             "holding_back_description": request.form.get(
                 "holding_back_description"),
@@ -199,7 +203,8 @@ def edit_goal(goal_id):
                 "edit_goal", goal_id=goal[
                     "_id"], _external=True, _scheme="https"))
         # If the submit button on the Options tab is clicked
-        # Credit: https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form
+        # Credit: https://stackoverflow.com/questions/43811779/use-many-submit
+        # -buttons-in-the-same-form
         elif 'submit-options' in request.form:
             return redirect(url_for(
                 "edit_goal", goal_id=goal[
@@ -305,10 +310,11 @@ def delete_category(category_id):
 @app.errorhandler(404)
 def not_found(error):
     return render_template('404.html')
-    #Credit: https://www.geeksforgeeks.org/python-404-error-handling-in-flask/
+    # Credit: https://www.geeksforgeeks.org/python-404-error-handling-in-flask/
 
 
 if __name__ == "__main__":                  
     app.run(host=os.environ.get("IP"),      
             port=int(os.environ.get("PORT")), 
-            debug=True)                     # set debug to True so we can see errors.  Set to false at go live
+            debug=True)                     
+    # set debug to True so we can see errors.  Set to false at go live
