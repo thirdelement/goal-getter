@@ -16,11 +16,13 @@
       <i class="d-none d-md-inline offset-md-1 col-md-1 fas fa-search fa-lg"></i>
       <label for="query" class="col-form-label"></label>
       <div class="col-md-6">
-        <input type="text" class="form-control" id="query" name="query" minlength="2" maxlength="70" placeholder="Search Goals" required>
+        <input type="text" class="form-control" id="query" name="query" minlength="2" maxlength="70"
+          placeholder="Search Goals" required>
       </div>
       <div class="col-md-4">
         <!-- Reset button -->
-        <a href="{{ url_for('get_goals') }}" role="button" class="ml-1 ml-md-0 mt-1 mt-md-0 float-right float-md-left btn btn-secondary acc-header">Reset</a>
+        <a href="{{ url_for('get_goals') }}" role="button"
+          class="ml-1 ml-md-0 mt-1 mt-md-0 float-right float-md-left btn btn-secondary acc-header">Reset</a>
         <!-- Submit button -->
         <button type="submit" class="float-right float-md-left ml-md-1 mt-1 mt-md-0 btn btn-primary">Search</button>
       </div>
@@ -51,11 +53,13 @@
           Delete
         </button>
         <!-- Done button -->
-        <a href="{{ url_for('complete_goal', goal_id=goal._id) }}" role="button" id="btn-done" class="btn btn-success">Done</a>
+        <a href="{{ url_for('complete_goal', goal_id=goal._id) }}" role="button" id="btn-done"
+          class="btn btn-success">Done</a>
         <!-- Edit button -->
-        <a href="{{ url_for('edit_goal', goal_id=goal._id) }}" role="button" id="btn-edit" class="btn btn-primary">Edit</a>
+        <a href="{{ url_for('edit_goal', goal_id=goal._id) }}" role="button" id="btn-edit"
+          class="btn btn-primary">Edit</a>
         {% endif %}
-	<!-- Collapsible card content -->
+        <!-- Collapsible card content -->
         <div class="collapse" id="collapse_{{ goal._id }}">
           <div class="mt-3 card card-body">
             <nav>
@@ -130,7 +134,7 @@
       </div>
     </div>
   </div>
-  
+
   {% endif %}
   {% endfor %}
 </div>

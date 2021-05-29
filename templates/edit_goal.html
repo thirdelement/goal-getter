@@ -23,8 +23,8 @@
       aria-controls="nav-reality" aria-selected="false">Reality</a>
     <a class="nav-link" id="nav-options-tab" data-toggle="tab" href="#nav-options" role="tab"
       aria-controls="nav-options" aria-selected="false">Options</a>
-    <a class="nav-link active" id="nav-wayforward-tab" href="#nav-wayforward" role="tab"
-      aria-controls="nav-wayforward" aria-selected="true">Way Forward</a>
+    <a class="nav-link active" id="nav-wayforward-tab" href="#nav-wayforward" role="tab" aria-controls="nav-wayforward"
+      aria-selected="true">Way Forward</a>
   </div>
   </nav>
   <div class="tab-content mt-5" id="nav-tabContent">
@@ -91,10 +91,8 @@
       </div>
       <!-- Next button -->
       <button type="button" class="button-reality btn btn-primary">Next</button>
-
     </div>
     <div class="tab-pane fade" id="nav-reality" role="tabpanel" aria-labelledby="nav-reality-tab">
-
       <!-- Actions so far -->
       <div class="form-group row">
         <label for="previous_action" class="col-md-3 offset-md-1 col-form-label text-left">What actions have you taken
@@ -140,7 +138,6 @@
             required>{{ goal.believe_description }}</textarea>
         </div>
       </div>
-
       <!-- Back button -->
       <button type="button" class="button-goal btn btn-secondary">Back</button>
       <!-- Next button -->
@@ -306,5 +303,4 @@
         <button type="submit" id="submit-wayforward" name="submit" class="submit btn btn-primary">Submit</button>
     </div>
 </form>
-
 {% endblock %}
