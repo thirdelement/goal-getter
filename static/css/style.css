@@ -1,8 +1,5 @@
-/*!
- * Start Bootstrap - Heroic Features (https://startbootstrap.com/template/heroic-features)
- * Copyright 2013-2020 Start Bootstrap
- * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-heroic-features/blob/master/LICENSE)
- */
+/* Start Bootstrap Template body - 
+Heroic Features (https://startbootstrap.com/template/heroic-features) */
 body {
   padding-top: 56px;
 }
@@ -42,6 +39,14 @@ body {
   background-color: #FCB826;
   height: 250px;
   width: 100%;
+}
+
+/* Search icon */
+.fas {
+  line-height: 0;
+  text-align: end;
+  padding-right: 0px !important;
+  margin-top: 20px;
 }
 
 /* login.html */
@@ -121,7 +126,7 @@ body {
   width: 100%;
 }
 
-/* base.html template */
+/* base.html */
 /* flash message */
 .flash {
   background-color: #17a2b8;
@@ -143,45 +148,37 @@ body {
   background-color: #28a745 !important;
 }
 
-/* goals.html template */
-/* Search icon */
-.fas {
-  line-height: 0;
-  text-align: end;
-  padding-right: 0px !important;
-  margin-top: 20px;
-}
-
-/* add_wayforward.html template */
+/* Edit_goal.html */
+/* meet_goal switch */
 .custom-switch {
   padding-top: 0.5rem;
   padding-left: 3.00rem;
 }
 
-/* Media queries */
+/* ---------------------------Media queries */
 @media (min-width: 768px) {
 
-/* add_wayforward.html template */
+/* Edit_goal.html */
 /* Align Bootstrap switch to start of column */
 div.custom-control-right {
   text-align: start;
 }
 }
 
-/* profile.html template */
+/* profile.html */
 /* Show modal center page */
 @media (min-width: 992px) {
   .row-cols-lg-2>* {
     max-width: 100%;
   }
 
-/* index.html template */
+/* index.html */
 /* Align Goal Getter strapline */
   .two-line {
     display: none;
   }
 
-/* index.html template */
+/* index.html */
 /* Align jumbotron image */
 .jumbotron-home {
   background-image: url("../images/mountains-success.png");
@@ -194,7 +191,7 @@ div.custom-control-right {
   padding: 4rem 2rem;
 }
 }
-/* index.html template */
+/* index.html */
 /* Align jumbotron */
 @media (max-width: 992px) {
   .display-4 {
@@ -226,7 +223,7 @@ div.custom-control-right {
 }
 }
 
-/* get_goals.html template */
+/* goals.html */
 /* Add margin-top to Edit button */
 @media (max-width: 427px) {
   #btn-edit {
@@ -234,7 +231,7 @@ div.custom-control-right {
   }
 }
 
-/* get_goals.html template */
+/* goals.html */
 /* Add margin-top to Edit button */
 @media (max-width: 370px) {
   #btn-done {

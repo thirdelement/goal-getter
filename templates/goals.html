@@ -7,7 +7,6 @@
 {% block header %}
 <h4>Shared Goals In Progress</h4>
 {% endblock %}
-
 {% block content %}
 <div>
   <form method="POST" action="{{ url_for('search') }}">
@@ -29,7 +28,6 @@
     </div>
   </form>
 </div>
-
 <!-- Card for shared goals in progress-->
 <div class="row row-cols-1 row-cols-md-1 row-cols-lg-2">
   {% for goal in goals %}
@@ -113,7 +111,6 @@
       </div>
     </div>
   </div>
-
   <!-- Modal -->
   <div class="modal fade" id="deleteModal_{{ goal._id }}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -134,7 +131,6 @@
       </div>
     </div>
   </div>
-
   {% endif %}
   {% endfor %}
 </div>
