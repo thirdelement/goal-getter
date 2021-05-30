@@ -82,6 +82,8 @@
           </select>
         </div>
       </div>
+      <!-- Cancel button -->
+      <a href="{{ url_for('profile', username=session['user']) }}" role="button" class="btn btn-danger">Cancel</a>
       <!-- Next button -->
       <button type="button" id="button-reality" class="button-reality btn btn-primary">Next</button>
     </div>
@@ -128,6 +130,8 @@
             maxlength="100" required></textarea>
         </div>
       </div>
+      <!-- Cancel button -->
+      <a href="{{ url_for('profile', username=session['user']) }}" role="button" class="btn btn-danger acc-header">Cancel</a>
       <!-- Back button -->
       <button type="button" class="button-goal btn btn-secondary">Back</button>
       <!-- Next button -->
@@ -190,6 +194,8 @@
           </div>
         </div>
       </div>
+      <!-- Cancel button -->
+      <a href="{{ url_for('profile', username=session['user']) }}" role="button" class="btn btn-danger">Cancel</a>
       <!-- Back button -->
       <button type="button" class="button-reality btn btn-secondary">Back</button>
       <!-- Submit button -->

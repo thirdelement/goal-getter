@@ -89,6 +89,8 @@
           </select>
         </div>
       </div>
+      <!-- Cancel button -->
+      <a href="{{ url_for('profile', username=session['user']) }}" role="button" class="btn btn-danger">Cancel</a>
       <!-- Next button -->
       <button type="button" class="button-reality btn btn-primary">Next</button>
     </div>
@@ -138,6 +140,8 @@
             required>{{ goal.believe_description }}</textarea>
         </div>
       </div>
+      <!-- Cancel button -->
+      <a href="{{ url_for('profile', username=session['user']) }}" role="button" class="btn btn-danger">Cancel</a>
       <!-- Back button -->
       <button type="button" class="button-goal btn btn-secondary">Back</button>
       <!-- Next button -->
@@ -195,6 +199,8 @@
             name="goal.course_of_action" minlength="2" maxlength="70" required>
         </div>
       </div>
+      <!-- Cancel button -->
+      <a href="{{ url_for('profile', username=session['user']) }}" role="button" class="btn btn-danger">Cancel</a>
       <!-- Back button -->
       <button type="button" class="button-reality btn btn-secondary">Back</button>
       <!-- Next button -->
@@ -296,7 +302,7 @@
       </div>
       <nav>
         <!-- Cancel button -->
-        <a href="{{ url_for('get_goals') }}" role="button" class="btn btn-danger acc-header">Cancel</a>
+        <a href="{{ url_for('profile', username=session['user']) }}" role="button" class="btn btn-danger">Cancel</a>
         <!-- Back button -->
         <button type="button" class="button-options btn btn-secondary">Back</button>
         <!-- Submit button -->
