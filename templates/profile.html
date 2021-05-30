@@ -160,7 +160,7 @@
           Delete
         </button>
         <!-- Move to In Progress button -->
-        <a href="{{ url_for('moveto_inprogress', goal_id=goal._id) }}" role="button" class="btn btn-secondary">In
+        <a href="{{ url_for('moveto_inprogress', goal_id=goal._id) }}" role="button" id="btn-inprogress" class="btn btn-secondary">In
           Progress</a>
         <!-- Collapsible card content -->
         <div class="collapse" id="collapse_{{ goal._id }}">

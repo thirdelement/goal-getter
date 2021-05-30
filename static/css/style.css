@@ -230,7 +230,13 @@ div.custom-control-right {
     margin-top: 5px;
   }
 }
-
+/* profile.html */
+/* Add margin-top to Edit button */
+@media (max-width: 411px) {
+  #btn-inprogress {
+    margin-top: 5px;
+  }
+}
 /* goals.html */
 /* Add margin-top to Edit button */
 @media (max-width: 370px) {
