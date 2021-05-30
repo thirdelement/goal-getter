@@ -222,16 +222,8 @@ div.custom-control-right {
   display: none;
 }
 }
-
-/* goals.html */
-/* Add margin-top to Edit button */
-@media (max-width: 427px) {
-  #btn-edit {
-    margin-top: 5px;
-  }
-}
 /* profile.html */
-/* Add margin-top to Edit button */
+/* Add margin-top to In Progress button */
 @media (max-width: 411px) {
   #btn-inprogress {
     margin-top: 5px;
@@ -239,8 +231,22 @@ div.custom-control-right {
 }
 /* goals.html */
 /* Add margin-top to Edit button */
+@media (max-width: 388px) {
+  #btn-edit {
+    margin-top: 5px;
+  }
+}
+/* goals.html */
+/* Add margin-top to Done button */
 @media (max-width: 370px) {
   #btn-done {
+    margin-top: 5px;
+  }
+}
+/* profile.html */
+/* Add margin-top to Delete button */
+@media (max-width: 300px) {
+  #btn-delete {
     margin-top: 5px;
   }
 }
