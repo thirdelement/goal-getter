@@ -224,21 +224,21 @@ div.custom-control-right {
 }
 /* profile.html */
 /* Add margin-top to In Progress button */
-@media (max-width: 411px) {
+@media (max-width: 420px) {
   #btn-inprogress {
     margin-top: 5px;
   }
 }
 /* goals.html */
 /* Add margin-top to Edit button */
-@media (max-width: 388px) {
+@media (max-width: 395px) {
   #btn-edit {
     margin-top: 5px;
   }
 }
 /* goals.html */
 /* Add margin-top to Done button */
-@media (max-width: 370px) {
+@media (max-width: 374px) {
   #btn-done {
     margin-top: 5px;
   }
