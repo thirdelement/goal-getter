@@ -1,5 +1,6 @@
 <h1 align="center">Goal Getter self-coaching website</h1>
 <span id="contents"></span>
+
 ## Contents
 
 1. [ User Experience (UX) ](http://github.com/thirdelement/goal-getter#ux)
@@ -19,20 +20,20 @@ This is a website for the Goal Getter self-coaching web application.  The aim is
 ## User Experience (UX)
 ### User stories
 #### First Time Visitor Goals
-        1. Understand the site and how it can help me.
-        2. Use the site to find out how to achieve my goals.
-        3. Use the site to save money instead of paying a life coach.
-        4. Find out how others are using the site.
-        5. Register easily.
+1. Understand the site and how it can help me.
+2. Use the site to find out how to achieve my goals.
+3. Use the site to save money instead of paying a life coach.
+4. Find out how others are using the site.
+5. Register easily.
 #### Returning Visitor Goals
-        1. Log in and out easily.
-        2. Create and add goals easily.
-        3. View and update my goals in one place.
-        4. Share my goals with others.
-        5. Use Goal Getter to improve my life.
+1. Log in and out easily.
+2. Create and add goals easily.
+3. View and update my goals in one place.
+4. Share my goals with others.
+5. Use Goal Getter to improve my life.
 #### Site Owner
-        1. Edit or remove content shared by others.
-        2. Add, edit or remove categories.
+1. Edit or remove content shared by others.
+2. Add, edit or remove categories.
 
 ### Design 
 The Heroic-features template from startbootstrap.com was used for the home page and continued throughout the site.  This included a Jumbotron for a hero image and four thumbnail style feature boxes along the bottom.  The feature boxes were kept for the home page and reduced to one for the rest of the site.  This one thumbnail was used as a container for the Add goal form and other content depending on the page.
@@ -41,13 +42,13 @@ The Home page features a Welcome message with a strap line to ‘Achieve your dr
 <h2 align="left"><img src="static/images/readme-images/homepage.png"></h2>
 The Add and Edit Goal forms are created with Bootstrap Tabs.  This enabled the form to be displayed on one HTML page but retain separate sections for each GROW area.  
 <h2 align="left"><img src="static/images/readme-images/add-goal.png"></h2>
-The goals on the Shared goals and Profile pages are displayed using a Bootstrap card with a collapsible button which shows the completed Tabs form.  The use of collapsible and Tabs functionality enables details to be easily accessible with efficient use of space.
+On the Shared Goals and Profile pages, goals are displayed using a Bootstrap card with a collapsible button which shows the completed Tabs form.  The use of collapsible and Tabs functionality enables details to be easily accessible with efficient use of space.
 <h2 align="left"><img src="static/images/readme-images/goal-content.png"></h2>
 
 ### Colour Scheme
 The Heroic-features colour scheme was not altered.  This provided a dark menu bar and footer which was distinct to the grey header and footer for the feature boxes.  The main colour interest for each page is from the Jumbotron image.  Bold, bright imagery was preferred in order to inject some energy and excitement into the goal setting process. 
 ### Typography
-The Heroic-features colour scheme was not altered.  This provided a dark menu bar and footer which was distinct to the grey header and footer for the feature boxes.  The main colour interest for each page is from the Jumbotron image.  Bold, bright imagery was preferred in order to inject some energy and excitement into the goal setting process. 
+It did not seem necessary to change the default Bootstrap fonts as these were clear and easy to read.  There was no other specific stylistic requirement to fulfil other than this. 
 ### Buttons
 The default Bootstrap button colours were used.  It was considered that the default colours again provided the clarity and consistency needed.  This usage corresponded with Bootstrap recommendations as follows:
 - Btn-info – More Info
@@ -63,7 +64,6 @@ Vector graphics have been selected throughout in an effort to appeal to the user
 
 The images have been picked to portray inspirational activities such as climbing towards a goal and reaching a mountain peak.  There are also motivational images featuring objects such as a rocket taking off and dart stuck in the bull’s eye of a dart board.  When people have been shown there has been an effort to show ethnic and gender diversity.
            
-[ Contents ](http://github.com/thirdelement/goal-getter#contents)
 ### Wireframes 
 The wireframes for Desktop, Tablet and Mobile versions are [here.](https://github.com/thirdelement/goal-getter/blob/master/GoalGetter_wireframes.pdf)
 
@@ -83,11 +83,14 @@ On submission the user is directed from the Add Goal page to the Edit Goal page 
 Therefore, there are two submissions to the database for each goal.  The original website design included a separate web page for each GROW section with four submissions per goal.  This design leverages an improved result with less database communication and fewer resources.
 
 The database schema is [here.](https://github.com/thirdelement/goal-getter/blob/master/GoalGetter_Database-schema.pdf)
+### Site map
+The public website includes Home, About, Shared Goals, Log In and Register pages.  Once logged in, the standard user has additional pages for Profile, Add Goal, Edit Goal pages.  The Admin user has access to Categories, Add and Edit Categories.
+
+The site map is [here.](https://github.com/thirdelement/goal-getter/blob/master/GoalGetter_sitemap.pdf)
 <div align="right"><a style="text-align:right" href="#contents">Go to index :arrow_double_up:</a></div>
 
 ## Features
 Broad use of Bootstrap toolkit including:
-
   - [Grid](https://getbootstrap.com/docs/4.6/layout/grid/)
   - [Nav bar](https://getbootstrap.com/docs/4.6/components/navbar/)
   - [Modal](https://getbootstrap.com/docs/4.6/components/modal/)
@@ -98,32 +101,32 @@ Broad use of Bootstrap toolkit including:
   - [Alert](https://getbootstrap.com/docs/4.6/components/alerts/)
   - [Buttons](https://getbootstrap.com/docs/4.6/components/buttons/)
 
--   Responsive on all device sizes tested.
-    - The use of the Bootstrap grid system and additional media queries enables the site to display effectively on a broad range of desktop, tablet and mobile screen sizes.  For example:
-    - iPhone X
+Responsive on all device sizes tested.
+  - The use of the Bootstrap grid system and additional media queries enables the site to display effectively on a broad range of desktop, tablet and mobile screen sizes.  For example:
+  - iPhone X
     <h2 align="left"><img src="static/images/readme-images/iphonex.png"></h2>
-    - iPad 768px
+  - iPad 768px
     <h2 align="left"><img src="static/images/readme-images/ipad.png"></h2>
--   Secure registration and login 
+  - Secure registration and login 
     - Werkzeug security has been used to encrypt passwords.
--   CRUD
+  - CRUD
     - Users have ability to create, update and delete their goals as well as read/view their own and shared goals.
     - Admin has the same permissions as users with additional CRUD rights for categories and shared goals.
--   Sharing
+  - Sharing
     - Users have ability to share and un-share goals.
--   User confirmation messages for all CRUD functions to ensure feedback at all time.
--   Defensive programming
+  - User confirmation messages for all CRUD functions to ensure feedback at all time.
+  - Defensive programming
     - Confirm Deletion
     - HTML validity reporting.
     - Comprehensive user error reporting.
     - Way Forward tab in Add Goals form can be reached via submit button only.  This ensures options are saved to database prior to presentation in drop-down list. 
--   Search
+  - Search
     - Full search capability on the Shared Goals page for goal name and chosen course of action fields.
--   404 error handling
+  - 404 error handling
     - User kept within the site with several return links available.
--   Datepicker
+  - Datepicker
     - jQuery Datepicker used with Add Goal form.
--   Fully editable Add Goal form. 
+  - Fully editable Add Goal form. 
 ### Future development
 -   Admin feature to view and edit other user non-shared goals.
 -   Account recovery and password reset using email.
@@ -147,7 +150,7 @@ Broad use of Bootstrap toolkit including:
 
 ### Frameworks
 
-1. [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/))
+1. [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
     - Bootstrap layout, content, components and utilities were used to structure the site and make it responsive.
 1. [Flask](https://flask.palletsprojects.com/en/2.0.x/)
     - Flask was used to create the application and routes.
@@ -157,11 +160,11 @@ Broad use of Bootstrap toolkit including:
     - Werkzeug was used for password encryption.
 1. [jQuery](https://jquery.com/)
     - jQuery has been used for the DatePicker, Bootstrap Tabs buttons and to check validity. 
-1. [Font Awesome](https://fontawesome.com/))
+1. [Font Awesome](https://fontawesome.com/)
     - Font Awesome was used for the search icon.
 
 ### Templates
-1. [Jinja](https://palletsprojects.com/p/jinja/))
+1. [Jinja](https://palletsprojects.com/p/jinja/)
     - Jinja was used for its templating engine.
 1. [Start Bootstrap](https://startbootstrap.com/template/heroic-features)
     - Start Bootstrap Heroic-Features template was used as a basis for the site structure.
@@ -198,7 +201,6 @@ See Test report [here.](https://github.com/thirdelement/goal-getter/blob/master/
 ## Deployment
 
 ### MongoDB - create database
-
 1.	Login to MongoDB.
 2.	In Collections, click Create Database with initial collection name.
 <h2 align="left"><img src="static/images/readme-images/mgo-createdb.png"></h2>
@@ -208,11 +210,11 @@ See Test report [here.](https://github.com/thirdelement/goal-getter/blob/master/
 
 4.	Create a document in each collection for initial setup purposes: 
     Categories
-    <h2 align="left"><img src="static/images/readme-images/mgo-insert-to-collection.png"></h2>
+<h2 align="left"><img src="static/images/readme-images/mgo-insert-to-collection.png"></h2>
     Goals
-    <h2 align="left"><img src="static/images/readme-images/mgo-goals.png"></h2>
+<h2 align="left"><img src="static/images/readme-images/mgo-goals.png"></h2>
     Users
-    <h2 align="left"><img src="static/images/readme-images/mgo-users.png"></h2>
+<h2 align="left"><img src="static/images/readme-images/mgo-users.png"></h2>
     
 ### GitHub/Gitpod - create app
 1.	Create a GitHub repository and open via Gitpod.
@@ -221,24 +223,26 @@ See Test report [here.](https://github.com/thirdelement/goal-getter/blob/master/
     `touch app.py`
     `touch env.py`
     `touch .gitignore`
-    <h2 align="left"><img src="static/images/readme-images/touch-app_py.png"></h2>
-3.	Ensure env.py and __pycache__/ are included in .gitignore
-    <img src="static/images/readme-images/touch-gitignore.png">
+    <div align="left"><img src="static/images/readme-images/touch-app_py.png"></div>
+3.	Ensure env.py and __pycache__ are included in .gitignore
+<div align="left"><img src="static/images/readme-images/touch-gitignore.png"></div>
+
 4.	Add the following to env.py:
-    <img src="static/images/readme-images/env-py.png">
+<div align="left"><img src="static/images/readme-images/env-py.png"></div>
+
 5.	Create a requirements.txt file for Heroku to know what apps and dependencies are required.
-    <img src="static/images/readme-images/pip3-requirements1.png">
+    <div align="left"><img src="static/images/readme-images/pip3-requirements1.png"></div>
 6.	Create Procfile so Heroku knows which file runs the app and how to run it.
-    <img src="static/images/readme-images/pip3-procfile.png">
+    <div align="left"><img src="static/images/readme-images/pip3-procfile.png"></div>
 ### Heroku - create app
 1.	Log in to Heroku and click New, Create new app (also required to add name and region).
 2.	In the Deploy menu, Deployment method select GitHub.
-    <img src="static/images/readme-images/deployment-method.png">
+    <div align="left"><img src="static/images/readme-images/deployment-method.png"></div>
 3.	Check GitHub profile is displayed then add repository name and click Connect.
-    <img src="static/images/readme-images/github-connect.png">
+    <div align="left"><img src="static/images/readme-images/github-connect.png"></div>
     Do not enable Automatic Deploys at this time.  Since we have the env variables within the hidden env.py file, Heroku will not be able to read them.
 4.	Click Settings, Reveal Config Vars and add details from env.py:
-    <img src="static/images/readme-images/config-vars.png">
+    <div align="left"><img src="static/images/readme-images/config-vars.png"></div>
 5.	In Gitpod ensure that you commit and push requirements.txt and Procfile.
 6.	Enable Automatic Deploys.
     <img src="static/images/readme-images/auto-deploys.png">
@@ -283,6 +287,7 @@ See Test report [here.](https://github.com/thirdelement/goal-getter/blob/master/
 4.	Opt Git Bash
 5.	Change the current working directory to the location where you want the cloned directory to be made.
 6.	Type git clone, and then paste the URL you copied in step 3. 
+
 `$ git clone https://github.com/thirdelement/goal-getter`
 7.	Click Enter.  Your local clone will be created.
 
@@ -294,12 +299,12 @@ Please see [this link](https://docs.github.com/en/github/creating-cloning-and-ar
 - Bootstrap 4.6 was used throughout the site so that it is responsive to different devices and viewport sizes..
 - Code was used from external sources in the following instances:
   - [Show HTML validity messages.](https://stackoverflow.com/questions/32829776/setting-custom-html5-validity-message-property-ignores-pattern-regex)
-  - [Display message if Add Goal form does not meet validity requirements.] 
+  - [Display message if Add Goal form does not meet validity requirements.](https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752)
   - [Bootstrap Tab buttons.](https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752) 
   - [jQuery Datepicker.](https://getbootstrap.com/docs/4.6/components/navs/#javascript-behavior)
   - [Several submit buttons on the same form.](https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form)
   - [Error 404 handling.](https://www.geeksforgeeks.org/python-404-error-handling-in-flask/)
-  - [Use background image and background color together.]
+  - [Use background image and background color together.](https://stackoverflow.com/questions/903659/why-cant-i-use-background-image-and-color-together)
   - [Correct regex usage.](https://stackoverflow.com/questions/903659/why-cant-i-use-background-image-and-color-together)
   - [Regex pattern.](https://regexr.com/)
 ### Content
