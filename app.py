@@ -100,17 +100,25 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-        # Grab the session user's username from the database
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    goals = list(mongo.db.goals.find(
-        {"created_by": session["user"]}).sort("_id", -1))
+    # Check if user logged in
+    if "user" not in session:
+        flash(u"You need to Log In to access that area!", 'error')
 
-    if session["user"]:
-        # If session cookie is truthy then render the page
-        return render_template("profile.html", username=username, goals=goals)
-        # If session cookie is not truthy (e.g. has been deleted)
-    return redirect(url_for("login"))
+        return redirect(url_for("login"))
+    
+    elif request.method != "POST":
+        # Grab the session user's username from the database
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        goals = list(mongo.db.goals.find(
+            {"created_by": session["user"]}).sort("_id", -1))
+
+        if session["user"]:
+            # If session cookie is truthy then render the page
+            return render_template(
+                "profile.html", username=username, goals=goals)
+            # If session cookie is not truthy (e.g. has been deleted)
+        return redirect(url_for("login"))
 
 
 @app.route("/logout")
@@ -123,39 +131,46 @@ def logout():
 
 @app.route("/add_goal", methods=["GET", "POST"])
 def add_goal():
-    is_complete = "checked" if request.form.get(
-            "is_complete") else "unchecked"
-    share = "unchecked" if request.form.get("share") else "checked"
-    meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
-    goal = {
-            "goal_name": request.form.get("goal_name"),
-            "target_date": request.form.get("target_date"), 
-            "category_name": request.form.get("category_name"),
-            "succeed_description": request.form.get("succeed_description"),
-            "effort": request.form.get("effort"), 
-            "previous_action": request.form.get("previous_action"),
-            "confidence_level": request.form.get("confidence_level"),
-            "holding_back_description": request.form.get(
-                "holding_back_description"),
-            "believe_description": request.form.get("believe_description"),
-            "course_of_action": request.form.getlist("course_of_action"),
-            "chosen_coa": request.form.get("course_of_action"),
-            "target_date2": request.form.get("target_date2"),
-            "meet_goal": meet_goal, 
-            "obstacles": request.form.get("obstacles"),
-            "what_support": request.form.get("what_support"),
-            "how_support": request.form.get("how_support"),
-            "likelihood": request.form.get("likelihood"),
-            "share": share, 
-            "is_complete": is_complete,
-            "created_by": session["user"]
-        }
+    # Check if user logged in
+    if "user" not in session:
+        flash(u"You need to Log In to access that area!", 'error')
 
-    if request.method == "POST":
-        mongo.db.goals.insert_one(goal)
-        flash("Goal, Reality and Options added")
-        return redirect(url_for('edit_goal', goal_id=goal[
-                    "_id"]))  
+        return redirect(url_for("login"))
+    # Submit Add Goal form
+    elif request.method != "POST":
+        is_complete = "checked" if request.form.get(
+                "is_complete") else "unchecked"
+        share = "unchecked" if request.form.get("share") else "checked"
+        meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
+        goal = {
+                "goal_name": request.form.get("goal_name"),
+                "target_date": request.form.get("target_date"), 
+                "category_name": request.form.get("category_name"),
+                "succeed_description": request.form.get("succeed_description"),
+                "effort": request.form.get("effort"), 
+                "previous_action": request.form.get("previous_action"),
+                "confidence_level": request.form.get("confidence_level"),
+                "holding_back_description": request.form.get(
+                    "holding_back_description"),
+                "believe_description": request.form.get("believe_description"),
+                "course_of_action": request.form.getlist("course_of_action"),
+                "chosen_coa": request.form.get("course_of_action"),
+                "target_date2": request.form.get("target_date2"),
+                "meet_goal": meet_goal, 
+                "obstacles": request.form.get("obstacles"),
+                "what_support": request.form.get("what_support"),
+                "how_support": request.form.get("how_support"),
+                "likelihood": request.form.get("likelihood"),
+                "share": share, 
+                "is_complete": is_complete,
+                "created_by": session["user"]
+            }
+
+        if request.method == "POST":
+            mongo.db.goals.insert_one(goal)
+            flash("Goal, Reality and Options added")
+            return redirect(url_for('edit_goal', goal_id=goal[
+                        "_id"]))  
 
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_goal.html", goal=goal, categories=categories)
@@ -163,56 +178,64 @@ def add_goal():
 
 @app.route("/edit_goal/<goal_id>", methods=["GET", "POST"])
 def edit_goal(goal_id):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    is_complete = "checked" if request.form.get(
-            "is_complete") else "unchecked"
-    share = "checked" if request.form.get("share") else "unchecked"
-    meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
-    goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+    # Check if user logged in
+    if "user" not in session:
+        flash(u"You need to Log In to access that area!", 'error')
 
-    if request.method == "POST":
-        submit = {"$set": {
-            "goal_name": request.form.get("goal_name"),
-            "target_date": request.form.get("target_date"), 
-            "category_name": request.form.get("category_name"),
-            "succeed_description": request.form.get("succeed_description"),
-            "effort": request.form.get("effort"), 
-            "previous_action": request.form.get("previous_action"),
-            "confidence_level": request.form.get("confidence_level"),
-            "holding_back_description": request.form.get(
-                "holding_back_description"),
-            "believe_description": request.form.get("believe_description"),
-            "course_of_action": request.form.getlist("goal.course_of_action"),
-            "chosen_coa": request.form.get("course_of_action"),
-            "target_date2": request.form.get("target_date2"),
-            "meet_goal": meet_goal, 
-            "obstacles": request.form.get("obstacles"),
-            "what_support": request.form.get("what_support"),
-            "how_support": request.form.get("how_support"),
-            "likelihood": request.form.get("likelihood"),
-            "share": share, 
-            "is_complete": is_complete,
-            "created_by": session["user"]
-        }}
-        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-        # If the meet_goal switch is unchecked 
-        if meet_goal == "unchecked":
-            flash(u"You need to select Meets goal", 'error')
-            return redirect(url_for(
-                "edit_goal", goal_id=goal[
-                    "_id"], _external=True, _scheme="https"))
-        # If the submit button on the Options tab is clicked
-        # Credit: https://stackoverflow.com/questions/43811779/use-many-submit
-        # -buttons-in-the-same-form
-        elif 'submit-options' in request.form:
-            return redirect(url_for(
-                "edit_goal", goal_id=goal[
-                    "_id"]))
-        else:
-            flash("Goal successfully updated")
-            return redirect(url_for(
-                "profile", username=username))
+        return redirect(url_for("login"))
+    # Update Edit Goal form
+    elif request.method != "POST":
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        is_complete = "checked" if request.form.get(
+                "is_complete") else "unchecked"
+        share = "checked" if request.form.get("share") else "unchecked"
+        meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
+        goal = mongo.db.goals.find_one({"_id": ObjectId(goal_id)})
+
+        if request.method == "POST":
+            submit = {"$set": {
+                "goal_name": request.form.get("goal_name"),
+                "target_date": request.form.get("target_date"), 
+                "category_name": request.form.get("category_name"),
+                "succeed_description": request.form.get("succeed_description"),
+                "effort": request.form.get("effort"), 
+                "previous_action": request.form.get("previous_action"),
+                "confidence_level": request.form.get("confidence_level"),
+                "holding_back_description": request.form.get(
+                    "holding_back_description"),
+                "believe_description": request.form.get("believe_description"),
+                "course_of_action": request.form.getlist(
+                    "goal.course_of_action"),
+                "chosen_coa": request.form.get("course_of_action"),
+                "target_date2": request.form.get("target_date2"),
+                "meet_goal": meet_goal, 
+                "obstacles": request.form.get("obstacles"),
+                "what_support": request.form.get("what_support"),
+                "how_support": request.form.get("how_support"),
+                "likelihood": request.form.get("likelihood"),
+                "share": share, 
+                "is_complete": is_complete,
+                "created_by": session["user"]
+            }}
+            mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
+            # If the meet_goal switch is unchecked 
+            if meet_goal == "unchecked":
+                flash(u"You need to select Meets goal", 'error')
+                return redirect(url_for(
+                    "edit_goal", goal_id=goal[
+                        "_id"], _external=True, _scheme="https"))
+            # If the submit button on the Options tab is clicked
+            # Credit: https://stackoverflow.com/questions/43811779/
+            # use-many-submit-buttons-in-the-same-form
+            elif 'submit-options' in request.form:
+                return redirect(url_for(
+                    "edit_goal", goal_id=goal[
+                        "_id"]))
+            else:
+                flash("Goal successfully updated")
+                return redirect(url_for(
+                    "profile", username=username))
         
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_goal.html", goal=goal, categories=categories) 
@@ -220,62 +243,84 @@ def edit_goal(goal_id):
 
 @app.route("/delete_goal/<goal_id>")
 def delete_goal(goal_id):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    mongo.db.goals.remove({"_id": ObjectId(goal_id)})
-    flash("Goal successfully deleted")
-    return redirect(url_for(
-                "profile", username=username))
+    # Check if user logged in
+    if "user" not in session:
+        flash(u"You need to Log In to access that area!", 'error')
+
+        return redirect(url_for("login"))
+    # Delete goal
+    elif request.method != "POST":
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        mongo.db.goals.remove({"_id": ObjectId(goal_id)})
+        flash("Goal successfully deleted")
+        return redirect(url_for(
+                    "profile", username=username))
 
 
 @app.route("/complete_goal/<goal_id>")
 def complete_goal(goal_id):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    is_complete = "unchecked" if request.form.get(
-            "is_complete") else "checked"
-    submit = {"$set": {
-            "is_complete": is_complete}}
-    mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-    print(request.endpoint)
-    flash(u"Congratulations! Goal successfully completed.", "success")
-    return redirect(url_for('profile', username=username))
+    # Check if user logged in
+    if "user" not in session:
+        flash(u"You need to Log In to access that area!", 'error')
 
-
-@app.route("/complete_sharedgoal/<goal_id>")
-def complete_sharedgoal(goal_id):
-    is_complete = "unchecked" if request.form.get(
-            "is_complete") else "checked"
-    submit = {"$set": {
-            "is_complete": is_complete}}
-    mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-    print(request.endpoint)
-    flash(u"Congratulations! Goal successfully completed.", "success")
-    return redirect(url_for("get_goals"))
+        return redirect(url_for("login"))
+    # Complete goal
+    elif request.method != "POST":
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        is_complete = "unchecked" if request.form.get(
+                "is_complete") else "checked"
+        submit = {"$set": {
+                "is_complete": is_complete}}
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
+        print(request.endpoint)
+        flash(u"Congratulations! Goal successfully completed.", "success")
+        return redirect(url_for('profile', username=username))
 
 
 @app.route("/moveto_inprogress/<goal_id>")
 def moveto_inprogress(goal_id):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    is_complete = "checked" if request.form.get(
-            "is_complete") else "unchecked"
-    submit = {"$set": {
-            "is_complete": is_complete}}
-    mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
-    flash("Goal moved to In Progress.")
-    return redirect(url_for('profile', username=username)) 
+    # Check if user logged in
+    if "user" not in session:
+        flash(u"You need to Log In to access that area!", 'error')
+
+        return redirect(url_for("login"))
+    # Move goal to In Progress
+    elif request.method != "POST":
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        is_complete = "checked" if request.form.get(
+                "is_complete") else "unchecked"
+        submit = {"$set": {
+                "is_complete": is_complete}}
+        mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
+        flash("Goal moved to In Progress.")
+        return redirect(url_for('profile', username=username)) 
 
 
 @app.route("/get_categories")
 def get_categories():
-    categories = list(mongo.db.categories.find().sort("category_name", 1))
-    return render_template("categories.html", categories=categories)
+    # Check if user logged in
+    if "user" not in session:
+        flash(u"You need to Log In to access that area!", 'error')
+
+        return redirect(url_for("login"))
+    # Show categories
+    else:
+        categories = list(mongo.db.categories.find().sort("category_name", 1))
+        return render_template("categories.html", categories=categories)
 
 
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
-    if request.method == "POST":
+    # Check if user logged in
+    if "user" not in session:
+        flash(u"You need to Log In to access that area!", 'error')
+
+        return redirect(url_for("login"))
+    # Add category
+    elif request.method == "POST":
         category = {
             "category_name": request.form.get("category_name")
         }
@@ -288,7 +333,13 @@ def add_category():
 
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
-    if request.method == "POST":
+    # Check if user logged in
+    if "user" not in session:
+        flash(u"You need to Log In to access that area!", 'error')
+
+        return redirect(url_for("login"))
+    # Edit category
+    elif request.method == "POST":
         submit = {
             "category_name": request.form.get("category_name")
         }
@@ -302,9 +353,16 @@ def edit_category(category_id):
 
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
-    mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Category successfully deleted")
-    return redirect(url_for("get_categories"))
+    # Check if user logged in
+    if "user" not in session:
+        flash(u"You need to Log In to access that area!", 'error')
+
+        return redirect(url_for("login"))
+    # Delete category
+    else:
+        mongo.db.categories.remove({"_id": ObjectId(category_id)})
+        flash("Category successfully deleted")
+        return redirect(url_for("get_categories"))
 
 
 @app.errorhandler(404)
