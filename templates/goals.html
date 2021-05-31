@@ -39,15 +39,14 @@
         <p class="card-text">Target date: <span class="text-info">{{ goal.target_date }}
           </span> <span>By: <span class="text-info">{{ goal.created_by }}</span></span></p>
         <!-- More Info button -->
-        <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapse_{{ goal._id }}"
-          aria-expanded="false" aria-controls="collapseExample">
+        <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapse_{{ goal._id }}">
           More info
         </button>
         <!-- Delete, Done and Edit buttons only available if session user is creator or admin -->
         {% if (session.user|lower == goal.created_by|lower) or (session.user|lower == "admin"|lower)  %}
         <!-- Delete button and trigger modal -->
-        <button type="button" id="btn-delete" class="btn btn-warning" data-toggle="modal" data-target="#deleteModal_{{ goal._id }}"
-          onclick=>
+        <button type="button" id="btn-delete" class="btn btn-warning" data-toggle="modal"
+          data-target="#deleteModal_{{ goal._id }}" onclick=>
           Delete
         </button>
         <!-- Done button -->
@@ -61,42 +60,34 @@
         <div class="collapse" id="collapse_{{ goal._id }}">
           <div class="mt-3 card card-body">
             <nav>
-              <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-link active" id="nav-goal-tab" data-toggle="tab" href="#nav-goal_{{ goal._id }}"
-                  role="tab" aria-controls="nav-goal" aria-selected="true">Goal</a>
-                <a class="nav-link" id="nav-reality-tab" data-toggle="tab" href="#nav-reality_{{ goal._id }}" role="tab"
-                  aria-controls="nav-reality" aria-selected="false">Reality</a>
-                <a class="nav-link" id="nav-options-tab" data-toggle="tab" href="#nav-options_{{ goal._id }}" role="tab"
-                  aria-controls="nav-options" aria-selected="false">Options</a>
-                <a class="nav-link" id="nav-wayforward-tab" data-toggle="tab" href="#nav-wayforward_{{ goal._id }}"
-                  role="tab" aria-controls="nav-wayforward" aria-selected="false">Way Forward</a>
+              <div class="nav nav-tabs" role="tablist">
+                <a class="nav-link active" data-toggle="tab" href="#nav-goal_{{ goal._id }}" role="tab">Goal</a>
+                <a class="nav-link" data-toggle="tab" href="#nav-reality_{{ goal._id }}" role="tab">Reality</a>
+                <a class="nav-link" data-toggle="tab" href="#nav-options_{{ goal._id }}" role="tab">Options</a>
+                <a class="nav-link" data-toggle="tab" href="#nav-wayforward_{{ goal._id }}" role="tab">Way Forward</a>
               </div>
             </nav>
-            <div class="tab-content mt-5 text-left" id="nav-tabContent">
-              <div class="tab-pane fade show active" id="nav-goal_{{ goal._id }}" role="tabpanel"
-                aria-labelledby="nav-goal-tab">
+            <div class="tab-content mt-5 text-left">
+              <div class="tab-pane fade show active" id="nav-goal_{{ goal._id }}" role="tabpanel">
                 <p>Description:<span class="text-info"> {{ goal.succeed_description }}</span></p>
                 <p>Effort:<span class="text-info"> {{ goal.effort }}</span></p>
               </div>
-              <div class="tab-pane fade" id="nav-reality_{{ goal._id }}" role="tabpanel"
-                aria-labelledby="nav-reality-tab">
+              <div class="tab-pane fade" id="nav-reality_{{ goal._id }}" role="tabpanel">
                 <p>Actions completed already:<span class="text-info"> {{ goal.previous_action }}</span></p>
                 <p>Confidence Level:<span class="text-info"> {{ goal.confidence_level }}</span></p>
                 <p>What's holding me back:<span class="text-info"> {{ goal.holding_back_description }}</span></p>
                 <p>What will make me believe:<span class="text-info"> {{ goal.believe_description }}</span></p>
               </div>
-              <div class="tab-pane fade" id="nav-options_{{ goal._id }}" role="tabpanel"
-                aria-labelledby="nav-options-tab">
-                <p>Possible courses of action:
+              <div class="tab-pane fade" id="nav-options_{{ goal._id }}" role="tabpanel">
+                <div>Possible courses of action:
                   <ol>
                     {% for course_of_action in goal.course_of_action %}
                     <li>{{ course_of_action }}</li>
                     {% endfor %}
                   </ol>
-                </p>
+                </div>
               </div>
-              <div class="tab-pane fade" id="nav-wayforward_{{ goal._id }}" role="tabpanel"
-                aria-labelledby="nav-wayforward-tab">
+              <div class="tab-pane fade" id="nav-wayforward_{{ goal._id }}" role="tabpanel">
                 <p>Chosen course of action:<span class="text-info"> {{ goal.chosen_coa }}</span></p>
                 <p>Start date:<span class="text-info"> {{ goal.target_date2 }}</span></p>
                 <p>Will the action meet your goal:<span class="text-info"> {{ goal.meet_goal }}</span></p>
@@ -112,13 +103,13 @@
     </div>
   </div>
   <!-- Modal -->
-  <div class="modal fade" id="deleteModal_{{ goal._id }}" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal fade" id="deleteModal_{{ goal._id }}" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="">Confirm Deletion</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <h5 class="modal-title">Confirm Deletion</h5>
+          <button type="button" class="close" data-dismiss="modal">
+            <span>&times;</span>
           </button>
         </div>
         <div class="modal-body">
@@ -135,5 +126,3 @@
   {% endfor %}
 </div>
 {% endblock %}
-
-<
