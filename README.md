@@ -3,12 +3,12 @@
 
 ## Contents
 
-1. <a href="#ux">User Experience (UX)</a>
-2. <a href="#feat">Features</a>
-3. <a href="#tech">Technologies Used</a>
-4. <a href="#test">Testing</a>
-5. <a href="#deploy">Deployment</a>
-6. <a href="#cred">Credits</a> 
+- <a href="#ux">User Experience (UX)</a>
+- <a href="#feat">Features</a>
+- <a href="#tech">Technologies Used</a>
+- <a href="#test">Testing</a>
+- <a href="#deploy">Deployment</a>
+- <a href="#cred">Credits</a> 
 
 ![Images of landing page shown on multiple devices](static/images/readme-images/multiple-devices.png)
 [View the live project here.](http://goal-getter-project.herokuapp.com/)
@@ -41,7 +41,7 @@ The Home page features a Welcome message with a strap line to ‘Achieve your dr
 <div align="left"><img src="static/images/readme-images/homepage.png"></div>
 The Add and Edit Goal forms are created with Bootstrap Tabs.  This enabled the form to be displayed on one HTML page but retain separate sections for each GROW area.  
 <div align="left"><img src="static/images/readme-images/add-goal.png"></div>
-On the Shared Goals and Profile pages, goals are displayed using a Bootstrap card with a collapsible button which shows the completed Tabs form.  The use of collapsible and Tabs functionality enables details to be easily accessible with efficient use of space.
+On the Shared Goals and Profile pages, goals are displayed using a Bootstrap card with a collapsible button which shows the completed Tabs form.  The use of Collapse and Tabs functionality enables details to be easily accessible with efficient use of space.
 <div align="left"><img src="static/images/readme-images/goal-content.png"></div>
 
 ### Colour Scheme
@@ -65,8 +65,8 @@ The images have been picked to portray inspirational activities such as climbing
 ### Wireframes 
 The wireframes for Desktop, Tablet and Mobile versions are [here.](https://github.com/thirdelement/goal-getter/blob/master/GoalGetter_wireframes.pdf)
 
-These wireframes were created at the start of the project and although very similar to the resulting website it does diverge from this in some areas.  These include:
-  - The wireframes show separate web pages for each section of the Add Goal form as opposed to the use of Tabs.    
+These were created at the start of the project.  The resulting website is very similar but it does diverge from the wireframes in some areas.  These include:
+  - The website uses Tabs for the Add Goal form rather than separate web pages. 
   - The profile page does not provide the capability to change your username and password.
   - The Shared Goals and Profiles page use Bootstrap cards rather than an Accordion.
   - The images shown have been changed in some cases.
@@ -89,7 +89,7 @@ The site map is [here.](https://github.com/thirdelement/goal-getter/blob/master/
 <span id="feat"></span>
 
 ## Features
-Broad use of Bootstrap toolkit including:
+The Bootstrap toolkit was used throughout including:
   - [Grid](https://getbootstrap.com/docs/4.6/layout/grid/)
   - [Nav bar](https://getbootstrap.com/docs/4.6/components/navbar/)
   - [Modal](https://getbootstrap.com/docs/4.6/components/modal/)
@@ -109,33 +109,35 @@ Responsive on all device sizes tested.
   - Secure registration and login 
     - Werkzeug security has been used to encrypt passwords.
   - CRUD
-    - Users have ability to create, update and delete their goals as well as read/view their own and shared goals.
-    - Admin has the same permissions as users with additional CRUD rights for categories and shared goals.
+    - Users have the ability to create, update and delete their goals as well as read/view their own and shared goals.
+    - The Admin has the same permissions as users with additional CRUD rights for categories and shared goals.
   - Sharing
-    - Users have ability to share and un-share goals.
+    - Users have the ability to share and un-share goals.
   - User confirmation messages for all CRUD functions to ensure feedback at all time.
   - Defensive programming
     - Confirm Deletion
     - HTML validity reporting.
     - Comprehensive user error reporting.
-    - Way Forward tab in Add Goals form can be reached via submit button only.  This ensures options are saved to database prior to presentation in drop-down list. 
+    - The Way Forward tab in Add Goals form can be reached via the submit button only.  This ensures options are saved to database prior to presentation in drop-down list. 
   - Search
     - Full search capability on the Shared Goals page for goal name and chosen course of action fields.
   - 404 error handling
-    - User kept within the site with several return links available.
+    - User are kept within the site with several return options available.
   - Datepicker
-    - jQuery Datepicker used with Add Goal form.
+    - jQuery Datepicker was used within the Add Goal form.
   - Fully editable Add Goal form. 
 ### Future development
 -   Admin feature to view and edit other user non-shared goals.
 -   Account recovery and password reset using email.
--   Add additional chosen options for each goal with JS.
--   Add steps for achieving each option with JS.
+-   Add function to choose additional options in the Way Forward tab. 
+-   Add function to add small steps for achieving each option.
+-   Add function to copy a goal.
 -   Graphical display to show goal progress.
 -   Pagination for Shared Goals and Profile.
 -   Messaging between site users.
 -   Use of WTForms for validation.
 -   Contact form.
+<div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="tech"></span>
 
 ## Technologies Used
@@ -167,9 +169,9 @@ Responsive on all device sizes tested.
 1. [GitHub](https://github.com/)
     - GitHub was used to store and manage project code pushed from GitPod.
 1. [Heroku](https://www.heroku.com/about)
-    - Hosting the deployed web application.
+    - Heroku was used for hosting the deployed web application.
 1. [Mongodb](https://www.mongodb.com/)
-    - Database creation and hosting.
+    - Mongodb was used for Database creation and hosting.
 ### Other applications
 1. [Irfanview](https://www.irfanview.com/)
     - Irfanview was used to resize, edit and add filters to images.
@@ -178,11 +180,11 @@ Responsive on all device sizes tested.
 1. [Microsoft Word](https://www.microsoft.com/en-gb/microsoft-365/word)
     - Microsoft Word was used to create the database schema and site map.
 1. [RGB to Hex converter](https://www.rgbtohex.net/)
-    - Convert RGB colours to Hex for Jumbotron images.
+    - This website helped with converting RGB colours to Hex for Jumbotron images.
 1. [Favicon.io](https://favicon.io/favicon-converter/)
-    - Favicon generation.
+    - This website provided the capability for Favicon generation.
 1. [Regexr](https://regexr.com/)
-    - Configuring the HTML validation pattern.
+    - This website assisted with configuring the HTML validation pattern.
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="test"></span>
 
@@ -228,7 +230,7 @@ See Test report [here.](https://github.com/thirdelement/goal-getter/blob/master/
     <div align="left"><img src="static/images/readme-images/deployment-method.png"></div>
 3.	Check GitHub profile is displayed then add repository name and click Connect.
     <div align="left"><img src="static/images/readme-images/github-connect.png"></div>
-    Do not enable Automatic Deploys at this time.  Since we have the env variables within the hidden env.py file, Heroku will not be able to read them.
+    Do not enable Automatic Deploys at this time.  Since we have the env variables within the hidden env.py file, Heroku will not be able to read them.<br>
 4.	Click Settings, Reveal Config Vars and add details from env.py:
     <div align="left"><img src="static/images/readme-images/config-vars.png"></div>
 5.	In Gitpod ensure that you commit and push requirements.txt and Procfile.
