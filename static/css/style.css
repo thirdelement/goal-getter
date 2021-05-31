@@ -243,14 +243,14 @@ div.custom-control-right {
 /* goals.html */
 /* Add margin-top to Done button */
 @media (max-width: 359px) {
-  #btn-done {
+  .btn-done {
     margin-top: 5px;
   }
 }
 /* profile.html */
 /* Add margin-top to Delete button */
 @media (max-width: 300px) {
-  #btn-delete {
+  .btn-delete {
     margin-top: 5px;
   }
 }
