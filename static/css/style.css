@@ -19,7 +19,7 @@ body {
   width: 100%;
 }
 /* about.html */
-/* Add background image to jumbotron*/
+/* Add background image to jumbotron */
 .jumbotron-about {
   background-image: url("../images/target-arrow.png");
   background-position: center;
@@ -28,9 +28,13 @@ body {
   height: 250px;
   width: 100%;
 }
+/* Remove bullets from unordered list */
+.no-bullets {
+  list-style-type: none; 
+}
 
 /* goals.html */
-/* Add background image to jumbotron*/
+/* Add background image to jumbotron */
 /*Credit: https://stackoverflow.com/questions/903659/why-cant-i-use-background-image-and-color-together*/
 .jumbotron-goals {
   background-image: url("../images/world-growth6.png");
@@ -50,7 +54,7 @@ body {
 }
 
 /* login.html */
-/* Add background image to jumbotron*/
+/* Add background image to jumbotron */
 .jumbotron-login {
   background-image: url("../images/people1.png");
   background-position: center;
@@ -61,7 +65,7 @@ body {
 }
 
 /* register.html */
-/* Add background image to jumbotron*/
+/* Add background image to jumbotron */
 .jumbotron-register {
   background-image: url("../images/woman-mountaintop.png");
   background-position: center;
@@ -72,7 +76,7 @@ body {
 }
 
 /* profile.html */
-/* Add background image to jumbotron*/
+/* Add background image to jumbotron */
 .jumbotron-profile {
   background-image: url("../images/rocket.png");
   background-position: center;
@@ -83,7 +87,7 @@ body {
 }
 
 /* add_goal.html */
-/* Add background image to jumbotron*/
+/* Add background image to jumbotron */
 .jumbotron-add_goal {
   background-image: url("../images/man-woman-trophy1.png");
   background-position: center;
@@ -94,7 +98,7 @@ body {
 }
 
 /* 404.html */
-/* Add background image to jumbotron*/
+/* Add background image to jumbotron */
 .jumbotron-404 {
   background-image: url("../images/man-crossroads.png");
   background-position: center;
@@ -116,7 +120,7 @@ body {
 }
 
 /* categories.html */
-/* Add background image to jumbotron*/
+/* Add background image to jumbotron */
 .jumbotron-categories {
   background-image: url("../images/cogs.png");
   background-position: center;
