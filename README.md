@@ -2,12 +2,12 @@
 
 ## Contents
 
-1. [ User Experience (UX)] (#ux)
-2. [ Wireframes] (#wire)
-3. [ Technologies Used] (#tech)
-4. [ Testing] (#test)
-5. [ Deployment] (#deploy)
-6. [ Credits] (#cred)
+1. [ User Experience (UX) ](http://github.com/thirdelement/goal-getter#ux)
+2. [ Wireframes ](http://github.com/thirdelement/goal-getter#wire) 
+3. [ Technologies Used ](http://github.com/thirdelement/goal-getter#tech) 
+4. [ Testing ](http://github.com/thirdelement/goal-getter#test) 
+5. [ Deployment ](http://github.com/thirdelement/goal-getter#deploy) 
+6. [ Credits ](http://github.com/thirdelement/goal-getter#cred) 
 
 [View the live project here.](http://goal-getter-project.herokuapp.com/)
 
@@ -40,8 +40,8 @@ This is a website for the Goal Getter self-coaching web application.  The aim is
         2. Add, edit or remove categories.
 
 -   ### Design 
-    -    The Heroic-features template from startbootstrap.com was used for the home page and continued throughout the site.  This included a Jumbotron for a hero image and four thumbnail style feature boxes along the bottom.  The feature boxes were kept for the home page and reduced to one for the rest of the site.  This one thumbnail was used as a container for the Add goal form and other content depending on the page.
-            <h2 align="left"><img src="assets/images/readme-images/home-page.png"></h2>
+The Heroic-features template from startbootstrap.com was used for the home page and continued throughout the site.  This included a Jumbotron for a hero image and four thumbnail style feature boxes along the bottom.  The feature boxes were kept for the home page and reduced to one for the rest of the site.  This one thumbnail was used as a container for the Add goal form and other content depending on the page.
+            <h2 align="left"><img src="static/images/readme-images/homepage.png"></h2>
         -   The navbar is a darker blue in order to be distinct from the rest of the web page.  The navbar text and headings used in the body are yellow which is clear and contrasts well.
             <h2 align="left"><img src="assets/images/readme-images/navbar.png"></h2>
         -   Grey has been used more immediately around the answer buttons and headings to provide a contrast with the blue and aesthetic value.  The grey also matches the colour of most of the aircraft and so is appropriate.  Grey is often associated with technology (see https://coschedule.com/blog/color-psychology-marketing/#secondary) and so is also suitable for this reason.
