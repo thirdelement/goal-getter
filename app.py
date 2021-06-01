@@ -306,6 +306,13 @@ def get_categories():
         flash(u"You need to Log In to access that area!", 'error')
 
         return redirect(url_for("login"))
+    # Check if user is the Admin
+    elif session["user"].lower() != "admin":
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        flash(u"Admin access only!", 'error')
+
+        return redirect(url_for('profile', username=username))
     # Show categories
     else:
         categories = list(mongo.db.categories.find().sort("category_name", 1))
@@ -319,6 +326,13 @@ def add_category():
         flash(u"You need to Log In to access that area!", 'error')
 
         return redirect(url_for("login"))
+    # Check if user is the Admin
+    elif session["user"].lower() != "admin":
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        flash(u"Admin access only!", 'error')
+
+        return redirect(url_for('profile', username=username))
     # Add category
     elif request.method == "POST":
         category = {
@@ -338,6 +352,13 @@ def edit_category(category_id):
         flash(u"You need to Log In to access that area!", 'error')
 
         return redirect(url_for("login"))
+    # Check if user is the Admin 
+    elif session["user"].lower() != "admin":
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        flash(u"Admin access only!", 'error')
+
+        return redirect(url_for('profile', username=username))
     # Edit category
     elif request.method == "POST":
         submit = {
@@ -358,6 +379,13 @@ def delete_category(category_id):
         flash(u"You need to Log In to access that area!", 'error')
 
         return redirect(url_for("login"))
+    # Check if user is the Admin 
+    elif session["user"].lower() != "admin":
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+        flash(u"Admin access only!", 'error')
+
+        return redirect(url_for('profile', username=username))
     # Delete category
     else:
         mongo.db.categories.remove({"_id": ObjectId(category_id)})
