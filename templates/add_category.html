@@ -14,15 +14,16 @@
   <div class="form-group row">
     <label for="category_name" class="col-md-3 offset-md-1 col-form-label">Category Name</label>
     <div class="col-md-6">
-      <input type="text" class="form-control" id="category_name" name="category_name" minlength="3" maxlength="20" required>
+      <input type="text" class="form-control" id="category_name" name="category_name" minlength="3" maxlength="20"
+        required>
     </div>
   </div>
-
-  {% endblock %}
-  {% block footer %}
   <!-- Cancel button -->
   <a href="{{ url_for('get_goals') }}" role="button" class="btn btn-danger acc-header">Cancel</a>
   <!-- Submit button -->
   <button type="submit" class="btn btn-primary">Submit</button>
-  {% endblock %}
 </form>
+{% endblock %}
+{% block footer %}
+<br>
+{% endblock %}
