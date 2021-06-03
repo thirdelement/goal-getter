@@ -26,7 +26,6 @@
     <a class="nav-link active" id="nav-wayforward-tab" href="#nav-wayforward" role="tab" aria-controls="nav-wayforward"
       aria-selected="true">Way Forward</a>
   </div>
-  </nav>
   <div class="tab-content mt-5" id="nav-tabContent">
     <div class="tab-pane fade" id="nav-goal" role="tabpanel" aria-labelledby="nav-goal-tab">
       <!-- End Goal -->
@@ -80,14 +79,16 @@
         <label for="effort" class="col-md-3 offset-md-1 col-form-label text-left">How much effort will you put in from 1
           to
           10?</label>
-        <div class="col-md-6">
-          <select class="form-control" id="effort" name="effort" required>
-            <option value="{{ goal.effort }}" selected>{{ goal.effort }}</option>
-            {% for i in range(1, 11) %}
-            <option value="">{{ i }}</option>
-            {% endfor %}
-          </select>
-        </div>
+          <div class="col-md-6">
+            <select class="form-control" size="1" id="effort" name="effort" required>
+              <option disabled value>Choose number</option>
+              <option value="{{ goal.effort }}" selected>{{ goal.effort }}</option>
+              {% for i in range(1, 11) %}
+              <option>{{ i }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
       </div>
       <!-- Cancel button -->
       <a href="{{ url_for('profile', username=session['user']) }}" role="button" class="btn btn-danger">Cancel</a>
@@ -112,7 +113,8 @@
           completing this
           goal from 1 to 10?</label>
         <div class="col-md-6">
-          <select class="form-control" id="confidence_level" name="confidence_level" required>
+          <select class="form-control" size="1" id="confidence_level" name="confidence_level" required>
+            <option disabled value>Choose number</option>
             <option value="{{ goal.confidence_level }}" selected>{{ goal.confidence_level }}</option>
             {% for i in range(1, 11) %}
             <option>{{ i }}
@@ -135,7 +137,7 @@
         <label for="believe_description" class="col-md-3 offset-md-1 col-form-label text-left">What can you do to
           believe you can do it?</label>
         <div class="col-md-6">
-          <textarea value="{{ goal.believe_description }}" class="form-control" id="believe_description"
+          <textarea class="form-control" id="believe_description"
             name="believe_description" rows="2" minlength="2" maxlength="100"
             required>{{ goal.believe_description }}</textarea>
         </div>
@@ -150,7 +152,7 @@
     <div class="tab-pane fade" id="nav-options" role="tabpanel" aria-labelledby="nav-options-tab">
       <!-- Courses of actions -->
       <div class="form-group row">
-        <label for="goal.course_of_action.0" class="col-md-3 offset-md-1 col-form-label text-left">What course of action
+        <label for="goal.course_of_action0" class="col-md-3 offset-md-1 col-form-label text-left">What course of action
           can you
           take to achieve this?</label>
         <div class="col-md-6">
@@ -160,7 +162,7 @@
       </div>
       <!-- No limits -->
       <div class="form-group row">
-        <label for="goal.course_of_action.1" class="col-md-3 offset-md-1 col-form-label text-left">If there were no
+        <label for="goal.course_of_action1" class="col-md-3 offset-md-1 col-form-label text-left">If there were no
           limits what
           action would you take?</label>
         <div class="col-md-6">
@@ -170,7 +172,7 @@
       </div>
       <!-- Wisest person -->
       <div class="form-group row">
-        <label for="goal.course_of_action.2" class="col-md-3 offset-md-1 col-form-label text-left">What action would the
+        <label for="goal.course_of_action2" class="col-md-3 offset-md-1 col-form-label text-left">What action would the
           wisest person
           you know advise you to do?</label>
         <div class="col-md-6">
@@ -180,7 +182,7 @@
       </div>
       <!-- If you were the coach -->
       <div class="form-group row">
-        <label for="goal.course_of_action.3" class="col-md-3 offset-md-1 col-form-label text-left">If you were the coach
+        <label for="goal.course_of_action3" class="col-md-3 offset-md-1 col-form-label text-left">If you were the coach
           what
           action would you suggest?</label>
         <div class="col-md-6">
@@ -191,7 +193,7 @@
       </div>
       <!-- If you couldn't fail -->
       <div class="form-group row">
-        <label for="goal.course_of_action.4" class="col-md-3 offset-md-1 col-form-label text-left">What action would you
+        <label for="goal.course_of_action4" class="col-md-3 offset-md-1 col-form-label text-left">What action would you
           take if you
           couldn't fail?</label>
         <div class="col-md-6">
@@ -215,6 +217,7 @@
           take:</label>
         <div class="col-md-6">
           <select class="form-control" id="course_of_action" name="course_of_action" required>
+            <option disabled value>Choose action</option>
             <option value="{{ goal.chosen_coa }}" selected>{{ goal.chosen_coa }}</option>
             {% for course_of_action in goal.course_of_action %}
             <option value="{{ course_of_action }}">{{ course_of_action }}</option>
@@ -274,7 +277,8 @@
           of 1 to 10
           that you will carry out this action?</label>
         <div class="col-md-6">
-          <select class="form-control" id="likelihood" name="likelihood" required>
+          <select class="form-control" size="1" id="likelihood" name="likelihood" required>
+            <option disabled value>Choose number</option>
             <option value="{{ goal.likelihood }}" selected>{{ goal.likelihood }}</option>
             {% for i in range(1, 11) %}
             <option>{{ i }}</option>
@@ -300,7 +304,6 @@
           </div>
         </div>
       </div>
-      <nav>
         <!-- Cancel button -->
         <a href="{{ url_for('profile', username=session['user']) }}" role="button" class="btn btn-danger">Cancel</a>
         <!-- Back button -->
