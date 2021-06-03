@@ -197,15 +197,15 @@ def edit_goal(goal_id):
             {"username": session["user"]})["username"]
         is_complete = "checked" if request.form.get(
                 "is_complete") else "unchecked"
-        share = "checked" if request.form.get("share") else "unchecked"
-        meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
+        share = "checked" if request.form.get("share") else ""
+        meet_goal = "checked" if request.form.get("meet_goal") else ""
         submit = {"$set": {
             "goal_name": request.form.get("goal_name"),
             "target_date": request.form.get("target_date"), 
             "category_name": request.form.get("category_name"),
             "succeed_description": request.form.get("succeed_description"),
             "effort": request.form.get("effort"), 
-             "previous_action": request.form.get("previous_action"),
+            "previous_action": request.form.get("previous_action"),
             "confidence_level": request.form.get("confidence_level"),
             "holding_back_description": request.form.get(
                 "holding_back_description"),
@@ -224,13 +224,14 @@ def edit_goal(goal_id):
         }}
         mongo.db.goals.update_one({"_id": ObjectId(goal_id)}, submit)
         # If the meet_goal switch is unchecked 
-        if meet_goal == "unchecked":
+        if meet_goal == "":
             flash(u"You need to select Meets goal", 'error')
             return redirect(url_for(
                 "edit_goal", goal_id=goal[
                     "_id"], _external=True, _scheme="https"))
         # If the submit button on the Options tab is clicked
-        # Credit: https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form
+        # Credit: 
+        # https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form
         elif 'submit-options' in request.form:
             return redirect(url_for(
                 "edit_goal", goal_id=goal[
