@@ -30,9 +30,11 @@ This is a website for the Goal Getter self-coaching web application.  The aim is
 3. View and update my goals in one place.
 4. Share my goals with others.
 5. Use Goal Getter to improve my life.
+6. Protect my account from unauthorised use.
 #### Site Owner
 1. Edit or remove content shared by others.
 2. Add, edit or remove categories.
+3. Protect my admin rights from unauthorised use.
 
 ### Design 
 The Heroic-features template from startbootstrap.com was used for the home page and continued throughout the site.  This included a Jumbotron for a hero image and four thumbnail style feature boxes along the bottom.  The feature boxes were kept for the home page and reduced to one for the rest of the site.  This one thumbnail was used as a container for the Add goal form and other content depending on the page.
@@ -136,6 +138,7 @@ Responsive on all device sizes tested.
 -   Pagination for Shared Goals and Profile.
 -   Messaging between site users.
 -   Use of WTForms for validation.
+-   User session timeout.
 -   Contact form.
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="tech"></span>
