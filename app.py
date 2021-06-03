@@ -146,8 +146,8 @@ def add_goal():
     else:
         is_complete = "checked" if request.form.get(
                 "is_complete") else "unchecked"
-        share = "unchecked" if request.form.get("share") else "checked"
-        meet_goal = "checked" if request.form.get("meet_goal") else "unchecked"
+        share = "" if request.form.get("share") else "checked"
+        meet_goal = "checked" if request.form.get("meet_goal") else ""
         goal = {
                 "goal_name": request.form.get("goal_name"),
                 "target_date": request.form.get("target_date"), 
