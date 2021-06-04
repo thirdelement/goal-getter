@@ -133,7 +133,7 @@ def logout():
 def add_goal():
     categories = mongo.db.categories.find().sort("category_name", 1)
 
-    # Check if user logged in
+    # Check if user logged in. Credit: https://github.com/Edb83/self-isolution
     if "user" not in session:
         flash(u"You need to Log In to access that area!", 'error')
 
