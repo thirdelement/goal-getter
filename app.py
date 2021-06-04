@@ -403,5 +403,5 @@ def not_found(error):
 if __name__ == "__main__":                  
     app.run(host=os.environ.get("IP"),      
             port=int(os.environ.get("PORT")), 
-            debug=True)                     
+            debug=False)                     
     # set debug to True so we can see errors.  Set to false at go live
