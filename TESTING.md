@@ -4,15 +4,12 @@
 ## Contents
 
 - <a href="#stories">User Stories</a>
-- <a href="#manual">Manaul Tests</a>
+- <a href="#manual">Manual Tests</a>
 - <a href="#resp">Responsiveness</a>
 - <a href="#issue">Issues & Bugs</a>
 - <a href="#other">Other Tests</a> 
 
-![Images of landing page shown on multiple devices](static/images/readme-images/multiple-devices.png)
 [View the live project here.](http://goal-getter-project.herokuapp.com/)
-
-This is a website for the Goal Getter self-coaching web application.  The aim is to provide an easy-to-use motivational system for users to record, implement, update and achieve their life goals.  It is designed to work on a range of devices including desktop PCs, tablets and mobile phones.
 <span id="stories"></span>
 
 ## User Stories
@@ -40,7 +37,7 @@ This is a website for the Goal Getter self-coaching web application.  The aim is
 <div align="left"><img src="static/images/readme-images/shared-goals.png"></div>
 
 #### Register easily
-- The ‘Start Now!’ button on the home page hero-image directs the user the to the Registration page.  This ‘Start Now!’ button is also shown on the About page and a link is also available on the menu bar.  Therefore, a user should be able to navigate to the Registration page itself easily.
+- The ‘Start Now!’ button on the home page hero-image directs the user the to the Registration page.  This ‘Start Now!’ button is shown on the About page and a link is also available on the menu bar.  Therefore, a user should be able to navigate to the Registration page itself easily.
 - The registration process requires the user to enter a username and password and click the Register button only.  There is a clear message to ensure validation criteria are met reporting ‘Letters or numbers from 5 to 15 characters required’.  
 <div align="left"><img src="static/images/readme-images/register.png"></div>
 
@@ -57,79 +54,96 @@ On successful log in a welcome message is displayed and the user lands on their 
 - From the Profile page the user has a couple links for adding a goal as described above.
 - Once Add Goal is clicked, the user is presented with a form with four tabs aligning to the four stages of the GROW goal setting model.
 <div align="left"><img src="static/images/readme-images/add-goal.png"></div>  
-Each tab contains questions with an <input> or <textarea> box for the user to enter an answer.  The min length for each box is 2 characters and the user receives a validation message on input.
+
+- Each tab contains questions with an 'input' or 'textarea' box for the user to enter an answer.  The min length for each box is 2 characters and the user receives a validation message on input.
 <div align="left"><img src="static/images/readme-images/validation.png"></div>
-There are a couple of fields requiring a date which the user can select using a Datepicker:
+
+- There are a couple of fields requiring a date which the user can select using a Datepicker:
 <div align="left"><img src="static/images/readme-images/datepicker.png"></div>
-Two fields use drop-down menus to select a number and a category:
+
+- Two fields use drop-down menus to select a number and a category:
 <div align="left"><img src="static/images/readme-images/dropdown-number.png"></div>
 <div align="left"><img src="static/images/readme-images/dropdown-category.png"></div>
-On the Goal and Reality tabs the user clicks ‘Next’ to proceed or can use the tab links.  The Way Forward tab is disabled until the user has clicked the ‘Submit’ button in the Options tab.  This allows the options to be saved to the database for later display on the Way Forward tab in a drop-down menu.  On submission the form details are saved to the database and confirmation message shown.
+
+- On the Goal and Reality tabs the user clicks ‘Next’ to proceed or can use the tab links.  The Way Forward tab is disabled until the user has clicked the ‘Submit’ button in the Options tab.  This allows the options to be saved to the database for display on the Way Forward tab in a drop-down menu.  On submission the form details are saved to the database and confirmation message shown.
 <div align="left"><img src="static/images/readme-images/message-goalreality-added.png"></div>
-If any fields are incomplete or do not meet the min or max length criteria an error is displayed above the form header and the Submit button.  The error is shown in both locations to ensure the user doesn’t miss it.
+
+- If any fields are incomplete or do not meet the min or max length criteria an error is displayed above the form header and the Submit button.  The error is shown in both locations to ensure the user doesn’t miss it.
 <div align="left"><img src="static/images/readme-images/addgoal-check.png"></div>
-The Way Forward tab has a drop-down menu of responses entered on the Options tab.
+
+- The Way Forward tab has a drop-down menu of responses entered on the Options tab.
 <div align="left"><img src="static/images/readme-images/dropdown-options.png"></div>
-There are two switches on this tab.  The first of these is required to be set to on by the user to confirm their chose action will meet their goal. 
+
+- There are two switches on this tab.  The first of these is required to be set to 'on' by the user to confirm the selected action will meet their goal. 
 <div align="left"><img src="static/images/readme-images/meetsgoal-switch.png"></div>
-The user will receive an error and be unable to submit the form until this is done.
+
+- The user will receive an error and be unable to submit the form until this is done.
 <div align="left"><img src="static/images/readme-images/message-meetsgoal.png"></div>
-The second switch is on by default and will add the goal to the Shared Goals page.  If the user does not wish to share their goal, this switch can be turned off.
+
+- he second switch is on by default and will add the goal to the Shared Goals page.  If the user does not wish to share their goal, this switch can be turned off.
 <div align="left"><img src="static/images/readme-images/share-switch.png"></div>
-Once all fields are completed and the user clicks Submit the goal is saved and they are returned to the Profile page.  
+- Once all fields are completed and the user clicks Submit the goal is saved and they are returned to the Profile page.  
 
 #### Create and add goals easily 
-Once registered or logged in, the user is taken to the Profile page.  This includes headings for My Goals In Progress and My Goals Completed.  If no goals have been created then there is a message that nothing has been added with a link to do so.  Alternatively, the user can click ‘Add Goal’ from the menu bar.
-
-Once a goal is created it is added to My Goals In Progress.
+- Once registered or logged in, the user is taken to the Profile page.  This includes headings for My Goals In Progress and My Goals Completed.  If no goals have been created then there is a message that nothing has been added with a link to do so (as shown above).  Alternatively, the user can click ‘Add Goal’ from the menu bar.
+- Once a goal is created it is added to My Goals In Progress.
 <div align="left"><img src="static/images/readme-images/profile-onegoal.png"></div>
-For each goal shown in Profile there are buttons for More Info, Delete, Done and Edit.
 
-The More Info tab expands the goal card to show the form tabs and answers.
+- For each goal shown in Profile there are buttons for More Info, Delete, Done and Edit.
+- The More Info tab expands the goal card to show the form tabs and answers.
 <div align="left"><img src="static/images/readme-images/goal-content.png"></div>
-If the user clicks Delete a Confirm Deletion modal dialogue box appears.  
-<div align="left"><img src="static/images/readme-images/confirm-delete.png"></div>
-When the user clicks Delete on this dialogue box the goal is deleted from the database and a confirmation message is shown:
-<div align="left"><img src="static/images/readme-images/message-delete.png"></div>
-If the user clicks Done the goal is moved to My Goals Completed and a confirmation message is displayed.
-<div align="left"><img src="static/images/readme-images/profile-goalcomplete.png"></div>
-If the user clicks Edit they are directed to the Add Goal form as before where they can make changes.
 
-In My Goals Completed the user can click on In Progress to move the goal back to My Goals In Progress.
+- If the user clicks Delete a Confirm Deletion modal dialogue box appears.  
+<div align="left"><img src="static/images/readme-images/confirm-delete.png"></div>
+
+- When the Delete on this dialogue box is clicked, the goal is deleted from the database and a confirmation message is shown:
+<div align="left"><img src="static/images/readme-images/message-delete.png"></div>
+
+- If the user clicks Done the goal is moved to My Goals Completed and a confirmation message is displayed.
+<div align="left"><img src="static/images/readme-images/profile-goalcomplete.png"></div>
+
+- If the user clicks Edit they are directed to the Add Goal form as before where they can make changes.
+- In My Goals Completed the user can click on In Progress to move the goal back to My Goals In Progress.
 #### Share my goals with others 
-As mentioned above, on the Way Forward tab of the Add Goal form there is a switch which can be turned on or off to share or un-share a goal.
+- As mentioned above, on the Way Forward tab of the Add Goal form there is a switch which can be turned on or off to share or un-share a goal.
 #### Use Goal Getter to improve my life 
 - The Goal Getter site has been created to enable users to self-coach.  The Add Goal form features questions that have been carefully chosen to enable the user to gain increased awareness of their current situation and dig deep to create options.  
 - There are other features to keep the user focussed on their end results such as a switch on the Add Goal Way Forward tab the user needs to enable before submission.  This ensures they have thoroughly checked their options and confirmed what they have chosen will enable them to reach the desired result.
 - The Goal Getter goal sharing option is also geared to provide extra motivation for users.  The reasons for sharing goals can include making yourself accountable and so increase the chances of achieving the goal, impressing others with what you have achieved and for other social or training purposes. 
 - Goal Getter is one of many tools that can be used to improve your life.
 #### Protect my account from unauthorised access
-A check has been added to the URL routing to ensure that a logged in user only has access to non-public web pages.  If a session cookie is not detected, an error message appears and they are re-directed to the login page.
+- A check has been added to the URL routing to ensure that a logged in user only has access to non-public web pages.  If a session cookie is not detected, an error message appears and they are re-directed to the login page.
 <div align="left"><img src="static/images/readme-images/you-need-to-login.png"></div>
 
 ### Site Owner
 #### Edit or remove content shared by others
-The application is configured with one administrator account which has permissions for Delete, Done and Edit buttons in Shared Goals.
+- The application is configured with one administrator account which has permissions for Delete, Done and Edit buttons in Shared Goals.
 <div align="left"><img src="static/images/readme-images/sharedgoals-all.png"></div>
 
 #### Add, edit or remove categories
-The Admin account only has access to the Manage Categories option from the menu bar.  The page displays all current categories with Delete and Edit buttons for each.
+- The Admin account only has access to the Manage Categories option from the menu bar.  The page displays all current categories with Delete and Edit buttons for each.
 <div align="left"><img src="static/images/readme-images/manage-categories.png"></div>
-If the admin clicks Delete on a category, a Confirm Deletion modal is launched.  
+
+- If the admin clicks Delete on a category, a Confirm Deletion modal is launched.  
 <div align="left"><img src="static/images/readme-images/confirm-delete-category.png"></div>
-When Delete is clicked on the modal the category is deleted from the database and a notification appears.
+
+- When Delete is clicked on the modal the category is deleted from the database and a notification appears.
 <div align="left"><img src="static/images/readme-images/message-category-delete.png"></div>
-The Edit button directs to an Edit Category page where the name can be changed.
+
+- The Edit button directs to an Edit Category page where the name can be changed.
 <div align="left"><img src="static/images/readme-images/edit-category.png"></div>
-A notification is displayed once the category has been updated:
+
+- A notification is displayed once the category has been updated:
 <div align="left"><img src="static/images/readme-images/message-category-update.png"></div>
-A category can be added using the Add Category button at the bottom of the Manage Categories page.  This launches an Add Category page where a category can be entered and submitted. 
+
+- A category can be added using the Add Category button at the bottom of the Manage Categories page.  This launches an Add Category page where a category can be entered and submitted. 
 <div align="left"><img src="static/images/readme-images/add-category.png"></div>
-Once a new category is added the usual confirmation is displayed.
+
+- Once a new category is added the usual confirmation is displayed.
 <div align="left"><img src="static/images/readme-images/message-category-new.png"></div>
 
 #### Protect my admin rights from unauthorised use.
-A check has been added to the URL routing to ensure that an admin user only has access to admin web pages.  If the user is not an admin, an error message appears and they are re-directed to their Profile page.
+- A check has been added to the URL routing to ensure that an admin user only has access to admin web pages.  If the user is not an admin, an error message appears and they are re-directed to their Profile page.
 <div align="left"><img src="static/images/readme-images/admin-only.png"></div>
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="manual"></span>
@@ -212,34 +226,31 @@ The following items have been successfully tested on each page or component:
 <span id="resp"></span>
 
 ## Responsiveness
-As the site has been designed using Bootstrap, it adheres to the Bootstrap grid layout and breakpoints.  Additional media queries have been used to align the jumbotron, switches, buttons, and home page call-to-action. 
-
-The website has been tested across a broad range of physical and virtual desktop, tablet and mobile devices.  Additionally, the site has been checked on a range of browsers including Chrome, Edge, IE11 and Firefox.
-
-Physical devices have included Windows Desktop PC and laptop, iPhone 8, SE, X and Samsung s10e.
-
-Virtual devices have consisted of the following on Google Chrome:
+- As the site has been designed using Bootstrap, it adheres to the Bootstrap grid layout and breakpoints.  Additional media queries have been used to align the jumbotron, switches, buttons, and home page call-to-action. 
+- The website has been tested across a broad range of physical and virtual desktop, tablet and mobile devices.  Additionally, the site has been checked on a range of browsers including Chrome, Edge, IE11 and Firefox.
+- Physical devices have included Windows Desktop PC and laptop, iPhone 8, SE, X and Samsung s10e. 
+- Virtual devices have consisted of the following on Google Chrome:
 <div align="left"><img src="static/images/readme-images/device-list.png"></div>
-Some differences were found between Gitpod and Heroku that made alignment challenging when using the ‘Responsive’ option in Chrome Dev Tools.  This inconsistency appeared to disappear when using the simulated device options.  The differences were not evident with ‘Responsive’ mode in Edge.  However, there were still alignment differences at the same width between a simulated device and ‘Responsive’ mode.  Therefore, a decision was made to align layout to simulated devices only. 
 
-For example, the first screenshot below shows the simulated iPhone 6/7/8 in Chrome with width 375px where the media query for ‘margin-top: 5px’ on the Edit button has triggered.  The second screenshot shows ‘Responsive’ mode in Chrome at the same 375px width but no media query trigger for the Edit button which does not activate until 355px.
+- Some differences were found between Gitpod and Heroku that made alignment challenging when using the ‘Responsive’ option in Chrome Dev Tools.  This inconsistency disappeared when using the simulated device options.  The differences were not evident with ‘Responsive’ mode in Edge.  However, there were still alignment differences at the same width between a simulated device and ‘Responsive’ mode.  Therefore, a decision was made to align layout to simulated devices only. 
+- For example, the first screenshot below shows the simulated iPhone 6/7/8 in Chrome with width 375px where the media query for ‘margin-top: 5px’ on the Edit button has triggered.  The second screenshot shows ‘Responsive’ mode in Chrome at the same 375px width but no media query trigger for the Edit button which does not activate until 355px.
 
-##### Google Chrome simulated iPhone 6/7/8
+#### Google Chrome simulated iPhone 6/7/8
 <div align="left"><img src="static/images/readme-images/iphone6-simulated.png"></div>
 
-##### Google Chrome Responsive mode
+#### Google Chrome Responsive mode
 <div align="left"><img src="static/images/readme-images/iphone6-responsive.png"></div>
 
-##### Media query
+#### Media query
 <div align="left"><img src="static/images/readme-images/media-query.png"></div>
-In Responsive mode, the media queries for Chrome seemed to be activated at least 40 pixels less than the max-width (i.e., at 380 instead of 420px).  In the screenshots below the query for ‘margin-top 5px’ at ‘max-width 427px’ on the Edit button has been activated on Gitpod but not Heroku.  As you can see the width is showing at 385px which is well below the trigger level.
+- In Responsive mode, the media queries for Chrome seemed to be activated at least 40 pixels less than the max-width (i.e., at 380 instead of 420px).  In the screenshots below the query for ‘margin-top 5px’ at ‘max-width 427px’ on the Edit button has been activated on Gitpod but not Heroku.  As you can see the width is showing at 385px which is well below the trigger level.
 
-##### Gitpod
+#### Gitpod
 <div align="left"><img src="static/images/readme-images/gitpod-responsive.png"></div>
 
-##### Heroku
+#### Heroku
 <div align="left"><img src="static/images/readme-images/heroku-responsive.png"></div>
-The media query below shows for Gitpod only.
+- The media query below shows for Gitpod only.
 <div align="left"><img src="static/images/readme-images/media-query2.png"></div>
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="issue"></span>
@@ -248,123 +259,136 @@ The media query below shows for Gitpod only.
 1.	Unable to edit course_of_action array element.
 Initially, there were problems updating individual array elements for course_of_action.
 
-This was made to work using the index in the HTML input value and $set statement on the route:
+- This was made to work using the index in the HTML input value and $set statement on the route:
 <div align="left"><img src="static/images/readme-images/issue1-inputvalue.png"></div>
 <div align="left"><img src="static/images/readme-images/issue1-submit.png"></div>
-Fix: Tutor Assistance advised that the HTML input name was changed rather than using the index so that it matches the getlist statement:
+
+- Fix: Tutor Assistance advised that the HTML input name was changed rather than using the index so that it matches the getlist statement:
 <div align="left"><img src="static/images/readme-images/issue1-name.png"></div>
-The route was updated to:
+
+- The route was updated to:
 <div align="left"><img src="static/images/readme-images/issue1-if.png"></div>
 
 2.	The user preferences for switches for meet_goal and to share goal do not update.
-On the add_goal.html page, the shared goal was checked by default:
+- On the add_goal.html page, the shared goal was checked by default:
 <div align="left"><img src="static/images/readme-images/issue2-input.png"></div>
-Fix: This has been updated with the database value using Jinja:
+
+- Fix: This has been updated with the database value using Jinja:
 <div align="left"><img src="static/images/readme-images/issue2-input2.png"></div>
 
 3.	Drop-down menus require user to re-select option when editing.
-Fix: Add selected value:
+- Fix: Add selected value:
 <div align="left"><img src="static/images/readme-images/issue3.png"></div>
 
 4.	On the Way Forward tab, the chosen_coa value does not show in the Edit_Goal form.
-Fix: Change the ‘chosen_coa’ type from array to string.
-In app.py change $push which creates an array:
+- Fix: Change the ‘chosen_coa’ type from array to string.
+- In app.py replace $push which creates an array:
 <div align="left"><img src="static/images/readme-images/issue4-push.png"></div>
- to $set which creates string.
+
+- with $set which creates string.
 <div align="left"><img src="static/images/readme-images/issue4-submit.png"></div>
 
 5.	Sharing is not set by default on Edit_goal.html.
- Fix: On /add_goal route change default share position to ‘checked’.
-<div align="left"><img src="static/images/readme-images/issue5"></div>
+- Fix: On /add_goal route change default share position to ‘checked’.
+<div align="left"><img src="static/images/readme-images/issue5.png"></div>
 
 6.	Options are not showing in drop-down list on Way Forward tab.
-<div align="left"><img src="static/images/readme-images/issue6"></div>
-To start with the form was spread over four different URLs.  The form on the first page created the document which was updated on subsequent URLs.  At the ‘Options’ stage this enabled values to be saved to the database prior to the ‘Way Forward’ stage when one was selected from a drop-down list.
+<div align="left"><img src="static/images/readme-images/issue6.png"></div>
 
-Tutor support pointed out this method used several database transactions that is resource heavy.  This would become an issue if the application experienced increased usage.  In this case, the form was moved to tabs which could be submitted with one insert statement.  However, the last Way Forward tab included a drop-down menu of options entered on the Options tab which was empty.  Therefore, a submit button was added to the Options tab and until this was clicked the Way Forward tab was disabled.  On submission, the user is re-directed to the Edit_Goal route with the Way Forward tab enabled to submit this last tab.
+- To start with the form was spread over four different URLs.  The form on the first page created the document which was updated on subsequent URLs.  At the ‘Options’ stage this enabled values to be saved to the database prior to the ‘Way Forward’ stage when one was selected from a drop-down list.
+- Tutor support pointed out this method used several database transactions that is resource heavy.  This would become an issue if the application experienced increased usage.  In this case, the form was moved to tabs which could be submitted with one insert statement.  However, the last Way Forward tab included a drop-down menu of options entered on the Options tab which was empty.  A submit button was added to the Options tab and until this was clicked the Way Forward tab was disabled.  On submission, the user is re-directed to the Edit_Goal route with the Way Forward tab enabled to submit this last tab.
 7.	Receive regex error when registering and/or logging in.
-<div align="left"><img src="static/images/readme-images/issue7"></div>
+<div align="left"><img src="static/images/readme-images/issue7.png"></div>
 
-Fix: Remove the ^ and $ and add a comma between 5 and 15 (credit: [W3Schools](https://www.w3schools.com/tags/att_input_pattern.asp/) and [Regexr](https://regexr.com/))
-<div align="left"><img src="static/images/readme-images/issue7-pattern1"></div>
+- Fix: Remove the ^ and $ and add a comma between 5 and 15 (credit: [W3Schools](https://www.w3schools.com/tags/att_input_pattern.asp) and [Regexr](https://regexr.com/))
+<div align="left"><img src="static/images/readme-images/issue7-pattern1.png"></div>
 Changed to:
-<div align="left"><img src="static/images/readme-images/issue7-pattern2"></div>
+<div align="left"><img src="static/images/readme-images/issue7-pattern2.png"></div>
 
 8.	A goal changes from shared to not shared on submission.
-Fix: Update share variable to checked else unchecked.
-<div align="left"><img src="static/images/readme-images/issue8"></div>
+- Fix: Update share variable to checked else unchecked.
+<div align="left"><img src="static/images/readme-images/issue8.png"></div>
 
 9.	The user cannot see a regex message from a previous tab when submitting a goal.
-Fix: Add a Bootstrap alert to display if user clicks on submit and form validation is not met (credit: [StackOverflow](https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752)
-JS: 
-<div align="left"><img src="static/images/readme-images/issue9"></div>
-Add_goal HTML:
-<div align="left"><img src="static/images/readme-images/issue9-valid-alert"></div>
+- Fix: Add a Bootstrap alert to display if user clicks on submit and form validation is not met (credit: [StackOverflow](https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752))
+
+- JS: 
+<div align="left"><img src="static/images/readme-images/issue9.png"></div>
+
+- Add_goal HTML:
+<div align="left"><img src="static/images/readme-images/issue9-valid-alert.png"></div>
+
 10.	All fields have the same validate message.
-Fix: Update this code:
-<div align="left"><img src="static/images/readme-images/issue10"></div>
-To this:
-<div align="left"><img src="static/images/readme-images/issue10-js2"></div>
+- Fix: Update this code:
+<div align="left"><img src="static/images/readme-images/issue10.png"></div>
+
+- To this:
+<div align="left"><img src="static/images/readme-images/issue10-js2.png"></div>
 
 11.	On Edit_goal.html if a user changes their options these are not updated in the drop-down menu on the Way Forward tab.
-Fix: Add a submit button on the Options tab with a different name from the submit button on the Way Forward tab (credit: [StackOverflow](https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form).
+- Fix: Add a submit button on the Options tab ensuring the name is different from the button on the Way Forward tab. (credit: [StackOverflow.](https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form))
 
-HTML:
-<div align="left"><img src="static/images/readme-images/issue11"></div>
-App.py:
-<div align="left"><img src="static/images/readme-images/issue11-elif"></div>
+- HTML:
+<div align="left"><img src="static/images/readme-images/issue11.png"></div>
+
+- App.py:
+<div align="left"><img src="static/images/readme-images/issue11-elif.png"></div>
 
 12.	The notification received when validation is not met does is outside the viewport display.
-Fix: Add notification in the same location as other flash messages as well as directly above submit button.
-<div align="left"><img src="static/images/readme-images/issue12"></div>
+- Fix: Add notification in the same location as other flash messages as well as directly above submit button.
+<div align="left"><img src="static/images/readme-images/issue12.png"></div>
 
 13.	If the user clicks on the Way Forward tab instead of clicking Next button their Options are not saved and so not available in the Wayforward tab drop-down menu.
 
-Fix: Remove data-toggle=”tab” from the Way Forward tab so the Next button is the only option to move between tabs.
-<div align="left"><img src="static/images/readme-images/issue13"></div>
+- Fix: Remove data-toggle=”tab” from the Way Forward tab so the Next button is the only option to move between tabs.
+<div align="left"><img src="static/images/readme-images/issue13.png"></div>
 
 14.	Access can be gained to a user page without a session cookie.
 
-Fix: Add a check on each route in app.py that a user is logged in. 
-<div align="left"><img src="static/images/readme-images/issue14"></div>
-If not re-direct them to the login page and display a message.
-<div align="left"><img src="static/images/readme-images/issue14-cannot-access"></div>
+- Fix: Add a check on each route in app.py that a user is logged in. 
+<div align="left"><img src="static/images/readme-images/issue14.png"></div>
+
+- If not re-direct them to the login page and display a message.
+<div align="left"><img src="static/images/readme-images/issue14-cannot-access.png"></div>
 15.	Adding the checked/unchecked boolean to the end of the input tag is an error in HTML validator.
-<div align="left"><img src="static/images/readme-images/issue15"></div>
-<div align="left"><img src="static/images/readme-images/issue15-error"></div>
-This was due to using the incorrect ‘unchecked’ Boolean in the URL route.
-<div align="left"><img src="static/images/readme-images/issue15-share1"></div>
-This has been replaced with:
-<div align="left"><img src="static/images/readme-images/issue15-share2"></div>
+<div align="left"><img src="static/images/readme-images/issue15.png"></div>
+<div align="left"><img src="static/images/readme-images/issue15-error.png"></div>
+
+- This was due to using the incorrect ‘unchecked’ Boolean in the URL route.
+<div align="left"><img src="static/images/readme-images/issue15-share1.png"></div>
+
+- This has been replaced with:
+<div align="left"><img src="static/images/readme-images/issue15-share2.png"></div>
 
 ### Unresolved bugs
 1.	The number selected from a drop-down menu appears again in the list of options.
-<div align="left"><img src="static/images/readme-images/unresolved-1"></div>
+<div align="left"><img src="static/images/readme-images/unresolved-1.png"></div>
 
-Possible fix: It appears that ‘break’ or ‘continue’ is not available in a loop in Jinja unless the Loop Controls extension is added (see [Loop Controls](https://jinja.palletsprojects.com/en/2.11.x/extensions/#loop-controls).  
+- Possible fix: It appears that ‘break’ or ‘continue’ is not available in a loop in Jinja unless the Loop Controls extension is added (see [Loop Controls](https://jinja.palletsprojects.com/en/2.11.x/extensions/#loop-controls)).  
 2.	The fields on the Way Forward tab show as ‘None’ until the user enters details.
-<div align="left"><img src="static/images/readme-images/unresolved-2"></div>
-Possible workaround: This ‘None’ value appears to be created on initial insert.  A validation rule could be added to force the user to change the value before submitting.
+<div align="left"><img src="static/images/readme-images/unresolved-2.png"></div>
+
+- Possible workaround: This ‘None’ value appears to be created on initial insert.  A validation rule could be added to force the user to change the value before submitting.
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
 <span id="other"></span>
 
 ## Other tests
 ### Code validation
-PEP8 online, JSHint, W3C Markup Validation Service and CSS Validation Service were used to validate all project pages ensuring no syntax errors are present.
+- PEP8 online, JSHint, W3C Markup Validation Service and CSS Validation Service were used to validate all project pages ensuring no syntax errors are present.
 ### Site performance
-The Google Dev Tools Lighthouse audit for the site showed the following results:
+- The Google Dev Tools Lighthouse audit for the site showed the following results:
 #### Home
-<div align="left"><img src="static/images/readme-images/perf-home"></div>
+<div align="left"><img src="static/images/readme-images/perf-home.png"></div>
 
 #### Get_Goals
-<div align="left"><img src="static/images/readme-images/perf-home"></div>
+<div align="left"><img src="static/images/readme-images/perf-goals.png"></div>
 
 #### About
-<div align="left"><img src="static/images/readme-images/perf-home"></div>
+<div align="left"><img src="static/images/readme-images/perf-about.png"></div>
 
 #### Login
-<div align="left"><img src="static/images/readme-images/perf-home"></div>
+<div align="left"><img src="static/images/readme-images/perf-login.png"></div>
 
 #### Profile
-<div align="left"><img src="static/images/readme-images/perf-home"></div>
+<div align="left"><img src="static/images/readme-images/perf-profile.png"></div>
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
