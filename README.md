@@ -11,7 +11,8 @@
 - <a href="#cred">Credits</a> 
 
 ![Images of landing page shown on multiple devices](static/images/readme-images/multiple-devices.png)
-[View the live project here.](http://goal-getter-project.herokuapp.com/)
+
+[View the live project here.](https://goal-getter-project.herokuapp.com/)
 
 This is a website for the Goal Getter self-coaching web application.  The aim is to provide an easy-to-use motivational system for users to record, implement, update and achieve their life goals.  It is designed to work on a range of devices including desktop PCs, tablets and mobile phones.
 <span id="ux"></span>
@@ -41,9 +42,13 @@ The Heroic-features template from startbootstrap.com was used for the home page 
 
 The Home page features a Welcome message with a strap line to ‘Achieve your dreams with the GROW formula’.  A call-to-action button is included to ‘Start now!’ which directs the user to the Register page.  The title for the website, home page Jumbotron background image and strap line with informational feature boxes clearly show the purpose of the site.
 <div align="left"><img src="static/images/readme-images/homepage.png"></div>
+
 The Add and Edit Goal forms are created with Bootstrap Tabs.  This enabled the form to be displayed on one HTML page but retain separate sections for each GROW area.  
+
 <div align="left"><img src="static/images/readme-images/add-goal.png"></div>
+
 On the Shared Goals and Profile pages, goals are displayed using a Bootstrap card with a collapsible button which shows the completed Tabs form.  The use of Collapse and Tabs functionality enables details to be easily accessible with efficient use of space.
+
 <div align="left"><img src="static/images/readme-images/goal-content.png"></div>
 
 ### Colour Scheme
@@ -120,6 +125,8 @@ Responsive on all device sizes tested.
     - Confirm Deletion
     - HTML validity reporting.
     - Comprehensive user error reporting.
+    - Non-public pages protected from non-authorised access.
+    - Admin pages protected from non-admin access.
     - The Way Forward tab in Add Goals form can be reached via the submit button only.  This ensures options are saved to database prior to presentation in drop-down list. 
   - Search
     - Full search capability on the Shared Goals page for goal name and chosen course of action fields.
@@ -234,7 +241,7 @@ See Test report [here.](https://github.com/thirdelement/goal-getter/blob/master/
 3.	Check GitHub profile is displayed then add repository name and click Connect.
     <div align="left"><img src="static/images/readme-images/github-connect.png"></div>
     Do not enable Automatic Deploys at this time.  Since we have the env variables within the hidden env.py file, Heroku will not be able to read them.
-    
+
 4.	Click Settings, Reveal Config Vars and add details from env.py:
     <div align="left"><img src="static/images/readme-images/config-vars.png"></div>
 5.	In Gitpod ensure that you commit and push requirements.txt and Procfile.
