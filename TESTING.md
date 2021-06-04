@@ -9,7 +9,8 @@
 - <a href="#issue">Issues & Bugs</a>
 - <a href="#other">Other Tests</a> 
 
-[View the live project here.](http://goal-getter-project.herokuapp.com/)
+[View the README.md here.](https://github.com/thirdelement/goal-getter/blob/master/README.md)
+[View the live project here.](https://goal-getter-project.herokuapp.com/)
 <span id="stories"></span>
 
 ## User Stories
@@ -243,6 +244,7 @@ The following items have been successfully tested on each page or component:
 
 #### Media query
 <div align="left"><img src="static/images/readme-images/media-query.png"></div>
+
 - In Responsive mode, the media queries for Chrome were activated at least 40 pixels less than the max-width (i.e., at 380 instead of 420px).  In the screenshots below the query for ‘margin-top 5px’ at ‘max-width 427px’ on the Edit button has been activated on Gitpod but not Heroku.  As you can see the width is showing at 385px which is well below the trigger level.
 
 #### Gitpod
@@ -263,7 +265,7 @@ The following items have been successfully tested on each page or component:
 <div align="left"><img src="static/images/readme-images/issue1-inputvalue.png"></div>
 <div align="left"><img src="static/images/readme-images/issue1-submit.png"></div>
 
-- Fix: Tutor Assistance advised that the HTML input name was changed rather than using the index so that it matches the getlist statement:
+**Fix:** Tutor Assistance advised that the HTML input name was changed rather than using the index so that it matches the getlist statement:
 <div align="left"><img src="static/images/readme-images/issue1-name.png"></div>
 
 - The route was updated to:
@@ -273,15 +275,15 @@ The following items have been successfully tested on each page or component:
 - On the add_goal.html page, the shared goal was checked by default:
 <div align="left"><img src="static/images/readme-images/issue2-input.png"></div>
 
-- Fix: This has been updated with the database value using Jinja:
+**Fix:** This has been updated with the database value using Jinja:
 <div align="left"><img src="static/images/readme-images/issue2-input2.png"></div>
 
 3.	Drop-down menus require user to re-select option when editing.
-- Fix: Add selected value:
+**Fix:** Add selected value:
 <div align="left"><img src="static/images/readme-images/issue3.png"></div>
 
 4.	On the Way Forward tab, the chosen_coa value does not show in the Edit_Goal form.
-- Fix: Change the ‘chosen_coa’ type from array to string.
+**Fix:** Change the ‘chosen_coa’ type from array to string.
 - In app.py replace $push which creates an array:
 <div align="left"><img src="static/images/readme-images/issue4-push.png"></div>
 
@@ -289,28 +291,29 @@ The following items have been successfully tested on each page or component:
 <div align="left"><img src="static/images/readme-images/issue4-submit.png"></div>
 
 5.	Sharing is not set by default on Edit_goal.html.
-- Fix: On the /add_goal route change the default share position to ‘checked’.
+**Fix:** On the /add_goal route change the default share position to ‘checked’.
 <div align="left"><img src="static/images/readme-images/issue5.png"></div>
 
 6.	Options are not showing in the drop-down list on Way Forward tab.
 <div align="left"><img src="static/images/readme-images/issue6.png"></div>
 
 - Earlier in the build, the form was spread over four different URLs.  The database document was created by the form on the first page and updated on subsequent URLs.  At the ‘Options’ stage this enabled values to be saved to the database prior to the ‘Way Forward’ page when one was selected from a drop-down list.
-- Tutor support pointed out this method used several database transactions and is resource heavy.  This would become an issue if the application experienced increased usage.  In this case, the form was moved to tabs which could be submitted with one insert statement.  However, this did not enable the update of the drop-down menu on the Way Forward tab from the data entered on the Options tab.  As a workaround, the submit button was added to the Options tab and until this was clicked the Way Forward tab was disabled.  On submission, the user is re-directed to the Edit_Goal route with the Way Forward tab enabled so it can be submitted.
+- Tutor support pointed out this method used several database transactions and is resource heavy.  This would become an issue if the application experienced increased usage.  In this case, the form was moved to tabs which could be submitted with one insert statement.  However, this did not enable the update of the drop-down menu on the Way Forward tab from the data entered on the Options tab.  
+**Fix:** As a workaround, the submit button was added to the Options tab and the Way Forward tab was disabled.  On submission, the user is re-directed to the Edit_Goal route with the Way Forward tab enabled so it can be submitted.
 7.	Receive regex error when registering and/or logging in.
 <div align="left"><img src="static/images/readme-images/issue7.png"></div>
 
-- Fix: Remove the ^ and $ and add a comma between 5 and 15 (credit: [W3Schools](https://www.w3schools.com/tags/att_input_pattern.asp) and [Regexr](https://regexr.com/))
+**Fix:** Remove the ^ and $ and add a comma between 5 and 15 (credit: [W3Schools](https://www.w3schools.com/tags/att_input_pattern.asp) and [Regexr](https://regexr.com/))
 <div align="left"><img src="static/images/readme-images/issue7-pattern1.png"></div>
 Changed to:
 <div align="left"><img src="static/images/readme-images/issue7-pattern2.png"></div>
 
 8.	A goal changes from shared to not shared on submission.
-- Fix: Update share variable to checked else unchecked.
+**Fix:** Update share variable to checked else unchecked.
 <div align="left"><img src="static/images/readme-images/issue8.png"></div>
 
 9.	The user cannot see a regex message from a previous tab when submitting a goal.
-- Fix: Add a Bootstrap alert to display if user clicks on submit and form validation is not met (credit: [StackOverflow](https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752))
+**Fix:** Add a Bootstrap alert to display if user clicks on submit and form validation is not met (credit: [StackOverflow](https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752))
 
 - JS: 
 <div align="left"><img src="static/images/readme-images/issue9.png"></div>
@@ -319,14 +322,14 @@ Changed to:
 <div align="left"><img src="static/images/readme-images/issue9-valid-alert.png"></div>
 
 10.	All fields have the same validate message.
-- Fix: Update this code:
+**Fix:** Update this code:
 <div align="left"><img src="static/images/readme-images/issue10.png"></div>
 
 - To this:
 <div align="left"><img src="static/images/readme-images/issue10-js2.png"></div>
 
 11.	On Edit_goal.html if a user changes their options these are not updated in the drop-down menu on the Way Forward tab.
-- Fix: Add a submit button on the Options tab ensuring the name is different from the button on the Way Forward tab. (credit: [StackOverflow.](https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form))
+**Fix:** Add a submit button on the Options tab ensuring the name is different from the button on the Way Forward tab. (credit: [StackOverflow.](https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form))
 
 - HTML:
 <div align="left"><img src="static/images/readme-images/issue11.png"></div>
@@ -335,29 +338,30 @@ Changed to:
 <div align="left"><img src="static/images/readme-images/issue11-elif.png"></div>
 
 12.	The notification received when validation is not met does is outside the viewport display.
-- Fix: Add notification in the same location as other flash messages as well as directly above submit button.
+**Fix:** Add notification in the same location as other flash messages as well as directly above submit button.
 <div align="left"><img src="static/images/readme-images/issue12.png"></div>
 
 13.	If the user clicks on the Way Forward tab instead of clicking Next button their Options are not saved and so not available in the Wayforward tab drop-down menu.
 
-- Fix: Remove data-toggle=”tab” from the Way Forward tab so the Next button is the only option to move between tabs.
+**Fix:** Remove data-toggle=”tab” from the Way Forward tab so the Next button is the only option to move between tabs.
 <div align="left"><img src="static/images/readme-images/issue13.png"></div>
 
 14.	Access can be gained to a user page without a session cookie.
 
-- Fix: Add a check on each route in app.py that a user is logged in. 
+**Fix:** Add a check on each route in app.py that a user is logged in. 
 <div align="left"><img src="static/images/readme-images/issue14.png"></div>
 
 - If not re-direct them to the login page and display a message.
 <div align="left"><img src="static/images/readme-images/issue14-cannot-access.png"></div>
-15.	Adding the checked/unchecked boolean to the end of the input tag is an error in HTML validator.
+15.	Adding the checked/unchecked boolean to the end of an input tag produces an error in the HTML validator.
 <div align="left"><img src="static/images/readme-images/issue15.png"></div>
+
 <div align="left"><img src="static/images/readme-images/issue15-error.png"></div>
 
 - This was due to using the incorrect ‘unchecked’ Boolean in the URL route.
 <div align="left"><img src="static/images/readme-images/issue15-share1.png"></div>
 
-- This has been replaced with:
+**Fix:** This has been replaced with:
 <div align="left"><img src="static/images/readme-images/issue15-share2.png"></div>
 
 ### Unresolved bugs
