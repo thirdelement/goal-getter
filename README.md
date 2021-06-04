@@ -233,7 +233,8 @@ See Test report [here.](https://github.com/thirdelement/goal-getter/blob/master/
     <div align="left"><img src="static/images/readme-images/deployment-method.png"></div>
 3.	Check GitHub profile is displayed then add repository name and click Connect.
     <div align="left"><img src="static/images/readme-images/github-connect.png"></div>
-    Do not enable Automatic Deploys at this time.  Since we have the env variables within the hidden env.py file, Heroku will not be able to read them.<br>
+    Do not enable Automatic Deploys at this time.  Since we have the env variables within the hidden env.py file, Heroku will not be able to read them.
+    
 4.	Click Settings, Reveal Config Vars and add details from env.py:
     <div align="left"><img src="static/images/readme-images/config-vars.png"></div>
 5.	In Gitpod ensure that you commit and push requirements.txt and Procfile.
@@ -292,15 +293,15 @@ Please see [this link](https://docs.github.com/en/github/creating-cloning-and-ar
 - The site was based on the Code Institute Task Manager project.
 - Bootstrap 4.6 was used throughout the site so that it is responsive to different devices and viewport sizes..
 - Code was used from external sources in the following instances:
-  - [Show HTML validity messages.](https://stackoverflow.com/questions/32829776/setting-custom-html5-validity-message-property-ignores-pattern-regex)
-  - [Display message if Add Goal form does not meet validity requirements.](https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752)
-  - [Bootstrap Tab buttons.](https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752) 
-  - [jQuery Datepicker.](https://getbootstrap.com/docs/4.6/components/navs/#javascript-behavior)
-  - [Several submit buttons on the same form.](https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form)
-  - [Error 404 handling.](https://www.geeksforgeeks.org/python-404-error-handling-in-flask/)
-  - [Use background image and background color together.](https://stackoverflow.com/questions/903659/why-cant-i-use-background-image-and-color-together)
-  - [Correct regex usage.](https://stackoverflow.com/questions/903659/why-cant-i-use-background-image-and-color-together)
-  - [Regex pattern.](https://regexr.com/)
+  - [Show HTML validity messages](https://stackoverflow.com/questions/32829776/setting-custom-html5-validity-message-property-ignores-pattern-regex)
+  - [Display message if Add Goal form does not meet validity requirements](https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752)
+  - [Bootstrap Tab buttons](https://stackoverflow.com/questions/45789010/how-to-use-html-form-checkvalidity/45789752) 
+  - [jQuery Datepicker](https://getbootstrap.com/docs/4.6/components/navs/#javascript-behavior)
+  - [Several submit buttons on the same form](https://stackoverflow.com/questions/43811779/use-many-submit-buttons-in-the-same-form)
+  - [Error 404 handling](https://www.geeksforgeeks.org/python-404-error-handling-in-flask/)
+  - [Use background image and background color together](https://stackoverflow.com/questions/903659/why-cant-i-use-background-image-and-color-together)
+  - [Correct regex usage](https://stackoverflow.com/questions/903659/why-cant-i-use-background-image-and-color-together)
+  - [Regex pattern](https://regexr.com/)
   - [User login check](https://github.com/Edb83/self-isolution)
 ### Content
 - All content was written by the developer.
