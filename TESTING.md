@@ -1,4 +1,4 @@
-<h1 align="center">Goal Getter self-coaching website Test report</h1>
+<h1 align="center">Goal Getter Test report</h1>
 <span id="contents"></span>
 
 ## Contents
@@ -51,8 +51,8 @@ On successful log in a welcome message is displayed and the user lands on their 
 <div align="left"><img src="static/images/readme-images/login-message.png"></div>
 
 #### Create and add goals easily 
-- From the Profile page the user has a couple links for adding a goal as described above.
-- Once Add Goal is clicked, the user is presented with a form with four tabs aligning to the four stages of the GROW goal setting model.
+- From the Profile page the user has a couple of links for adding a goal as described above.
+- In Add Goal the user is presented with a form with four tabs aligning to the four stages of the GROW goal setting model.
 <div align="left"><img src="static/images/readme-images/add-goal.png"></div>  
 
 - Each tab contains questions with an 'input' or 'textarea' box for the user to enter an answer.  The min length for each box is 2 characters and the user receives a validation message on input.
@@ -65,45 +65,45 @@ On successful log in a welcome message is displayed and the user lands on their 
 <div align="left"><img src="static/images/readme-images/dropdown-number.png"></div>
 <div align="left"><img src="static/images/readme-images/dropdown-category.png"></div>
 
-- On the Goal and Reality tabs the user clicks ‘Next’ to proceed or can use the tab links.  The Way Forward tab is disabled until the user has clicked the ‘Submit’ button in the Options tab.  This allows the options to be saved to the database for display on the Way Forward tab in a drop-down menu.  On submission the form details are saved to the database and confirmation message shown.
+- On the Goal and Reality tabs,  you can click ‘Next’ to proceed or can use the tab links.  The Way Forward tab is disabled until the ‘Submit’ button is clicked in the Options tab.  This allows the options to be saved to the database for display on the Way Forward tab in a drop-down menu.  On submission the form details are saved to the database and confirmation message shown.
 <div align="left"><img src="static/images/readme-images/message-goalreality-added.png"></div>
 
-- If any fields are incomplete or do not meet the min or max length criteria an error is displayed above the form header and the Submit button.  The error is shown in both locations to ensure the user doesn’t miss it.
+- If any fields are incomplete or do not meet the min or max length criteria an error is displayed above the form header and the Submit button.  The error is shown in both locations to ensure the user does not miss it.
 <div align="left"><img src="static/images/readme-images/addgoal-check.png"></div>
 
 - The Way Forward tab has a drop-down menu of responses entered on the Options tab.
 <div align="left"><img src="static/images/readme-images/dropdown-options.png"></div>
 
-- There are two switches on this tab.  The first of these is required to be set to 'on' by the user to confirm the selected action will meet their goal. 
+- There are two switches on this tab.  The first of these is required to be set to 'on' to confirm the selected action will meet the goal. 
 <div align="left"><img src="static/images/readme-images/meetsgoal-switch.png"></div>
 
 - The user will receive an error and be unable to submit the form until this is done.
 <div align="left"><img src="static/images/readme-images/message-meetsgoal.png"></div>
 
-- he second switch is on by default and will add the goal to the Shared Goals page.  If the user does not wish to share their goal, this switch can be turned off.
+- The second switch is 'on' by default and will add the goal to the Shared Goals page.  If you do not wish to share the goal, this switch can be turned off.
 <div align="left"><img src="static/images/readme-images/share-switch.png"></div>
-- Once all fields are completed and the user clicks Submit the goal is saved and they are returned to the Profile page.  
 
+- Once all fields are completed and the user clicks Submit the goal is saved and they are returned to the Profile page.  
 #### Create and add goals easily 
-- Once registered or logged in, the user is taken to the Profile page.  This includes headings for My Goals In Progress and My Goals Completed.  If no goals have been created then there is a message that nothing has been added with a link to do so (as shown above).  Alternatively, the user can click ‘Add Goal’ from the menu bar.
-- Once a goal is created it is added to My Goals In Progress.
+- Once registered or logged in, the user is taken to the Profile page.  This includes headings for My Goals In Progress and My Goals Completed.  If no goals have been created then there is a message that nothing has been added with a link to do so (as shown above).  Alternatively, you can click ‘Add Goal’ from the menu bar.
+- When a goal is created it is added to My Goals In Progress.
 <div align="left"><img src="static/images/readme-images/profile-onegoal.png"></div>
 
 - For each goal shown in Profile there are buttons for More Info, Delete, Done and Edit.
 - The More Info tab expands the goal card to show the form tabs and answers.
 <div align="left"><img src="static/images/readme-images/goal-content.png"></div>
 
-- If the user clicks Delete a Confirm Deletion modal dialogue box appears.  
+- If Delete is clicked a Confirm Deletion modal dialogue box appears.  
 <div align="left"><img src="static/images/readme-images/confirm-delete.png"></div>
 
-- When the Delete on this dialogue box is clicked, the goal is deleted from the database and a confirmation message is shown:
+- On Delete again, the goal is removed from the database and a confirmation message is shown:
 <div align="left"><img src="static/images/readme-images/message-delete.png"></div>
 
-- If the user clicks Done the goal is moved to My Goals Completed and a confirmation message is displayed.
+- If you click Done the goal is moved to My Goals Completed and a confirmation message is displayed.
 <div align="left"><img src="static/images/readme-images/profile-goalcomplete.png"></div>
 
 - If the user clicks Edit they are directed to the Add Goal form as before where they can make changes.
-- In My Goals Completed the user can click on In Progress to move the goal back to My Goals In Progress.
+- In My Goals Completed you can click on In Progress to move the goal back to My Goals In Progress.
 #### Share my goals with others 
 - As mentioned above, on the Way Forward tab of the Add Goal form there is a switch which can be turned on or off to share or un-share a goal.
 #### Use Goal Getter to improve my life 
@@ -112,7 +112,7 @@ On successful log in a welcome message is displayed and the user lands on their 
 - The Goal Getter goal sharing option is also geared to provide extra motivation for users.  The reasons for sharing goals can include making yourself accountable and so increase the chances of achieving the goal, impressing others with what you have achieved and for other social or training purposes. 
 - Goal Getter is one of many tools that can be used to improve your life.
 #### Protect my account from unauthorised access
-- A check has been added to the URL routing to ensure that a logged in user only has access to non-public web pages.  If a session cookie is not detected, an error message appears and they are re-directed to the login page.
+- A check has been added to the URL routing to ensure that a logged in user only has access to non-public web pages.  If a session cookie is not detected, an error message appears and the user is re-directed to the login page.
 <div align="left"><img src="static/images/readme-images/you-need-to-login.png"></div>
 
 ### Site Owner
@@ -127,7 +127,7 @@ On successful log in a welcome message is displayed and the user lands on their 
 - If the admin clicks Delete on a category, a Confirm Deletion modal is launched.  
 <div align="left"><img src="static/images/readme-images/confirm-delete-category.png"></div>
 
-- When Delete is clicked on the modal the category is deleted from the database and a notification appears.
+- The Delete button on the modal deletes the category from the database and a notification appears.
 <div align="left"><img src="static/images/readme-images/message-category-delete.png"></div>
 
 - The Edit button directs to an Edit Category page where the name can be changed.
@@ -243,13 +243,14 @@ The following items have been successfully tested on each page or component:
 
 #### Media query
 <div align="left"><img src="static/images/readme-images/media-query.png"></div>
-- In Responsive mode, the media queries for Chrome seemed to be activated at least 40 pixels less than the max-width (i.e., at 380 instead of 420px).  In the screenshots below the query for ‘margin-top 5px’ at ‘max-width 427px’ on the Edit button has been activated on Gitpod but not Heroku.  As you can see the width is showing at 385px which is well below the trigger level.
+- In Responsive mode, the media queries for Chrome were activated at least 40 pixels less than the max-width (i.e., at 380 instead of 420px).  In the screenshots below the query for ‘margin-top 5px’ at ‘max-width 427px’ on the Edit button has been activated on Gitpod but not Heroku.  As you can see the width is showing at 385px which is well below the trigger level.
 
 #### Gitpod
 <div align="left"><img src="static/images/readme-images/gitpod-responsive.png"></div>
 
 #### Heroku
 <div align="left"><img src="static/images/readme-images/heroku-responsive.png"></div>
+
 - The media query below shows for Gitpod only.
 <div align="left"><img src="static/images/readme-images/media-query2.png"></div>
 <div align="right"><a style="text-align:right" href="#contents">Go to Contents :arrow_double_up:</a></div>
@@ -257,8 +258,7 @@ The following items have been successfully tested on each page or component:
 
 ## Issues and Bugs
 1.	Unable to edit course_of_action array element.
-Initially, there were problems updating individual array elements for course_of_action.
-
+- Initially, there were problems updating individual array elements for course_of_action.
 - This was made to work using the index in the HTML input value and $set statement on the route:
 <div align="left"><img src="static/images/readme-images/issue1-inputvalue.png"></div>
 <div align="left"><img src="static/images/readme-images/issue1-submit.png"></div>
@@ -285,18 +285,18 @@ Initially, there were problems updating individual array elements for course_of_
 - In app.py replace $push which creates an array:
 <div align="left"><img src="static/images/readme-images/issue4-push.png"></div>
 
-- with $set which creates string.
+- with $set which creates a string:
 <div align="left"><img src="static/images/readme-images/issue4-submit.png"></div>
 
 5.	Sharing is not set by default on Edit_goal.html.
-- Fix: On /add_goal route change default share position to ‘checked’.
+- Fix: On the /add_goal route change the default share position to ‘checked’.
 <div align="left"><img src="static/images/readme-images/issue5.png"></div>
 
-6.	Options are not showing in drop-down list on Way Forward tab.
+6.	Options are not showing in the drop-down list on Way Forward tab.
 <div align="left"><img src="static/images/readme-images/issue6.png"></div>
 
-- To start with the form was spread over four different URLs.  The form on the first page created the document which was updated on subsequent URLs.  At the ‘Options’ stage this enabled values to be saved to the database prior to the ‘Way Forward’ stage when one was selected from a drop-down list.
-- Tutor support pointed out this method used several database transactions that is resource heavy.  This would become an issue if the application experienced increased usage.  In this case, the form was moved to tabs which could be submitted with one insert statement.  However, the last Way Forward tab included a drop-down menu of options entered on the Options tab which was empty.  A submit button was added to the Options tab and until this was clicked the Way Forward tab was disabled.  On submission, the user is re-directed to the Edit_Goal route with the Way Forward tab enabled to submit this last tab.
+- Earlier in the build, the form was spread over four different URLs.  The database document was created by the form on the first page and updated on subsequent URLs.  At the ‘Options’ stage this enabled values to be saved to the database prior to the ‘Way Forward’ page when one was selected from a drop-down list.
+- Tutor support pointed out this method used several database transactions and is resource heavy.  This would become an issue if the application experienced increased usage.  In this case, the form was moved to tabs which could be submitted with one insert statement.  However, this did not enable the update of the drop-down menu on the Way Forward tab from the data entered on the Options tab.  As a workaround, the submit button was added to the Options tab and until this was clicked the Way Forward tab was disabled.  On submission, the user is re-directed to the Edit_Goal route with the Way Forward tab enabled so it can be submitted.
 7.	Receive regex error when registering and/or logging in.
 <div align="left"><img src="static/images/readme-images/issue7.png"></div>
 
@@ -364,7 +364,7 @@ Changed to:
 1.	The number selected from a drop-down menu appears again in the list of options.
 <div align="left"><img src="static/images/readme-images/unresolved-1.png"></div>
 
-- Possible fix: It appears that ‘break’ or ‘continue’ is not available in a loop in Jinja unless the Loop Controls extension is added (see [Loop Controls](https://jinja.palletsprojects.com/en/2.11.x/extensions/#loop-controls)).  
+- Possible fix: Add ‘break’ or ‘continue’ to the If statement with the Jinja Loop Controls extension. (see [Loop Controls](https://jinja.palletsprojects.com/en/2.11.x/extensions/#loop-controls)).  
 2.	The fields on the Way Forward tab show as ‘None’ until the user enters details.
 <div align="left"><img src="static/images/readme-images/unresolved-2.png"></div>
 
